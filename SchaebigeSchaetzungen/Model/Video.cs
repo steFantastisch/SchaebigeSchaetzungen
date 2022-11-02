@@ -9,7 +9,7 @@ namespace SchaebigeSchaetzungen.Model
     public class Video
     {
 		private int videoID;
-
+		//warum einmal public und private?
 		public int VideoID
 		{
 			get { return videoID; }

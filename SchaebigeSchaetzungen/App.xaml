@@ -4,6 +4,15 @@
              xmlns:local="clr-namespace:SchaebigeSchaetzungen"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="10 5" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="2"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Helvetica"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
     </Application.Resources>
 </Application>
