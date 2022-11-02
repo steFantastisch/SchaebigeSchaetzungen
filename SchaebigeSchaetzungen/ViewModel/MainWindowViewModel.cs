@@ -3,10 +3,10 @@
 
 namespace SchaebigeSchaetzungen
 {
-	class MainWindowViewModel
+	public class MainWindowViewModel
 	{
-		MainWindowViewModel()
-		{ Spielername="Simon"; }
+		public MainWindowViewModel()
+		{ Spielername=""; }
 		public String Spielername { get; set; }
 
 	}
