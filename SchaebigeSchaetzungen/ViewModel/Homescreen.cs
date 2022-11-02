@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace SchaebigeSchaetzungen
 {
-	public class MainWindowViewModel :ViewModelBase
+	public class Homescreen :ViewModelBase
 	{
 
         public ICommand HighscoreCommand { get; }

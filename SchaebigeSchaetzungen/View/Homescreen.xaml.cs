@@ -10,9 +10,10 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SchaebigeSchaetzungen.View
+namespace SchaebigeSchaetzungen
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -22,6 +23,12 @@ namespace SchaebigeSchaetzungen.View
         public MainWindow()
         {
             InitializeComponent();
+           
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
         }
     }
 }
