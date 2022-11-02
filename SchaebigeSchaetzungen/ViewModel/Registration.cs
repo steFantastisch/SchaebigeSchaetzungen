@@ -54,6 +54,7 @@ namespace SchaebigeSchaetzungen.ViewModel
 
         public ICommand BackCommand { get;}
         public ICommand CreateCommand { get; }
+    
 
     }
 }
