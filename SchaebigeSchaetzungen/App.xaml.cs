@@ -18,13 +18,14 @@ namespace SchaebigeSchaetzungen
     /// </summary>
     public partial class App : Application
     {
-        private readonly NavigationStore _navigationStore;
+        private NavigationStore _navigationStore;
 
        
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViewModel =new RegistrationVM();
+           
+            //_navigationStore.CurrentViewModel =new ViewModelBase();
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(_navigationStore)

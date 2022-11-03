@@ -16,5 +16,9 @@ namespace SchaebigeSchaetzungen.ViewModel
         {
             _navigationStore=navigationStore;
         }
+
+        public MainViewModel()
+        {
+        }
     }
 }
