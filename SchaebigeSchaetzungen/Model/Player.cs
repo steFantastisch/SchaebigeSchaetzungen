@@ -51,18 +51,14 @@ namespace SchaebigeSchaetzungen.Model
 		}
 
 
-		/*
-		TODO
-		Datatype maybe incorrect
-		Find something which can be converted from ab blob
-		 */
-		private BitmapImage image;
+		private Avatar image;
 
-		public BitmapImage Image
-        {
+		public Avatar Image
+		{
 			get { return image; }
 			set { image = value; }
 		}
+
 
 
 	}
