@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchaebigeSchaetzungen.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Windows.Input;
 
 namespace SchaebigeSchaetzungen.ViewModel
 {
-    public class Registration : ViewModelBase
+    public class RegistrationVM : ViewModelBase
     {
         private string _username;
 
@@ -38,6 +39,9 @@ namespace SchaebigeSchaetzungen.ViewModel
         }
 
         private string _password;
+
+        
+
         public string Password
         {
             get
@@ -55,6 +59,12 @@ namespace SchaebigeSchaetzungen.ViewModel
         public ICommand BackCommand { get;}
         public ICommand CreateCommand { get; }
     
+
+    public RegistrationVM()
+        {
+            BackCommand = new BackCommand();
+
+        }
 
     }
 }

@@ -15,5 +15,13 @@ namespace SchaebigeSchaetzungen.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public static implicit operator ViewModelBase(View.Homescreen v)
+        {
+            throw new NotImplementedException();
+        }
+
+      public static implicit operator ViewModelBase(View.Registration v)
+     {throw new NotImplementedException();}
     }
 }

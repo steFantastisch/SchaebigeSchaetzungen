@@ -1,9 +1,10 @@
-﻿using SchaebigeSchaetzungen.ViewModel;
+﻿using SchaebigeSchaetzungen.Commands;
+using SchaebigeSchaetzungen.ViewModel;
 using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
-namespace SchaebigeSchaetzungen
+namespace SchaebigeSchaetzungen.ViewModel
 {
 	public class Homescreen : ViewModelBase
 	{
@@ -12,6 +13,10 @@ namespace SchaebigeSchaetzungen
         public ICommand PlayCommand { get; }
         public ICommand AccountCommand { get; }
      
+        public Homescreen()
+        {
+            PlayCommand = new PlayCommand();
 
+        }
     }
 }
