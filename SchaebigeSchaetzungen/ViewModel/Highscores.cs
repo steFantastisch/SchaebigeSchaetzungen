@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchaebigeSchaetzungen.ViewModel
 {
-    public class Highscores :ViewModelBase
+    internal class Highscores :ViewModelBase
     {
-      
     }
 }
