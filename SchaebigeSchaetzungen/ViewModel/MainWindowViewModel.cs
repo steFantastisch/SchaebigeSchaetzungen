@@ -1,10 +1,9 @@
-﻿using SchaebigeSchaetzungen.ViewModel;
-using System;
+﻿using System;
 
 
 namespace SchaebigeSchaetzungen
 {
-	public class MainWindowViewModel :ViewModelBase
+	public class MainWindowViewModel
 	{
 		public MainWindowViewModel()
 		{ Spielername=""; }

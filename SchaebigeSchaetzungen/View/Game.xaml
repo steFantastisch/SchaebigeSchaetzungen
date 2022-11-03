@@ -18,7 +18,7 @@
         <Label Content="Player 1" HorizontalAlignment="Left" Margin="166,354,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.048,0.463"/>
         <Label Content="Player 2" HorizontalAlignment="Left" Margin="241,352,0,0" VerticalAlignment="Top"/>
         <MediaElement HorizontalAlignment="Left" Height="282" Margin="21,10,0,0" VerticalAlignment="Top" Width="748"/>
-        <Button Content="pause" HorizontalAlignment="Left" Height="51" Margin="436,356,0,0" VerticalAlignment="Top" Width="92"/>
+        <Button Content="pause" HorizontalAlignment="Left" Height="51" Margin="436,356,0,0" VerticalAlignment="Top" Width="92" Click="Button_Click"/>
         <Button Content="submit" HorizontalAlignment="Left" Height="30" Margin="53,379,0,0" VerticalAlignment="Top" Width="101"/>
         <Slider HorizontalAlignment="Center" Height="31" Margin="0,328,0,0" VerticalAlignment="Top" Width="780"/>
         <Slider HorizontalAlignment="Left" Margin="564,378,0,0" VerticalAlignment="Top" Width="215" Height="28" Maximum="1" LargeChange="0.1" SmallChange="0.01" Value="1"/>
