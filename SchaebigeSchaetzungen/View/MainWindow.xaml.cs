@@ -1,19 +1,12 @@
-﻿using SchaebigeSchaetzungen.Model;
+﻿using Microsoft.Win32;
+using SchaebigeSchaetzungen.Model;
 using SchaebigeSchaetzungen.Persistence;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Drawing;
+using MySql.Data.MySqlClient;
 
 namespace SchaebigeSchaetzungen
 {
@@ -24,13 +17,47 @@ namespace SchaebigeSchaetzungen
     {
         public MainWindow()
         {
-
+            List<Player> temp = DBPlayer.ReadAll();
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            List<Player> temp = DBPlayer.ReadAll();
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg"
+            };
+
+            bool ? response = openFileDialog.ShowDialog();
+
+            if(response == true)
+            {
+                string filepath = openFileDialog.FileName;
+
+                StreamReader sr = new StreamReader(filepath);
+                Stream sm = sr.BaseStream;
+                BinaryReader br = new BinaryReader(sm);
+                byte[] bytes = br.ReadBytes((Int32)sm.Length);
+
+                MySqlConnection temp = DBAccess.OpenDB();
+                string sql = $"Insert into Image (ImageName, ImageType, ImagePath) Values (@name, @type, @path)";
+                MySqlCommand cmd = new MySqlCommand(sql, temp);
+                cmd.Parameters.AddWithValue("@name", "test");
+                cmd.Parameters.AddWithValue("@type", "test");
+                cmd.Parameters.AddWithValue("@path", bytes);
+                cmd.ExecuteNonQuery();
+                //DBAccess.ExecuteNonQuery(sql);
+
+                DBAccess.CloseDB(temp);
+                //var temp = System.Drawing.Image.FromStream(new MemoryStream(bytes));
+
+                MessageBox.Show(bytes.ToString());
+            }
         }
     }
 }
