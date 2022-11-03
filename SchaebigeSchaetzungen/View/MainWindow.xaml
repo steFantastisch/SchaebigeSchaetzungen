@@ -10,7 +10,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.Resources>
-            <DataTemplate DataType="{x:Type vms:RegistrationVM}">
+            <DataTemplate DataType="{x:Type vms:MainViewModel}">
                 <views:Registration/>
             </DataTemplate>
         </Grid.Resources>

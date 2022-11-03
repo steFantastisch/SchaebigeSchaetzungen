@@ -24,11 +24,15 @@ namespace SchaebigeSchaetzungen
 
         protected override void OnStartup(StartupEventArgs e)
         {
-           
+
             //_navigationStore.CurrentViewModel =new ViewModelBase();
+            //MainWindow = new MainWindow()
+            //{
+            //    DataContext = new MainViewModel(_navigationStore)
+            //};
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel(_navigationStore)
+                DataContext = new MainViewModel()
             };
             MainWindow.Show();
 

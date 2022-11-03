@@ -12,10 +12,10 @@ namespace SchaebigeSchaetzungen.ViewModel
         private readonly NavigationStore _navigationStore;
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
 
-        public MainViewModel(NavigationStore navigationStore)
-        {
-            _navigationStore=navigationStore;
-        }
+        //public MainViewModel(NavigationStore navigationStore)
+        //{
+        //    _navigationStore=navigationStore;
+        //}
 
         public MainViewModel()
         {
