@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:SchaebigeSchaetzungen.View" 
         xmlns:views="clr-namespace:SchaebigeSchaetzungen.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <views:Registration DataContext="{Binding CurrentViewModels}" />
+        <!--<views:Registration DataContext="{Binding CurrentViewModels}" />-->
     </Grid>
 </Window>

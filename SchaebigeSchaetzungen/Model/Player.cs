@@ -3,25 +3,67 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace SchaebigeSchaetzungen.Model
 {
 
-    internal class Player
+    public class Player
     {
-        public Player(string name, string passwort, string mail, int crowns)
+		private int playerID;
+
+		public int PlayerID
+		{
+			get { return playerID; }
+			set { playerID = value; }
+		}
+
+		private string name;
+
+		public string Name
+		{
+			get { return name; }
+			set { name = value; }
+		}
+
+		private string password;
+
+		public string Password
+		{
+			get { return password; }
+			set { password = value; }
+		}
+
+		private string mail;
+
+		public string Mail
+		{
+			get { return mail; }
+			set { mail = value; }
+		}
+
+		private int crowns;
+
+		public int Crowns
+		{
+			get { return crowns; }
+			set { crowns = value; }
+		}
+
+
+		/*
+		TODO
+		Datatype maybe incorrect
+		Find something which can be converted from ab blob
+		 */
+		private BitmapImage image;
+
+		public BitmapImage Image
         {
-            Name=name;
-            Passwort=passwort;
-            Mail=mail;
-            Crowns=crowns;
-        }
+			get { return image; }
+			set { image = value; }
+		}
 
-        public string Name {get; set;}
-        public string Passwort {get; set;}
-        public string Mail { get; set; }
-        public int Crowns { get; set; }
-        //avatar?
 
-    }
+	}
 }

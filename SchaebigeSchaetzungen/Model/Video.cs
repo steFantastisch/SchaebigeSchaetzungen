@@ -64,13 +64,25 @@ namespace SchaebigeSchaetzungen.Model
 			set { timmecode = value; }
 		}
 
-		private int creator;
+		private Player creator;
 
-		public int Creator
+		public Player Creator
 		{
 			get { return creator; }
 			set { creator = value; }
 		}
+
+
+		public Video() 
+		{
+
+		}
+
+		public Video(int videoID)
+		{
+			this.videoID = videoID;
+		}
+
 
 	}
 }
