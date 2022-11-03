@@ -1,4 +1,5 @@
-﻿using SchaebigeSchaetzungen.ViewModel;
+﻿using SchaebigeSchaetzungen.View;
+using SchaebigeSchaetzungen.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,9 +17,9 @@ namespace SchaebigeSchaetzungen
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            MainWindow = new MainWindow()
+            MainWindow = new View.Game()
             {
-                DataContext = new Homescreen()
+                DataContext = new ViewModel.Game()
             };
             MainWindow.Show();
 

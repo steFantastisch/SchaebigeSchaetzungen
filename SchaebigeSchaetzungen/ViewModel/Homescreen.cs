@@ -3,7 +3,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
-namespace SchaebigeSchaetzungen
+namespace SchaebigeSchaetzungen.ViewModel
 {
 	public class Homescreen : ViewModelBase
 	{
