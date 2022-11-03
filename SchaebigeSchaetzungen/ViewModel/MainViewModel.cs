@@ -12,7 +12,7 @@ namespace SchaebigeSchaetzungen.ViewModel
 
         public MainViewModel()
         {
-            CurrentViewModel = new Registration();
+            CurrentViewModel = new Homescreen();
         }
     }
 }

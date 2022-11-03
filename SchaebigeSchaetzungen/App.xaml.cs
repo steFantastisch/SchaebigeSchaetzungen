@@ -18,7 +18,7 @@ namespace SchaebigeSchaetzungen
         {
             MainWindow = new MainWindow()
             {
-                DataContext = new Homescreen()
+                DataContext = new MainViewModel()
             };
             MainWindow.Show();
 
