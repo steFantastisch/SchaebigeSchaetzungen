@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SchaebigeSchaetzungen.Model;
+using SchaebigeSchaetzungen.Persistence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +24,13 @@ namespace SchaebigeSchaetzungen
     {
         public MainWindow()
         {
+
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<Player> temp = DBPlayer.ReadAll();
         }
     }
 }
