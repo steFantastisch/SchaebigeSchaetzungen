@@ -10,8 +10,9 @@
         <local:Homescreen />
     </Window.DataContext>
     <Grid>
+        <WebBrowser x:Name="webBrowser1" Margin="42,30,93,116" Height="Auto" Width="Auto"  />
         <Button Content="Play" HorizontalAlignment="Left" Margin="489,313,0,0" VerticalAlignment="Top" Command="{Binding PlayCommand}"/>
-        <TextBox HorizontalAlignment="Left" Height="34" Margin="129,173,0,0" TextWrapping="Wrap" Text="Spielername" VerticalAlignment="Top" Width="121" TextChanged="TextBox_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" Height="34" Margin="129,173,0,0" TextWrapping="Wrap" Text="Spielername" VerticalAlignment="Top" Width="121" />
         <Button Content="Highscore" HorizontalAlignment="Left" Margin="318,313,0,0" VerticalAlignment="Top" Command="{Binding HighscoreCommand}"/>
         <Button Content="Account" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="190,313,0,0" Command="{Binding AccountCommand}"/>
 
