@@ -64,9 +64,9 @@ namespace SchaebigeSchaetzungen.Model
 			set { timmecode = value; }
 		}
 
-		private Player creator;
+		private User creator;
 
-		public Player Creator
+		public User Creator
 		{
 			get { return creator; }
 			set { creator = value; }

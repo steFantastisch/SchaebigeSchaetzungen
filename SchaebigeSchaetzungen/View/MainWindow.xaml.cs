@@ -21,7 +21,7 @@ namespace SchaebigeSchaetzungen
     {
         public MainWindow()
         {
-            List<Player> temp = DBPlayer.ReadAll();
+            List<User> temp = DBPlayer.ReadAll();
             InitializeComponent();
         }
 
@@ -42,31 +42,9 @@ namespace SchaebigeSchaetzungen
 
             if(response == true)
             {
-                string filepath = openFileDialog.FileName;
-                string[] localPath = openFileDialog.FileName.Replace(".", "\\").Split("\\");
+                Avatar temp = new Avatar(openFileDialog);
 
-
-                MessageBox.Show(localPath[localPath.Count() - 1] + "\n" + localPath[localPath.Count() - 2]); ;
-
-                //StreamReader sr = new StreamReader(filepath);
-                //Stream sm = sr.BaseStream;
-                //BinaryReader br = new BinaryReader(sm);
-                //byte[] bytes = br.ReadBytes((Int32)sm.Length);
-                //Image img = System.Drawing.Image.FromStream(new MemoryStream(bytes));
-
-
-                //Bitmap bitmap = new Bitmap(img);
-                //ImageSource imageSource = CreateBitmapSourceFromGdiBitmap(bitmap);
-                //testimage.Source = imageSource;
-
-                //MySqlConnection temp = DBAccess.OpenDB();
-                //string sql = $"Insert into Image (ImageName, ImageType, ImagePath) Values (@name, @type, @path)";
-                //MySqlCommand cmd = new MySqlCommand(sql, temp);
-                //cmd.Parameters.AddWithValue("@name", "test");
-                //cmd.Parameters.AddWithValue("@type", "test");
-                //cmd.Parameters.AddWithValue("@path", bytes);
-                //cmd.ExecuteNonQuery();
-                //DBAccess.CloseDB(temp);
+                testimage.Source = temp.imageSource();
             }
         }
 

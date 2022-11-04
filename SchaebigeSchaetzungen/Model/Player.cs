@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 namespace SchaebigeSchaetzungen.Model
 {
 
-    public class Player
+    public class User
     {
 		private int playerID;
 
@@ -58,6 +58,8 @@ namespace SchaebigeSchaetzungen.Model
 			get { return image; }
 			set { image = value; }
 		}
+
+
 
 
 

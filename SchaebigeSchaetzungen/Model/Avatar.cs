@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Org.BouncyCastle.Utilities;
 using SchaebigeSchaetzungen.Converter;
 using SchaebigeSchaetzungen.Persistence;
 using System;
@@ -12,14 +13,14 @@ using System.Windows.Media;
 
 namespace SchaebigeSchaetzungen.Model
 {
-    public class Avatar
-    {
-		private int imageID;
+	public class Avatar
+	{
+		private int avatarID;
 
-		public int ImageID
-		{
-			get { return imageID; }
-			set { imageID = value; }
+		public int AvatarID
+        {
+			get { return avatarID; }
+			set { avatarID = value; }
 		}
 
 		private string name;
@@ -38,25 +39,23 @@ namespace SchaebigeSchaetzungen.Model
 			set { type = value; }
 		}
 
-		private Bitmap path;
+		private byte[] path;
 
-		public Bitmap Path
+		public byte[] Path
 		{
 			get { return path; }
 			set { path = value; }
 		}
 
-		public Avatar(OpenFileDialog dialog)
+
+        public Avatar(OpenFileDialog dialog)
 		{
 			StreamReader sr = new StreamReader(dialog.FileName);
 			Stream sm = sr.BaseStream;
 			BinaryReader br = new BinaryReader(sm);
-            byte[] bytes = br.ReadBytes((Int32)sm.Length);
-            Image img = System.Drawing.Image.FromStream(new MemoryStream(bytes));
-            this.path = new Bitmap(img);
+            this.path = br.ReadBytes((Int32)sm.Length);
 
 			string[] localPath = dialog.FileName.Replace(".", "\\").Split("\\");
-
 			this.type = localPath[localPath.Count() - 1];
 			this.name = localPath[localPath.Count() - 2];
 
@@ -67,10 +66,15 @@ namespace SchaebigeSchaetzungen.Model
 		{ }
 
 
+		/// <summary>
+		/// Converts the byte-array to a image-source
+		/// </summary>
+		/// <returns></returns>
 		public ImageSource imageSource()
 		{
-			return BitmapToBitmapSourceConverter.BitmapToBitmapSource(this.path);
-
+            Image img = System.Drawing.Image.FromStream(new MemoryStream(path));
+            Bitmap bitmap = new Bitmap(img);
+            return BitmapToBitmapSourceConverter.BitmapToBitmapSource(bitmap);
         }
 
 	}

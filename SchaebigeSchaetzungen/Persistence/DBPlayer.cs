@@ -10,7 +10,7 @@ namespace SchaebigeSchaetzungen.Persistence
 {
     public class DBPlayer
     {
-        private static void GetDataFromReader(MySqlDataReader rdr, Player p)
+        private static void GetDataFromReader(MySqlDataReader rdr, User p)
         {
             p.PlayerID = rdr.GetInt32("PlayerID");
             p.Name = rdr.GetString("Name");
@@ -25,7 +25,7 @@ namespace SchaebigeSchaetzungen.Persistence
              */
         }
 
-        public static void Read(Player p)
+        public static void Read(User p)
         {
             MySqlConnection con = DBAccess.OpenDB();
 
@@ -52,19 +52,19 @@ namespace SchaebigeSchaetzungen.Persistence
 
 
 
-        public static List<Player> ReadAll()
+        public static List<User> ReadAll()
         {
             MySqlConnection con = DBAccess.OpenDB();
             try
             {
 
                 string sql = "SELECT * FROM Player";
-                List<Player> list = new List<Player>();
+                List<User> list = new List<User>();
                 MySqlDataReader reader = DBAccess.ExecuteReader(sql, con);
 
                 while (reader.Read())
                 {
-                    Player p = new Player();
+                    User p = new User();
                     GetDataFromReader(reader, p);
                     list.Add(p);
                 }
@@ -73,7 +73,7 @@ namespace SchaebigeSchaetzungen.Persistence
             }
             catch (Exception)
             {
-                return new List<Player>();
+                return new List<User>();
             }
             finally
             {
