@@ -21,8 +21,10 @@ namespace SchaebigeSchaetzungen
     {
         public MainWindow()
         {
-            List<User> temp = DBPlayer.ReadAll();
+            Avatar temp = new Avatar(4);
+
             InitializeComponent();
+            testimage.Source = temp.imageSource();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

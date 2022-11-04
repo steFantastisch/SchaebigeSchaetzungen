@@ -53,7 +53,7 @@ namespace SchaebigeSchaetzungen.Model
 
 		private Avatar image;
 
-		public Avatar Image
+		public Avatar Avatar
 		{
 			get { return image; }
 			set { image = value; }

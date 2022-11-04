@@ -33,7 +33,7 @@ namespace SchaebigeSchaetzungen.Persistence
         {
             MySqlConnection con = DBAccess.OpenDB();
 
-            string sql = $"SELECT * FROM Video WHERE AvatarID = '{avatar.AvatarID}'";
+            string sql = $"SELECT * FROM Avatar WHERE AvatarID = '{avatar.AvatarID}'";
             MySqlDataReader rd = DBAccess.ExecuteReader(sql, con);
 
             try
@@ -90,7 +90,7 @@ namespace SchaebigeSchaetzungen.Persistence
             avatar.AvatarID = rdr.GetInt32("AvatarID");
             avatar.Name = rdr.GetString("Name");
             avatar.Type = rdr.GetString("Type");
-            //TODO avatar.Path = 
+            avatar.Path = (byte[])rdr["Path"];
         }
     }
 }

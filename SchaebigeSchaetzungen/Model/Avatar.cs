@@ -62,8 +62,11 @@ namespace SchaebigeSchaetzungen.Model
 			DBAvatar.Insert(this);
         }
 
-		public Avatar()
-		{ }
+		public Avatar(int AvatarID)
+		{
+			this.AvatarID = AvatarID;
+			DBAvatar.Read(this);
+		}
 
 
 		/// <summary>
