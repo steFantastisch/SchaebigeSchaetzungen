@@ -19,7 +19,7 @@ namespace SchaebigeSchaetzungen
         {
             MainWindow = new View.Registration()
             {
-                DataContext = new ViewModel.Registration()
+                DataContext = new ViewModel.RegistrationVM()
             };
             MainWindow.Show();
 

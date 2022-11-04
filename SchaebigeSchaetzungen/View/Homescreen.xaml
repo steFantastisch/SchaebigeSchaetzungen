@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Schäbige Schätzungen" Height="450" Width="800">
     <Window.DataContext>
-        <local:Homescreen />
+        <local:HomescreenVM />
     </Window.DataContext>
     <Grid>
         <WebBrowser x:Name="webBrowser1" Margin="42,30,93,116" Height="Auto" Width="Auto"  />

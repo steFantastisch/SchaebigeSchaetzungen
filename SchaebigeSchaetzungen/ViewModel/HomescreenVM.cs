@@ -6,14 +6,14 @@ using System.Windows.Input;
 
 namespace SchaebigeSchaetzungen.ViewModel
 {
-	public class Homescreen : ViewModelBase
+	public class HomescreenVM : ViewModelBase
 	{
        
         public ICommand HighscoreCommand { get; }
         public ICommand PlayCommand { get; }
         public ICommand AccountCommand { get; }
 
-        public Homescreen()
+        public HomescreenVM()
         {
             HighscoreCommand = new ToHighscoreView();
             PlayCommand = new ToGameView();

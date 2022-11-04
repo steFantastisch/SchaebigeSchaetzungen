@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace SchaebigeSchaetzungen.ViewModel
 {
-    public class Registration : ViewModelBase
+    public class RegistrationVM : ViewModelBase
     {
         private string _username;
 
@@ -56,7 +56,7 @@ namespace SchaebigeSchaetzungen.ViewModel
         public ICommand BackCommand { get;}
         public ICommand CreateCommand { get; }
 
-        public Registration()
+        public RegistrationVM()
         {
             BackCommand = new CreatePlayerCommand();
             CreateCommand = new BackToHomescreenCommand();
