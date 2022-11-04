@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchaebigeSchaetzungen.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,7 +55,12 @@ namespace SchaebigeSchaetzungen.ViewModel
 
         public ICommand BackCommand { get;}
         public ICommand CreateCommand { get; }
-    
+
+        public Registration()
+        {
+            BackCommand = new CreatePlayerCommand();
+            CreateCommand = new BackToHomescreenCommand();
+        }
 
     }
 }

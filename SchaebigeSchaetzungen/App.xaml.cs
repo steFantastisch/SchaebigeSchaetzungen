@@ -17,9 +17,9 @@ namespace SchaebigeSchaetzungen
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            MainWindow = new View.Game()
+            MainWindow = new View.Registration()
             {
-                DataContext = new ViewModel.Game()
+                DataContext = new ViewModel.Registration()
             };
             MainWindow.Show();
 
