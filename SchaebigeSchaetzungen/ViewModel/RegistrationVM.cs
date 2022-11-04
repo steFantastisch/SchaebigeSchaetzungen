@@ -58,8 +58,8 @@ namespace SchaebigeSchaetzungen.ViewModel
 
         public RegistrationVM()
         {
-            BackCommand = new CreatePlayerCommand();
-            CreateCommand = new BackToHomescreenCommand();
+            BackCommand = new BackToHomescreenCommand();
+            CreateCommand = new CreatePlayerCommand(this);
         }
 
     }

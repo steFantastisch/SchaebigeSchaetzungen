@@ -9,12 +9,12 @@ namespace SchaebigeSchaetzungen.Model
 
     internal class Player
     {
-        public Player(string name, string passwort, string mail, int crowns)
+        public Player(string name, string passwort, string mail)
         {
             Name=name;
             Passwort=passwort;
             Mail=mail;
-            Crowns=crowns;
+            Crowns=1000;
         }
 
         public string Name {get; set;}
