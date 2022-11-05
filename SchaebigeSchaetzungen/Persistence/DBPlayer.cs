@@ -10,17 +10,23 @@ namespace SchaebigeSchaetzungen.Persistence
 {
     public class DBPlayer
     {
-        private static void GetDataFromReader(MySqlDataReader rdr, User p)
+        public static void Insert(Player player)
         {
-            p.PlayerID = rdr.GetInt32("PlayerID");
-            p.Name = rdr.GetString("Name");
-            p.Password = rdr.GetString("Password");
-            p.Mail = rdr.GetString("Mail");
-            p.Crowns = rdr.GetInt32("Crowns");
-            p.Avatar = new Avatar(rdr.GetInt32("Avatar"));
-        }
+            String sql = $"Insert into Player (Name, Mail, Password, Avatar, Crowns) " +
+                $"values ('{player.Name}', '{player.Mail}', '{player.Password}' , {player.Avatar.AvatarID}, 0)";
 
-        public static void Read(User p)
+            MySqlConnection con = DBAccess.OpenDB();
+
+            int ret = DBAccess.ExecuteNonQuery(sql, con);
+
+
+            if (ret != 1)
+                throw new Exception("Insert failed!");
+
+            player.PlayerID = DBAccess.GetLastInsertId(con);
+            DBAccess.CloseDB(con);
+        }
+        public static void Read(Player p)
         {
             MySqlConnection con = DBAccess.OpenDB();
 
@@ -45,21 +51,37 @@ namespace SchaebigeSchaetzungen.Persistence
             }
         }
 
+        public static void Update(Player player)
+        {
+            String sql = 
+                $"Update player set Name ='{player.Name}', password ='{player.Password}', Mail='{player.Mail}' where PlayerID = {player.PlayerID}";
 
+            int anz = DBAccess.ExecuteNonQuery(sql);
 
-        public static List<User> ReadAll()
+            if (anz != 1) 
+                throw new Exception();
+        }
+
+        public static void Delete(Player player)
+        {
+            /*
+             * Probably not to implement
+            */
+        }
+
+        public static List<Player> ReadAll()
         {
             MySqlConnection con = DBAccess.OpenDB();
             try
             {
 
                 string sql = "SELECT * FROM Player";
-                List<User> list = new List<User>();
+                List<Player> list = new List<Player>();
                 MySqlDataReader reader = DBAccess.ExecuteReader(sql, con);
 
                 while (reader.Read())
                 {
-                    User p = new User();
+                    Player p = new Player();
                     GetDataFromReader(reader, p);
                     list.Add(p);
                 }
@@ -68,7 +90,7 @@ namespace SchaebigeSchaetzungen.Persistence
             }
             catch (Exception)
             {
-                return new List<User>();
+                return new List<Player>();
             }
             finally
             {
@@ -76,5 +98,14 @@ namespace SchaebigeSchaetzungen.Persistence
             }
         }
 
+        private static void GetDataFromReader(MySqlDataReader rdr, Player p)
+        {
+            p.PlayerID = rdr.GetInt32("PlayerID");
+            p.Name = rdr.GetString("Name");
+            p.Password = rdr.GetString("Password");
+            p.Mail = rdr.GetString("Mail");
+            p.Crowns = rdr.GetInt32("Crowns");
+            p.Avatar = new Avatar(rdr.GetInt32("Avatar"));
+        }
     }
 }

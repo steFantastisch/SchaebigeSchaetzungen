@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using System.Drawing.Imaging;
 using System.Linq;
+using SchaebigeSchaetzungen.View;
 
 namespace SchaebigeSchaetzungen
 {
@@ -21,10 +22,10 @@ namespace SchaebigeSchaetzungen
     {
         public MainWindow()
         {
-            Avatar temp = new Avatar(4);
+            //Avatar temp = new Avatar(2);
 
             InitializeComponent();
-            testimage.Source = temp.imageSource();
+            //testimage.Source = temp.imageSource();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -34,20 +35,23 @@ namespace SchaebigeSchaetzungen
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog()
-            {
-                //Only png?
-                Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg"
-            };
+            PlayerDialog dlg = new PlayerDialog();
+            dlg.ShowDialog();
 
-            bool ? response = openFileDialog.ShowDialog();
+            //OpenFileDialog openFileDialog = new OpenFileDialog()
+            //{
+            //    //Only png?
+            //    Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg"
+            //};
 
-            if(response == true)
-            {
-                Avatar temp = new Avatar(openFileDialog);
+            //bool ? response = openFileDialog.ShowDialog();
 
-                testimage.Source = temp.imageSource();
-            }
+            //if(response == true)
+            //{
+            //    Avatar temp = new Avatar(openFileDialog);
+
+            //    testimage.Source = temp.imageSource();
+            //}
         }
 
         

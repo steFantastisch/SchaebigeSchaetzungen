@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchaebigeSchaetzungen.Persistence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Windows.Media.Imaging;
 namespace SchaebigeSchaetzungen.Model
 {
 
-    public class User
+    public class Player
     {
 		private int playerID;
 
@@ -61,7 +62,10 @@ namespace SchaebigeSchaetzungen.Model
 
 
 
-
+		public void Insert()
+		{
+			DBPlayer.Insert(this);
+		}
 
 	}
 }

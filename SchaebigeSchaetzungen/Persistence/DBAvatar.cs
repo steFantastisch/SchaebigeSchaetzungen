@@ -21,12 +21,12 @@ namespace SchaebigeSchaetzungen.Persistence
             cmd.Parameters.AddWithValue("@path", avatar.Path);
 
             int anz = cmd.ExecuteNonQuery();
-            DBAccess.CloseDB(con);
 
             if (anz != 1)
                 throw new Exception("Speicher fehlgeschlagen!");
 
             avatar.AvatarID = DBAccess.GetLastInsertId(con);
+            DBAccess.CloseDB(con);
         }
 
         public static void Read(Avatar avatar)
