@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchaebigeSchaetzungen.View"
         mc:Ignorable="d"
-        Title="PlayerDialog" Height="198" Width="305">
+        Title="Create" Height="198" Width="305">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height ="Auto"/>

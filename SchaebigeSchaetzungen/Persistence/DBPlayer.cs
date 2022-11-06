@@ -59,7 +59,7 @@ namespace SchaebigeSchaetzungen.Persistence
             int anz = DBAccess.ExecuteNonQuery(sql);
 
             if (anz != 1) 
-                throw new Exception();
+                throw new Exception("Speichern fehlgeschlagen!");
         }
 
         public static void Delete(Player player)

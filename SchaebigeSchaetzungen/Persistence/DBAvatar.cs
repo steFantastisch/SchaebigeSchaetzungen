@@ -23,7 +23,7 @@ namespace SchaebigeSchaetzungen.Persistence
             int anz = cmd.ExecuteNonQuery();
 
             if (anz != 1)
-                throw new Exception("Speicher fehlgeschlagen!");
+                throw new Exception("Speichern fehlgeschlagen!");
 
             avatar.AvatarID = DBAccess.GetLastInsertId(con);
             DBAccess.CloseDB(con);
@@ -83,7 +83,6 @@ namespace SchaebigeSchaetzungen.Persistence
                 throw new Exception("Avatar konnte nicht gelöscht werden!");
             }
         }
-
 
         private static void GetDataFromReader(MySqlDataReader rdr, Avatar avatar)
         {

@@ -35,23 +35,12 @@ namespace SchaebigeSchaetzungen
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PlayerDialog dlg = new PlayerDialog();
-            dlg.ShowDialog();
+            //PlayerDialog dlg = new PlayerDialog();
+            //dlg.ShowDialog();
 
-            //OpenFileDialog openFileDialog = new OpenFileDialog()
-            //{
-            //    //Only png?
-            //    Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg"
-            //};
 
-            //bool ? response = openFileDialog.ShowDialog();
-
-            //if(response == true)
-            //{
-            //    Avatar temp = new Avatar(openFileDialog);
-
-            //    testimage.Source = temp.imageSource();
-            //}
+            CreateVideoDialog createVideoDialog = new CreateVideoDialog(DBPlayer.ReadAll().Find(x=>x.PlayerID.Equals(0)));
+            createVideoDialog.ShowDialog();
         }
 
         
