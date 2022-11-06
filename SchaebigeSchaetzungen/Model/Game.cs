@@ -1,4 +1,5 @@
-﻿using SchaebigeSchaetzungen.Persistence;
+﻿using Google.Apis.YouTube.v3;
+using SchaebigeSchaetzungen.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,32 +8,61 @@ using System.Threading.Tasks;
 
 namespace SchaebigeSchaetzungen.Model
 {
+
+    public enum Gamemode
+    {
+        Singleplayer,
+        Multiplayer
+    }
+
     public class Game
     {
         private Player playerOne;
+
+        public Player PlayerOne
+        {
+            get { return playerOne; }
+            set { playerOne = value; }
+        }
+
         private Player playerTwo;
 
-        private List<Video> rounds;
-
-        private void loadVideos()
+        public Player PlayerTwo
         {
-            /*
-             TODO
-            Load 10 videos into the list both player didn´t played yet
-             */
-
-            List<Video> videos = DBVideo.ReadAll();
-            List<Estimation> estimations = DBEstimation.ReadAll().Where(x => !x.Player.PlayerID.Equals(playerOne.PlayerID) && !x.Player.PlayerID.Equals(playerTwo.PlayerID)).ToList();
-
-            // estimations aufsteigend nach videoID sortieren
-            // duplikate entfernen
-            // foreach durch videos laufen und alle entfernen die bereits geschätzt wurden
-            // danach 10 random videos raussuchen und der variable rounds hinzufügen
-
-            for (int i = 0; i < 10; i++)
-            {
-                rounds.Add(new Video());
-            }
+            get { return playerTwo; }
+            set { playerTwo = value; }
         }
+
+        private Gamemode gamemode;
+
+        public Gamemode Gamemode
+        {
+            get { return gamemode; }
+            set { gamemode = value; }
+        }
+
+        private List<Video> playlist;
+
+        public List<Video> Playlist
+        {
+            get { return playlist; }
+            set { playlist = value; }
+        }
+
+
+        public Game(Player playerOne, Player playerTwo, Gamemode gamemode)
+        {
+            this.PlayerOne = playerOne;
+            this.PlayerTwo = playerTwo;
+            this.Gamemode = gamemode;
+            this.Playlist = Video.GeneratePlaylist(this);
+
+            playerOne.Fishcard = true;
+            playerTwo.Fishcard = true;
+
+            playerOne.Points = 0;
+            playerTwo.Points = 0;
+        }
+
     }
 }

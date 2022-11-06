@@ -1,24 +1,10 @@
-﻿using Amazon.DynamoDBv2.Model;
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Services;
-using Google.Apis.YouTube.v3;
-using Google.Apis.YouTube.v3.Data;
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using UserCredential = Google.Apis.Auth.OAuth2.UserCredential;
+using System.Windows.Documents;
 
 namespace SchaebigeSchaetzungen.Model
 {
@@ -28,85 +14,85 @@ namespace SchaebigeSchaetzungen.Model
 
         private int videoID;
 
-		public int VideoID
-		{
-			get { return videoID; }
-			set { videoID = value; }
-		}
+        public int VideoID
+        {
+            get { return videoID; }
+            set { videoID = value; }
+        }
 
-		private string title;
+        private string title;
 
-		public string Title
-		{
-			get { return title; }
-			set { title = value; }
-		}
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
 
-		private string url;
+        private string url;
 
-		public string Url
-		{
-			get { return url; }
-			set { url = value; }
-		}
+        public string Url
+        {
+            get { return url; }
+            set { url = value; }
+        }
 
-		private int views;
+        private int views;
 
-		public int Views
-		{
-			get { return views; }
-			set { views = value; }
-		}
+        public int Views
+        {
+            get { return views; }
+            set { views = value; }
+        }
 
-		private bool available;
+        private bool available;
 
-		public bool Available
-		{
-			get { return available; }
-			set { available = value; }
-		}
+        public bool Available
+        {
+            get { return available; }
+            set { available = value; }
+        }
 
-		private bool german;
+        private bool german;
 
-		public bool German
-		{
-			get { return german; }
-			set { german = value; }
-		}
+        public bool German
+        {
+            get { return german; }
+            set { german = value; }
+        }
 
-		private bool timmecode;
+        private bool timmecode;
 
-		public bool Timecode
-		{
-			get { return timmecode; }
-			set { timmecode = value; }
-		}
+        public bool Timecode
+        {
+            get { return timmecode; }
+            set { timmecode = value; }
+        }
 
-		private Player creator;
+        private Player creator;
 
-		public Player Creator
-		{
-			get { return creator; }
-			set { creator = value; }
-		}
-
-
-		public Video() 
-		{
-			this.url = Video.RandomVideo();
-			this.views = Video.GetCurrentViews(this.url);
-		}
-
-		public Video(int videoID)
-		{
-			this.videoID = videoID;
-		}
+        public Player Creator
+        {
+            get { return creator; }
+            set { creator = value; }
+        }
 
 
-		void foo()
-		{
-			//string views = SearchY(richTextBoxSC, "watch-view-count", 19, "</");
-		}
+        /// <summary>
+        /// Constructor for Multiplayer
+        /// Views and Link is known from the beginning
+        /// Multiplicator are getting setted during the game
+        /// </summary>
+        public Video()
+        {
+            this.url = Video.RandomVideo();
+            this.views = Video.GetCurrentViews(this.url);
+        }
+
+        public Video(int videoID)
+        {
+            this.videoID = videoID;
+        }
+
 
         private static string RandomString(int length)
         {
@@ -126,19 +112,25 @@ namespace SchaebigeSchaetzungen.Model
             {
                 var json = wc.DownloadString(url);
                 dynamic jsonObject = JsonConvert.DeserializeObject(json);
-				string link = "";
+                string link = "";
 
-				foreach (var line in jsonObject["items"])
-				{
-					/*store your id*/
-					link = line["id"]["videoId"].ToString();
-				}
-				return "https://www.youtube.com/watch?v=" + link;
+                foreach (var line in jsonObject["items"])
+                {
+                    /*store id*/
+                    link = line["id"]["videoId"].ToString();
+                }
+                return "https://www.youtube.com/watch?v=" + link;
             }
         }
 
-		private static int GetCurrentViews(string url)
-		{
+
+        /// <summary>
+        /// Get the current views with a web scrapper
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        private static int GetCurrentViews(string url)
+        {
             HtmlWeb web = new HtmlWeb();
             HtmlDocument doc = web.Load(url);
             string innerHtml = doc.DocumentNode.InnerHtml;
@@ -148,6 +140,30 @@ namespace SchaebigeSchaetzungen.Model
             int indexEnd = innerHtml.IndexOf("\",\"author\":\"");
 
             return Convert.ToInt32(innerHtml.Substring(indexStart, indexEnd - indexStart));
+        }
+
+
+        public static List<Video> GeneratePlaylist(Player playerOne, Player playerTwo, bool singleplayermode)
+        {
+            //TODO implement
+            List<Video> playlist = new List<Video>();
+
+            if (singleplayermode)
+            {
+                //load 10 random videos from the database which playerTwo already guessed
+                //playerOne will play against the old guessings from playerTwo
+            }
+
+            else
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    //Add random videos and save them in the database
+                }
+
+            }
+
+            return playlist;
         }
     }
 }
