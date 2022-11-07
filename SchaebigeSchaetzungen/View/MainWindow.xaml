@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:SchaebigeSchaetzungen.View" 
         xmlns:views="clr-namespace:SchaebigeSchaetzungen.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1072" Width="1632">
     <Grid>
-        
-        <!--<views:Registration DataContext="{Binding CurrentViewModels}" />    wirft fehler -->
+
+        <views:Homescreen DataContext="{Binding CurrentViewModel}" />
     </Grid>
 </Window>

@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchaebigeSchaetzungen.View"
+          xmlns:views="clr-namespace:SchaebigeSchaetzungen.View"
         mc:Ignorable="d"
         Title="Registration" Height="450" Width="800">
     <Grid>
+    
         <TextBox HorizontalAlignment="Left" Margin="79,109,0,0" TextWrapping="Wrap" Text="{Binding Username}" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Margin="79,243,0,0" TextWrapping="Wrap" Text="{Binding Email}" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Margin="79,171,0,0" TextWrapping="Wrap" Text="{Binding Password}" VerticalAlignment="Top" Width="120"/>
