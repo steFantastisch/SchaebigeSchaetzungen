@@ -22,10 +22,11 @@ namespace SchaebigeSchaetzungen
     {
         public MainWindow()
         {
-            //Avatar temp = new Avatar(2);
-
             InitializeComponent();
-            //testimage.Source = temp.imageSource();
+            ImageBrush myBrush = new ImageBrush();
+            myBrush.ImageSource =
+                new BitmapImage(new Uri("C:\\Users\\grass\\source\\repos\\SchaebigeSchaetzungen\\SchaebigeSchaetzungen\\Resources\\schaebigeschaetzunge-fish.jpg", UriKind.Absolute));
+            this.Background = myBrush;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -33,16 +34,32 @@ namespace SchaebigeSchaetzungen
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            //PlayerDialog dlg = new PlayerDialog();
-            //dlg.ShowDialog();
+            Player temp = new Player();
+            CreatePlayerDialog dlg = new CreatePlayerDialog(temp);
+            dlg.Show();
 
-
-            CreateVideoDialog createVideoDialog = new CreateVideoDialog(DBPlayer.ReadAll().Find(x=>x.PlayerID.Equals(0)));
-            createVideoDialog.ShowDialog();
+            if(dlg.DialogResult == true)
+            {
+                StartGame();
+            }
         }
 
-        
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            StartGame();
+        }
+
+        private void StartGame()
+        {
+            //TODO implement
+            //change to window single oder multiplayer
+        }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO implement
+        }
     }
 }

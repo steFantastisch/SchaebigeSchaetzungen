@@ -20,12 +20,14 @@ namespace SchaebigeSchaetzungen.View
     /// <summary>
     /// Interaktionslogik für PlayerDialog.xaml
     /// </summary>
-    public partial class PlayerDialog : Window
+    public partial class CreatePlayerDialog : Window
     {
         private Avatar _avatar;
+        private Player _player;
 
-        public PlayerDialog()
+        public CreatePlayerDialog(Player player)
         {
+            this._player = player;
             InitializeComponent();
         }
 

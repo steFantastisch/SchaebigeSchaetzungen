@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace SchaebigeSchaetzungen.Model
     public class Video
     {
         private static Random random = new Random();
+
 
         private int videoID;
 
@@ -85,7 +87,7 @@ namespace SchaebigeSchaetzungen.Model
         public Video()
         {
             this.url = Video.RandomVideo();
-            this.views = Video.GetCurrentViews(this.url);
+            this.views = Video.GetCurrentViewsWithWebscraper(this.url);
         }
 
         public Video(int videoID)
@@ -101,7 +103,7 @@ namespace SchaebigeSchaetzungen.Model
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        private static string RandomVideo()
+        private string GenerateRandomVideo()
         {
             var count = 1;
             var API_KEY = "AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
@@ -129,7 +131,7 @@ namespace SchaebigeSchaetzungen.Model
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        private static int GetCurrentViews(string url)
+        private static int GetCurrentViewsWithWebscraper(string url)
         {
             HtmlWeb web = new HtmlWeb();
             HtmlDocument doc = web.Load(url);
@@ -142,13 +144,26 @@ namespace SchaebigeSchaetzungen.Model
             return Convert.ToInt32(innerHtml.Substring(indexStart, indexEnd - indexStart));
         }
 
+        private static int GetCurrentViewsWithApi(string url)
+        {
+            string url = "https://youtube.googleapis.com/youtube/v3/videos?id=dQw4w9WgXcQ&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
+            int views;
+            using (WebClient wc = new WebClient())
+            {
+                var json = wc.DownloadString(url);
+                var data = (JObject)JsonConvert.DeserializeObject(json);
+                views = Convert.ToInt32(data.SelectToken("items.[0].statistics.viewCount").Value<string>());
 
-        public static List<Video> GeneratePlaylist(Player playerOne, Player playerTwo, bool singleplayermode)
+            }
+            return views;
+        }
+
+        public static List<Video> GeneratePlaylist(Game game)
         {
             //TODO implement
             List<Video> playlist = new List<Video>();
 
-            if (singleplayermode)
+            if (game.Gamemode == Gamemode.Singleplayer)
             {
                 //load 10 random videos from the database which playerTwo already guessed
                 //playerOne will play against the old guessings from playerTwo

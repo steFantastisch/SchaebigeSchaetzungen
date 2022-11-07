@@ -13,8 +13,8 @@ namespace SchaebigeSchaetzungen.Persistence
     {
         public static void Insert(Video v)
         {
-            String sql = $"Insert into Video (Title, URL, Views, Available, German, Timecode, Creator) " +
-                $"values ('{v.Title}', '{v.Url}', {v.Views} , {v.Available}, {v.German}, {v.Timecode}, {v.Creator.PlayerID})";
+            String sql = $"Insert into Video (Title, URL, Views, Available, German, Timecode) " +
+                $"values ('{v.Title}', '{v.Url}', {v.Views} , {v.Available}, {v.German}, {v.Timecode})";
 
             MySqlConnection con = DBAccess.OpenDB();
 
@@ -61,7 +61,6 @@ namespace SchaebigeSchaetzungen.Persistence
                 $"Available={video.Available}, " +
                 $"German={video.German}, " +
                 $"Timecode={video.Timecode} " +
-                $"Creator={video.Creator.PlayerID} " +
                 $"where VideoID = {video.VideoID}";
 
             int anz = DBAccess.ExecuteNonQuery(sql);
@@ -85,9 +84,6 @@ namespace SchaebigeSchaetzungen.Persistence
             v.Available = rdr.GetBoolean("Available");
             v.German = rdr.GetBoolean("German");
             v.Timecode = rdr.GetBoolean("Timecode");
-
-            int player = rdr.GetInt32("creator");
-            v.Creator = DBPlayer.ReadAll().Find(x => x.PlayerID.Equals(player));
         }
         public static List<Video> ReadAll()
         {

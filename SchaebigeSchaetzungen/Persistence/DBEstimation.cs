@@ -12,8 +12,8 @@ namespace SchaebigeSchaetzungen.Persistence
     {
         public static void Insert(Estimation estimation)
         {
-            String sql = $"Insert into Estimation (PlayerID, VideoID, Tip, Difference) " +
-                $"values ({estimation.Player.PlayerID}, {estimation.Video.VideoID}, {estimation.Tip} , {estimation.Difference})";
+            String sql = $"Insert into Estimation (PlayerID, VideoID, Difference) " +
+                $"values ({estimation.Player.PlayerID}, {estimation.Video.VideoID}, {estimation.Difference})";
 
             MySqlConnection con = DBAccess.OpenDB();
 
@@ -83,7 +83,6 @@ namespace SchaebigeSchaetzungen.Persistence
             estimation.EstimationID = rdr.GetInt32("EstimationID");
             estimation.Player = DBPlayer.ReadAll().Find(x => x.PlayerID.Equals(rdr.GetInt32("PlayerID")));
             estimation.Video = DBVideo.ReadAll().Find(x => x.VideoID.Equals(rdr.GetInt32("VideoID")));
-            estimation.Tip = rdr.GetInt32("Tip");
             estimation.Difference = rdr.GetInt32("Difference");
         }
     }

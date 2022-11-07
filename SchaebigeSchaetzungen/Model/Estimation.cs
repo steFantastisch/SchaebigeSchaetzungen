@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MySqlX.XDevAPI.Relational;
+using SchaebigeSchaetzungen.Persistence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,14 +34,6 @@ namespace SchaebigeSchaetzungen.Model
 			set { video = value; }
 		}
 
-		private int tip;
-
-		public int Tip
-		{
-			get { return tip; }
-			set { tip = value; }
-		}
-
 		private int difference;
 
 		public int Difference
@@ -49,5 +43,38 @@ namespace SchaebigeSchaetzungen.Model
 		}
 
 
+		public Estimation()
+		{ }
+
+		public Estimation(Player player)
+		{
+			//TODO implement
+			//Loaded from the db for the singleplayermode
+		}
+
+		public Estimation(Player player, Video video, int tip)
+		{
+			//Created during the game
+			this.player = player;
+			this.video= video;
+			this.difference = tip - video.Views;
+
+			Insert();
+		}
+
+		public void Insert()
+		{
+			DBEstimation.Insert(this);
+		}
+
+		public void Read()
+		{
+			DBEstimation.Read(this);
+		}
+
+		public static List<Estimation> ReadAll()
+		{
+			return DBEstimation.ReadAll();
+		}
 	}
 }
