@@ -6,8 +6,6 @@
         xmlns:vms="clr-namespace:SchaebigeSchaetzungen.ViewModel" 
         xmlns:views="clr-namespace:SchaebigeSchaetzungen.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1072" Width="1632">
-
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         
