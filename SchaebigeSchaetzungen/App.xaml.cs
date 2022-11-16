@@ -17,13 +17,14 @@ namespace SchaebigeSchaetzungen
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            MainWindow = new View.Registration()
-            {
-                DataContext = new ViewModel.RegistrationVM()
-            };
-            MainWindow.Show();
+            //MainWindow = new View.MainWindow()
+            //{
+            //    DataContext = new ViewModel.MainViewModel()
+            //};
+            //MainWindow.Show();
+            //brauchen wir nicht wegen STartupUri in APp.xaml
 
-            base.OnStartup(e);
+            //base.OnStartup(e);
         }
     }
 }

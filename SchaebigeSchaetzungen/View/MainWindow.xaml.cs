@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchaebigeSchaetzungen.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,8 @@ namespace SchaebigeSchaetzungen.View
         public MainWindow()
         {
             InitializeComponent();
-            
+
+            DataContext = new MainViewModel();
 
         }
        

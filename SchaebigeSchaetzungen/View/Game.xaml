@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="Game" Height="450" Width="800">
     <Grid AllowDrop="True" RenderTransformOrigin="0.5,0.5" Margin="0,0,-33,-16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -15,12 +19,12 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <WebBrowser x:Name="webBrowser1" Margin="57,8,78,138" Height="Auto" Width="Auto"  />
-        <Label Content="Player 1" HorizontalAlignment="Left" Margin="166,354,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.048,0.463"/>
-        <Label Content="Player 2" HorizontalAlignment="Left" Margin="241,352,0,0" VerticalAlignment="Top"/>
-        <Button Content="pause" HorizontalAlignment="Left" Height="51" Margin="436,356,0,0" VerticalAlignment="Top" Width="92"/>
-        <Button Content="submit" HorizontalAlignment="Left" Height="30" Margin="53,379,0,0" VerticalAlignment="Top" Width="101"/>
-        <Slider HorizontalAlignment="Center" Height="31" Margin="0,328,0,0" VerticalAlignment="Top" Width="780"/>
-        <Slider HorizontalAlignment="Left" Margin="564,378,0,0" VerticalAlignment="Top" Width="215" Height="28" Maximum="1" LargeChange="0.1" SmallChange="0.01" Value="1"/>
+        <WebBrowser x:Name="webBrowser1" Margin="57,8,78,138" Height="Auto" Width="Auto" Grid.RowSpan="2"  />
+        <Label Content="Player 1" HorizontalAlignment="Left" Margin="166,354,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.048,0.463" Grid.RowSpan="2"/>
+        <Label Content="Player 2" HorizontalAlignment="Left" Margin="241,352,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <Button Content="pause" HorizontalAlignment="Left" Height="51" Margin="436,356,0,0" VerticalAlignment="Top" Width="92" Grid.RowSpan="2"/>
+        <Button Content="submit" HorizontalAlignment="Left" Height="30" Margin="53,379,0,0" VerticalAlignment="Top" Width="101" Grid.RowSpan="2"/>
+        <Slider HorizontalAlignment="Center" Height="31" Margin="0,328,0,0" VerticalAlignment="Top" Width="780" Grid.RowSpan="2"/>
+        <Slider HorizontalAlignment="Right" Margin="0,378,54,0" VerticalAlignment="Top" Width="215" Height="28" Maximum="1" LargeChange="0.1" SmallChange="0.01" Value="1" Grid.RowSpan="2"/>
     </Grid>
 </Window>

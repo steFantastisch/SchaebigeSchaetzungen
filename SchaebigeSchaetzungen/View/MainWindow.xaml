@@ -6,9 +6,15 @@
         xmlns:local="clr-namespace:SchaebigeSchaetzungen.View" 
         xmlns:views="clr-namespace:SchaebigeSchaetzungen.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="626" Width="1052">
     <Grid>
-        
-        <!--<views:Registration DataContext="{Binding CurrentViewModels}" />    wirft fehler -->
+        <ContentControl Content="{Binding SelectedViewModel}"/>
+        <Button Content="Play" HorizontalAlignment="Left" Margin="593,486,0,0" VerticalAlignment="Top" />
+        <Button Content="Highscore" HorizontalAlignment="Left" Margin="345,453,0,0" VerticalAlignment="Top" />
+        <Button Content="Account" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="188,475,0,0"/>
     </Grid>
+
+
+    <!--<views:Registration DataContext="{Binding CurrentViewModels}" />    wirft fehler -->
+
 </Window>

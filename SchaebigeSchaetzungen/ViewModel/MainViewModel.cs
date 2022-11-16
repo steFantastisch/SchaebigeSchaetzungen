@@ -8,11 +8,8 @@ namespace SchaebigeSchaetzungen.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        public ViewModelBase CurrentViewModel { get; }
+        private ViewModelBase _selectedViewModel= new GameVM();
+        public ViewModelBase SelectedViewModel { get { return _selectedViewModel; } set { _selectedViewModel =value; } }  
 
-        public MainViewModel()
-        {
-            CurrentViewModel = new RegistrationVM();
-        }
     }
 }
