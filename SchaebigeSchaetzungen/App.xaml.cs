@@ -1,5 +1,4 @@
-﻿using SchaebigeSchaetzungen.Store;
-using SchaebigeSchaetzungen.View;
+﻿using SchaebigeSchaetzungen.View;
 using SchaebigeSchaetzungen.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -16,20 +15,11 @@ namespace SchaebigeSchaetzungen
     /// </summary>
     public partial class App : Application
     {
-        private NavigationStore _navigationStore;
-
-        public App()
-        {
-            _navigationStore= new NavigationStore();
-        }
-
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViewModel =new HomescreenVM();
-
-            MainWindow = new MainWindow()
+            MainWindow = new View.Registration()
             {
-                DataContext = new MainViewModel(_navigationStore)
+                DataContext = new ViewModel.RegistrationVM()
             };
             MainWindow.Show();
 

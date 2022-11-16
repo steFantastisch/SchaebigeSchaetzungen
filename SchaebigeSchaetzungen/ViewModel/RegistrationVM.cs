@@ -1,5 +1,4 @@
 ﻿using SchaebigeSchaetzungen.Commands;
-using SchaebigeSchaetzungen.Store;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +9,7 @@ using System.Windows.Input;
 namespace SchaebigeSchaetzungen.ViewModel
 {
     public class RegistrationVM : ViewModelBase
-
     {
-        private readonly NavigationStore _navigationStore;
         private string _username;
 
         public string Username

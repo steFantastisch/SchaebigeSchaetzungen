@@ -1,5 +1,4 @@
-﻿using SchaebigeSchaetzungen.Store;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +8,11 @@ namespace SchaebigeSchaetzungen.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        private readonly  NavigationStore _navigationStore;
-        public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
-       
-       
+        public ViewModelBase CurrentViewModel { get; }
 
-        public MainViewModel(NavigationStore navigationStore)
+        public MainViewModel()
         {
-            _navigationStore=navigationStore;
+            CurrentViewModel = new RegistrationVM();
         }
     }
 }
