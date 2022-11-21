@@ -86,7 +86,7 @@ namespace SchaebigeSchaetzungen.Model
         /// </summary>
         public Video()
         {
-            this.url = Video.RandomVideo();
+            this.url = this.GenerateRandomVideo();
             this.views = Video.GetCurrentViewsWithWebscraper(this.url);
         }
 
@@ -146,7 +146,7 @@ namespace SchaebigeSchaetzungen.Model
 
         private static int GetCurrentViewsWithApi(string url)
         {
-            string url = "https://youtube.googleapis.com/youtube/v3/videos?id=dQw4w9WgXcQ&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
+            url = "https://youtube.googleapis.com/youtube/v3/videos?id=dQw4w9WgXcQ&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
             int views;
             using (WebClient wc = new WebClient())
             {

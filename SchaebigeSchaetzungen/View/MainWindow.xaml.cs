@@ -23,43 +23,8 @@ namespace SchaebigeSchaetzungen
         public MainWindow()
         {
             InitializeComponent();
-            ImageBrush myBrush = new ImageBrush();
-            myBrush.ImageSource =
-                new BitmapImage(new Uri("C:\\Users\\grass\\source\\repos\\SchaebigeSchaetzungen\\SchaebigeSchaetzungen\\Resources\\schaebigeschaetzunge-fish.jpg", UriKind.Absolute));
-            this.Background = myBrush;
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
 
         }
 
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
-        {
-            Player temp = new Player();
-            CreatePlayerDialog dlg = new CreatePlayerDialog(temp);
-            dlg.Show();
-
-            if(dlg.DialogResult == true)
-            {
-                StartGame();
-            }
-        }
-
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
-            StartGame();
-        }
-
-        private void StartGame()
-        {
-            //TODO implement
-            //change to window single oder multiplayer
-        }
-
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-            //TODO implement
-        }
     }
 }
