@@ -43,7 +43,8 @@ namespace SchaebigeSchaetzungen.ViewModel
 
         public UserCredentialsViewModel()
         {
-
+            //TODO DELETE FOLLOWING LINE
+            this.Username = "Stefan";
         }
     }
 }

@@ -22,54 +22,15 @@ namespace SchaebigeSchaetzungen.View
     /// </summary>
     public partial class CreatePlayerDialog : Window
     {
-        private Avatar _avatar;
-        private Player _player;
 
-        public CreatePlayerDialog(Player player)
+
+        public CreatePlayerDialog()
         {
-            this._player = player;
+
             InitializeComponent();
         }
 
-        private void btnUpload_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog()
-            {
-                //Only png?
-                Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg"
-            };
 
-            bool? response = openFileDialog.ShowDialog();
-
-            if (response == true)
-            {
-                _avatar = new Avatar(openFileDialog);
-            }
-        }
-
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Player temp = new Player()
-                {
-                    Name = this.tbName.Text,
-                    Mail = this.tbMail.Text,
-                    Password = this.pbPassword.Password,
-                    Avatar = this._avatar
-                };
-                temp.Insert();
-                this.DialogResult = true;
-                this.Close();
-
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                //empty textboxes and delete last avatar if not null
-            }
-            
-        }
 
     }
 }

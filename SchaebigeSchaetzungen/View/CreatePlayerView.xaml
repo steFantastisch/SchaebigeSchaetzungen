@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="SchaebigeSchaetzungen.View.CreatePlayerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SchaebigeSchaetzungen.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="Auto"/>
+            <RowDefinition Height ="Auto"/>
+            <RowDefinition Height ="Auto"/>
+            <RowDefinition Height ="Auto"/>
+            <RowDefinition Height ="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+        <Grid/>
+        <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Name" />
+        <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Mail" />
+        <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Password" />
+        <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Avatar" />
+
+
+        <TextBox x:Name="tbName" Text="{Binding Name}" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="20,0,100,0"/>
+        <TextBox x:Name="tbMail" Text="{Binding Mail}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="20,0,100,0"/>
+        <PasswordBox x:Name="pbPassword" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="20,0,100,0"/>
+        <Button x:Name="btnUpload" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"  Content="Upload png/jpg" Margin="20,0,100,0" Click="btnUpload_Click"/>
+        <Button x:Name="btnCreate" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Create" Margin="20,10,100,0" Click="btnCreate_Click"/>
+
+    </Grid>
+</UserControl>

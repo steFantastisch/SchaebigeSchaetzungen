@@ -36,14 +36,14 @@ namespace SchaebigeSchaetzungen.View
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            Player temp = new Player();
-            CreatePlayerDialog dlg = new CreatePlayerDialog(temp);
-            dlg.Show();
+            //Player temp = new Player();
+            //CreatePlayerDialog dlg = new CreatePlayerDialog(temp);
+            //dlg.Show();
 
-            if (dlg.DialogResult == true)
-            {
-                StartGame();
-            }
+            //if (dlg.DialogResult == true)
+            //{
+            //    StartGame();
+            //}
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
