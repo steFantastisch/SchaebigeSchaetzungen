@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchaebigeSchaetzungen.Store;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,19 @@ namespace SchaebigeSchaetzungen.ViewModel
 {
     public class MainViewModel :ViewModelBase
     {
-        public ViewModelBase CurrentViewModel { get; }
-
-        public MainViewModel()
+        private readonly NavigationStore navigationStore;
+        public ViewModelBase CurrentViewModel
         {
-            CurrentViewModel = new UserCredentialsViewModel();
+            get
+            {
+                return navigationStore.CurrentViewModel;
+            }
         }
+
+        public MainViewModel(NavigationStore navigationStore)
+        {
+            this.navigationStore = navigationStore;
+        }
+
     }
 }

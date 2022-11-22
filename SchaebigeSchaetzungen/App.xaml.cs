@@ -1,4 +1,5 @@
-﻿using SchaebigeSchaetzungen.ViewModel;
+﻿using SchaebigeSchaetzungen.Store;
+using SchaebigeSchaetzungen.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,11 +15,21 @@ namespace SchaebigeSchaetzungen
     /// </summary>
     public partial class App : Application
     {
+        private readonly NavigationStore navigationStore;
+
+        public App()
+        {
+            navigationStore = new NavigationStore();
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
+            navigationStore.CurrentViewModel = new UserCredentialsViewModel();
+
+
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel()
+                DataContext = new MainViewModel(navigationStore)
             };
             MainWindow.Show();
             base.OnStartup(e);

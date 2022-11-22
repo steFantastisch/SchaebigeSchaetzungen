@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchaebigeSchaetzungen.Command;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,14 +38,15 @@ namespace SchaebigeSchaetzungen.ViewModel
             }
         }
 
-        public ICommand LoginCommant { get; }
-        public ICommand CreateCommant { get; }
-        public ICommand HelpCommant { get; }
+        public ICommand LoginCommand { get; }
+        public ICommand CreateCommand { get; }
+        public ICommand HelpCommand { get; }
 
         public UserCredentialsViewModel()
         {
             //TODO DELETE FOLLOWING LINE
             this.Username = "Stefan";
+            this.CreateCommand = new CreateCommand();
         }
     }
 }
