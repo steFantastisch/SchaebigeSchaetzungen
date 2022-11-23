@@ -18,9 +18,15 @@ namespace SchaebigeSchaetzungen.ViewModel
             }
         }
 
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
+        }
+
         public MainViewModel(NavigationStore navigationStore)
         {
             this.navigationStore = navigationStore;
+            this.navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
 
     }

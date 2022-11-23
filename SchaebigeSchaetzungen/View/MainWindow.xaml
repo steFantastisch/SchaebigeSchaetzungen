@@ -3,10 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SchaebigeSchaetzungen" xmlns:view="clr-namespace:SchaebigeSchaetzungen.View"
+        xmlns:local="clr-namespace:SchaebigeSchaetzungen" 
+        xmlns:view="clr-namespace:SchaebigeSchaetzungen.View"
+        xmlns:vms="clr-namespace:SchaebigeSchaetzungen.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <view:MainPlayerLoginView DataContext="{Binding CurrentViewModel}"/>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:UserCredentialsViewModel}">
+                <view:MainPlayerLoginView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:CreateViewModel}">
+                <view:CreatePlayerView/>
+            </DataTemplate>
+        </Grid.Resources>
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

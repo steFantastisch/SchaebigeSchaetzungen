@@ -24,7 +24,8 @@ namespace SchaebigeSchaetzungen
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            navigationStore.CurrentViewModel = new UserCredentialsViewModel();
+            navigationStore.CurrentViewModel = new UserCredentialsViewModel(navigationStore);
+            
 
 
             MainWindow = new MainWindow()

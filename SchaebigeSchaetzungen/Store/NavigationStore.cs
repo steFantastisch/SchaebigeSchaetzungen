@@ -13,7 +13,17 @@ namespace SchaebigeSchaetzungen.Store
         public ViewModelBase CurrentViewModel
         {
             get { return currentViewModel; }
-            set { currentViewModel = value; }
+            set { 
+                currentViewModel = value;
+                OnCurrentViewModelChanged();
+            }
         }
+
+        private void OnCurrentViewModelChanged()
+        {
+            CurrentViewModelChanged?.Invoke();
+        }
+
+        public event Action CurrentViewModelChanged;
     }
 }

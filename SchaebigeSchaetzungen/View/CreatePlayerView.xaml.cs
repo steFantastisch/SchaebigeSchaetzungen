@@ -22,12 +22,12 @@ namespace SchaebigeSchaetzungen.View
     /// </summary>
     public partial class CreatePlayerView : UserControl
     {
-        private Avatar _avatar;
-        private Player _player;
+        private Avatar _avatar = new Avatar(1);
+        private Player _player = new Player();
 
-        public CreatePlayerView(Player player)
+        public CreatePlayerView()
         {
-            this._player = player;
+            //this._player = new Player();
             InitializeComponent();
         }
 

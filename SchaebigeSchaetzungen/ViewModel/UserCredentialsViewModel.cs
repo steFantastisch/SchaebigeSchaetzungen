@@ -1,4 +1,5 @@
 ﻿using SchaebigeSchaetzungen.Command;
+using SchaebigeSchaetzungen.Store;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace SchaebigeSchaetzungen.ViewModel
     {
         private string username;
         private string password;
+
         public string Username
         {
             get
@@ -42,11 +44,11 @@ namespace SchaebigeSchaetzungen.ViewModel
         public ICommand CreateCommand { get; }
         public ICommand HelpCommand { get; }
 
-        public UserCredentialsViewModel()
+        public UserCredentialsViewModel(NavigationStore navigationStore)
         {
             //TODO DELETE FOLLOWING LINE
             this.Username = "Stefan";
-            this.CreateCommand = new CreateCommand();
+            this.CreateCommand = new NavigateCommand(navigationStore);
         }
     }
 }
