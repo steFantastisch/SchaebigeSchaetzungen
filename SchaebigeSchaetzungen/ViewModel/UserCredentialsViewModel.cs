@@ -47,7 +47,7 @@ namespace SchaebigeSchaetzungen.ViewModel
         public UserCredentialsViewModel(NavigationStore navigationStore)
         {
             //TODO DELETE FOLLOWING LINE
-            this.Username = "Stefan";
+            this.Username = "Stefan \"Wolfi\" Grassold";
             this.CreateCommand = new NavigateCommand(navigationStore);
         }
     }
