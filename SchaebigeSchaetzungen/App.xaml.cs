@@ -1,4 +1,5 @@
-﻿using SchaebigeSchaetzungen.Store;
+﻿using SchaebigeSchaetzungen.Model;
+using SchaebigeSchaetzungen.Store;
 using SchaebigeSchaetzungen.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -24,8 +25,8 @@ namespace SchaebigeSchaetzungen
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            navigationStore.CurrentViewModel = new UserCredentialsViewModel(navigationStore, CreateCreateViewModel);
-            
+            navigationStore.CurrentViewModel = new LoginPlayerOneViewModel(navigationStore, CreateCreateViewModel, createGameModeSelectionViewModel);
+
 
 
             MainWindow = new MainWindow()
@@ -38,12 +39,32 @@ namespace SchaebigeSchaetzungen
 
         private CreateViewModel CreateCreateViewModel()
         {
-            return new CreateViewModel(navigationStore, CreateUserCredentialsViewModel);
+            return new CreateViewModel(navigationStore, CreateLoginPlayerOneViewModel);
         }
 
-        private UserCredentialsViewModel CreateUserCredentialsViewModel()
+        private LoginPlayerOneViewModel CreateLoginPlayerOneViewModel()
         {
-            return new UserCredentialsViewModel(navigationStore, CreateCreateViewModel);
+            return new LoginPlayerOneViewModel(navigationStore, CreateCreateViewModel, createGameModeSelectionViewModel);
         }
+
+        private GameModeSelectionViewModel createGameModeSelectionViewModel()
+        {
+            return new GameModeSelectionViewModel(new Player(), navigationStore, CreateLoginPlayerTwoViewModel, CreateSingleplayerGameViewModel);
+        }
+
+        private LoginPlayerTwoViewModel CreateLoginPlayerTwoViewModel()
+        {
+            return new LoginPlayerTwoViewModel(navigationStore, CreateMultiplayerGameViewModel, new Player());
+        }
+
+        private SingleplayerGameViewModel CreateSingleplayerGameViewModel()
+        {
+            return new SingleplayerGameViewModel();
+        }
+        private MultiplayerGameViewModel CreateMultiplayerGameViewModel()
+        {
+            return new MultiplayerGameViewModel();
+        }
+
     }
 }

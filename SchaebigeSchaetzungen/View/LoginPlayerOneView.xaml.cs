@@ -19,9 +19,9 @@ namespace SchaebigeSchaetzungen.View
     /// <summary>
     /// Interaktionslogik für MainPlayerLoginView.xaml
     /// </summary>
-    public partial class MainPlayerLoginView : UserControl
+    public partial class LoginPlayerOneView : UserControl
     {
-        public MainPlayerLoginView()
+        public LoginPlayerOneView()
         {
             InitializeComponent();
             ImageBrush myBrush = new ImageBrush();
@@ -29,37 +29,6 @@ namespace SchaebigeSchaetzungen.View
             this.Background = myBrush;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
-        {
-            //Player temp = new Player();
-            //CreatePlayerDialog dlg = new CreatePlayerDialog(temp);
-            //dlg.Show();
-
-            //if (dlg.DialogResult == true)
-            //{
-            //    StartGame();
-            //}
-        }
-
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
-            StartGame();
-        }
-
-        private void StartGame()
-        {
-            //TODO implement
-            //change to window single oder multiplayer
-        }
-
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
-        {
-            //TODO implement
-        }
     }
 }

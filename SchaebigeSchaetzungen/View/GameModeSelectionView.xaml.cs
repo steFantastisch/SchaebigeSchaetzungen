@@ -23,9 +23,9 @@ namespace SchaebigeSchaetzungen.View
     {
         private Player playerOne;
 
-        public GameModeSelectionView(Player player)
+        public GameModeSelectionView()
         {
-            this.playerOne = player;
+            //this.playerOne = player;
             InitializeComponent();
         }
     }

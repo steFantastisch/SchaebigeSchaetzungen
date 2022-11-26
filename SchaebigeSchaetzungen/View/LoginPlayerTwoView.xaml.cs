@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SchaebigeSchaetzungen.View
 {
     /// <summary>
-    /// Interaktionslogik für LoginPlayerTwo.xaml
+    /// Interaktionslogik für LoginPlayerTwoView.xaml
     /// </summary>
-    public partial class LoginPlayerTwo : Window
+    public partial class LoginPlayerTwoView : UserControl
     {
-        public LoginPlayerTwo()
+        public LoginPlayerTwoView()
         {
             InitializeComponent();
-        }
-
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
-            //TODO check credentials
         }
     }
 }

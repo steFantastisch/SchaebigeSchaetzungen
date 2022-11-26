@@ -39,7 +39,7 @@ namespace SchaebigeSchaetzungen.ViewModel
         public ICommand FinishCommand { get; }
         public ICommand CancelCommand { get; }
 
-		public CreateViewModel(NavigationStore navigationStore, Func<UserCredentialsViewModel> createUserCredentialViewModel)
+		public CreateViewModel(NavigationStore navigationStore, Func<LoginPlayerOneViewModel> createUserCredentialViewModel)
 		{
             this.CancelCommand = new NavigateCommand(navigationStore, createUserCredentialViewModel);
         }

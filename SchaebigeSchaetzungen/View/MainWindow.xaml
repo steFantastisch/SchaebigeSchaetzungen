@@ -10,8 +10,14 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.Resources>
-            <DataTemplate DataType="{x:Type vms:UserCredentialsViewModel}">
-                <view:MainPlayerLoginView/>
+            <DataTemplate DataType="{x:Type vms:LoginPlayerOneViewModel}">
+                <view:LoginPlayerOneView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:LoginPlayerTwoViewModel}">
+                <view:LoginPlayerTwoView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:GameModeSelectionViewModel}">
+                <view:GameModeSelectionView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:CreateViewModel}">
                 <view:CreatePlayerView/>

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SchaebigeSchaetzungen.View.MainPlayerLoginView"
+﻿<UserControl x:Class="SchaebigeSchaetzungen.View.LoginPlayerOneView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -25,9 +25,9 @@
         <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Password" Margin="0,0,10,0"/>
         <TextBox x:Name="tbName" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Background="Transparent"/>
         <PasswordBox x:Name="pbPassword" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Background="Transparent"/>
-        <Button x:Name="btnLogin" Command="{Binding LoginCommand}" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnLogin_Click"/>
-        <Button x:Name="btnCreate" Command="{Binding CreateCommand}" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Content="Create player" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnCreate_Click"/>
-        <Button Name="btnHelp" Command="{Binding HelpCommand}" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Content="Help" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnHelp_Click"/>
+        <Button x:Name="btnLogin" Command="{Binding LoginCommand}" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="btnCreate" Command="{Binding CreateCommand}" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Content="Create player" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Name="btnHelp" Command="{Binding HelpCommand}" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Content="Help" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
     </Grid>
 </UserControl>

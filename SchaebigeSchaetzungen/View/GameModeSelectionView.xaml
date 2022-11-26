@@ -16,7 +16,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Login" Foreground="#FF1C417D" FontSize="20" FontWeight="Bold" />
-        <Button x:Name="btnSingle" Command="{Binding }" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Content="Singleplayer" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button x:Name="btnMulti" Command="{Binding }" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Content="Multiplayer" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="btnSingle" Command="{Binding SingleplayerCommand}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Content="Singleplayer" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="btnMulti" Command="{Binding MultiplayerCommand}" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Content="Multiplayer" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

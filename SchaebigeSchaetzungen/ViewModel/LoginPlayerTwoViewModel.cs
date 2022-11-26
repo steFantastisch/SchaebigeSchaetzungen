@@ -1,4 +1,5 @@
 ﻿using SchaebigeSchaetzungen.Command;
+using SchaebigeSchaetzungen.Model;
 using SchaebigeSchaetzungen.Store;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Windows.Input;
 
 namespace SchaebigeSchaetzungen.ViewModel
 {
-    public class UserCredentialsViewModel : ViewModelBase
+    public class LoginPlayerTwoViewModel : ViewModelBase
     {
         private string username;
         private string password;
@@ -40,15 +41,24 @@ namespace SchaebigeSchaetzungen.ViewModel
             }
         }
 
-        public ICommand LoginCommand { get; }
-        public ICommand CreateCommand { get; }
-        public ICommand HelpCommand { get; }
+        private Player playerOne;
 
-        public UserCredentialsViewModel(NavigationStore navigationStore, Func<CreateViewModel> createCreateViewModel)
+        public Player PlayerOne
+        {
+            get { return playerOne; }
+            set { playerOne = value; }
+        }
+
+
+
+        public ICommand StartCommand { get; }
+
+        public LoginPlayerTwoViewModel(NavigationStore navigationStore, Func<MultiplayerGameViewModel> createMultiplayerGameViewModel, Player playerOne)
         {
             //TODO DELETE FOLLOWING LINE
-            this.Username = "Stefan";
-            this.CreateCommand = new NavigateCommand(navigationStore, createCreateViewModel);
+            this.Username = "Simon";
+            this.playerOne = playerOne;
+            this.StartCommand = new NavigateCommand(navigationStore, createMultiplayerGameViewModel);
         }
     }
 }
