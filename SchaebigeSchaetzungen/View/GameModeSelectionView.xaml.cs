@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using SchaebigeSchaetzungen.Model;
+﻿using SchaebigeSchaetzungen.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,25 +11,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static Google.Protobuf.WellKnownTypes.Field.Types;
 
 namespace SchaebigeSchaetzungen.View
 {
     /// <summary>
-    /// Interaktionslogik für PlayerDialog.xaml
+    /// Interaktionslogik für GameModeSelectionView.xaml
     /// </summary>
-    public partial class CreatePlayerDialog : Window
+    public partial class GameModeSelectionView : UserControl
     {
+        private Player playerOne;
 
-
-        public CreatePlayerDialog()
+        public GameModeSelectionView(Player player)
         {
-
+            this.playerOne = player;
             InitializeComponent();
         }
-
-
-
     }
 }

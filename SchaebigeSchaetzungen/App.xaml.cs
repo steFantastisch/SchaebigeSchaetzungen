@@ -24,7 +24,7 @@ namespace SchaebigeSchaetzungen
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            navigationStore.CurrentViewModel = new UserCredentialsViewModel(navigationStore);
+            navigationStore.CurrentViewModel = new UserCredentialsViewModel(navigationStore, CreateCreateViewModel);
             
 
 
@@ -34,6 +34,16 @@ namespace SchaebigeSchaetzungen
             };
             MainWindow.Show();
             base.OnStartup(e);
+        }
+
+        private CreateViewModel CreateCreateViewModel()
+        {
+            return new CreateViewModel(navigationStore, CreateUserCredentialsViewModel);
+        }
+
+        private UserCredentialsViewModel CreateUserCredentialsViewModel()
+        {
+            return new UserCredentialsViewModel(navigationStore, CreateCreateViewModel);
         }
     }
 }

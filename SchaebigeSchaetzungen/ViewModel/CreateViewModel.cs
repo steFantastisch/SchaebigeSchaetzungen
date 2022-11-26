@@ -1,8 +1,11 @@
-﻿using System;
+﻿using SchaebigeSchaetzungen.Command;
+using SchaebigeSchaetzungen.Store;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace SchaebigeSchaetzungen.ViewModel
 {
@@ -33,5 +36,12 @@ namespace SchaebigeSchaetzungen.ViewModel
 			set { password = value; }
 		}
 
-	}
+        public ICommand FinishCommand { get; }
+        public ICommand CancelCommand { get; }
+
+		public CreateViewModel(NavigationStore navigationStore, Func<UserCredentialsViewModel> createUserCredentialViewModel)
+		{
+            this.CancelCommand = new NavigateCommand(navigationStore, createUserCredentialViewModel);
+        }
+    }
 }

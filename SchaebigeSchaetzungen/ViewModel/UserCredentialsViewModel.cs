@@ -44,11 +44,11 @@ namespace SchaebigeSchaetzungen.ViewModel
         public ICommand CreateCommand { get; }
         public ICommand HelpCommand { get; }
 
-        public UserCredentialsViewModel(NavigationStore navigationStore)
+        public UserCredentialsViewModel(NavigationStore navigationStore, Func<CreateViewModel> createCreateViewModel)
         {
             //TODO DELETE FOLLOWING LINE
             this.Username = "Stefan";
-            this.CreateCommand = new NavigateCommand(navigationStore);
+            this.CreateCommand = new NavigateCommand(navigationStore, createCreateViewModel);
         }
     }
 }
