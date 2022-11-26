@@ -1,5 +1,4 @@
-﻿using SchaebigeSchaetzungen.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +16,12 @@ using System.Windows.Shapes;
 namespace SchaebigeSchaetzungen.View
 {
     /// <summary>
-    /// Interaktionslogik für GameModeSelectionView.xaml
+    /// Interaction logic for SingleplayerGameView.xaml
     /// </summary>
-    public partial class GameModeSelectionView : UserControl
+    public partial class SingleplayerGameView : UserControl
     {
-        //private Player _playerOne;
-
-        public GameModeSelectionView()
+        public SingleplayerGameView()
         {
-            //this._playerOne = playerOne; gehen nur parameterlose Konstruktoren
             InitializeComponent();
         }
     }

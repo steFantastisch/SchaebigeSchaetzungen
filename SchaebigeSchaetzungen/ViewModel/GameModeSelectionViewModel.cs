@@ -12,12 +12,13 @@ namespace SchaebigeSchaetzungen.ViewModel
 {
     public class GameModeSelectionViewModel : ViewModelBase
     {
-        private Player playerOne;
+        private Player _playerOne;
+ 
 
         public Player PlayerOne
         {
-            get { return playerOne; }
-            set { playerOne = value; }
+            get { return _playerOne; }
+            set { _playerOne = value; }
         }
 
 
@@ -32,7 +33,8 @@ namespace SchaebigeSchaetzungen.ViewModel
             Func<LoginPlayerTwoViewModel> createLoginPlayerTwoViewModel, 
             Func<SingleplayerGameViewModel> createSingleplayerGameViewModel)
         {
-            this.playerOne = playerOne;
+         
+            this._playerOne = playerOne;
             this.SingleplayerCommand = new NavigateCommand(navigationStore, createSingleplayerGameViewModel);
             this.MultiplayerCommand = new NavigateCommand(navigationStore, createLoginPlayerTwoViewModel);
             this.CancelCommand = new NavigateCommand(navigationStore, createLoginPlayerOneViewModel);

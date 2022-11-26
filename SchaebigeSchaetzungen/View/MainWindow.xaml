@@ -22,6 +22,9 @@
             <DataTemplate DataType="{x:Type vms:CreateViewModel}">
                 <view:CreatePlayerView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:SingleplayerGameViewModel}">
+                <view:SingleplayerGameView/>
+            </DataTemplate>
         </Grid.Resources>
         <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>

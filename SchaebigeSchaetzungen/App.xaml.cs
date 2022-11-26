@@ -26,7 +26,7 @@ namespace SchaebigeSchaetzungen
         protected override void OnStartup(StartupEventArgs e)
         {
             navigationStore.CurrentViewModel = new LoginPlayerOneViewModel(navigationStore, CreateCreateViewModel, CreateGameModeSelectionViewModel);
-
+ 
 
 
             MainWindow = new MainWindow()

@@ -61,7 +61,8 @@ namespace SchaebigeSchaetzungen.ViewModel
             //TODO DELETE FOLLOWING LINE
             this.Username = "Stefan";
             this.CreateCommand = new NavigateCommand(navigationStore, createCreateViewModel);
-            this.LoginCommand = new NavigateCommand(navigationStore, createGameModeSelectionViewModel);
+            //this.LoginCommand = new NavigateCommand(navigationStore, createGameModeSelectionViewModel);
+            this.LoginCommand = new CreateGameCommand(navigationStore, createGameModeSelectionViewModel,this.Username);
         }
     }
 }

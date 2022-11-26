@@ -9,20 +9,27 @@ using System.Threading.Tasks;
 
 namespace SchaebigeSchaetzungen.Command
 {
-    public class NavigateCommand : CommandBase
+    public class CreateGameCommand : CommandBase
     {
         private readonly NavigationStore navigationStore;
         private readonly Func<ViewModelBase> createViewModel;
+        
+        string Name;
 
-        public NavigateCommand(NavigationStore navigationStore, Func<ViewModelBase> createViewModel)
+        public CreateGameCommand(NavigationStore navigationStore, Func<ViewModelBase> createViewModel,string User)
         {
+            this.Name= User;
             this.navigationStore = navigationStore;
             this.createViewModel = createViewModel;
-        }
-      
+            
 
+        }
         public override void Execute(object parameter)
         {
+            Player Spieler1 = new Player();
+            Spieler1.Name = Name;
+           
+            //Navigation zum nächsten Fenster
             navigationStore.CurrentViewModel = createViewModel();
         }
     }
