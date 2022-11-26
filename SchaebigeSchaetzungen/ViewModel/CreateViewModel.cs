@@ -1,4 +1,5 @@
 ﻿using SchaebigeSchaetzungen.Command;
+using SchaebigeSchaetzungen.Model;
 using SchaebigeSchaetzungen.Store;
 using System;
 using System.Collections.Generic;

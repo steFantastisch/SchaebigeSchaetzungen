@@ -50,6 +50,11 @@ namespace SchaebigeSchaetzungen.Model
         }
 
 
+        public Game()
+        {
+
+        }
+
         public Game(Player playerOne, Player playerTwo, Gamemode gamemode)
         {
             this.PlayerOne = playerOne;

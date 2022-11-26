@@ -1,4 +1,5 @@
 ﻿using SchaebigeSchaetzungen.Command;
+using SchaebigeSchaetzungen.Model;
 using SchaebigeSchaetzungen.Store;
 using System;
 using System.Collections.Generic;
@@ -40,9 +41,20 @@ namespace SchaebigeSchaetzungen.ViewModel
             }
         }
 
+        //private Game game;
+
+        //public Game Game
+        //{
+        //    get { return game; }
+        //    set { game = value; }
+        //}
+
+
         public ICommand LoginCommand { get; }
         public ICommand CreateCommand { get; }
         public ICommand HelpCommand { get; }
+
+
 
         public LoginPlayerOneViewModel(NavigationStore navigationStore, Func<CreateViewModel> createCreateViewModel, Func<GameModeSelectionViewModel> createGameModeSelectionViewModel)
         {
