@@ -23,12 +23,19 @@ namespace SchaebigeSchaetzungen.ViewModel
 
         public ICommand SingleplayerCommand { get; }
         public ICommand MultiplayerCommand { get; }
+        public ICommand CancelCommand { get; }
 
-        public GameModeSelectionViewModel(Player playerOne, NavigationStore navigationStore, Func<LoginPlayerTwoViewModel> createLoginPlayerTwoViewModel, Func<SingleplayerGameViewModel> createSingleplayerGameViewModel)
+        public GameModeSelectionViewModel(
+            Player playerOne, 
+            NavigationStore navigationStore, 
+            Func<LoginPlayerOneViewModel> createLoginPlayerOneViewModel, 
+            Func<LoginPlayerTwoViewModel> createLoginPlayerTwoViewModel, 
+            Func<SingleplayerGameViewModel> createSingleplayerGameViewModel)
         {
             this.playerOne = playerOne;
             this.SingleplayerCommand = new NavigateCommand(navigationStore, createSingleplayerGameViewModel);
             this.MultiplayerCommand = new NavigateCommand(navigationStore, createLoginPlayerTwoViewModel);
+            this.CancelCommand = new NavigateCommand(navigationStore, createLoginPlayerOneViewModel);
         }
     }
 }

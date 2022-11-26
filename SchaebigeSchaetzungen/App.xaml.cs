@@ -25,7 +25,7 @@ namespace SchaebigeSchaetzungen
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            navigationStore.CurrentViewModel = new LoginPlayerOneViewModel(navigationStore, CreateCreateViewModel, createGameModeSelectionViewModel);
+            navigationStore.CurrentViewModel = new LoginPlayerOneViewModel(navigationStore, CreateCreateViewModel, CreateGameModeSelectionViewModel);
 
 
 
@@ -39,17 +39,17 @@ namespace SchaebigeSchaetzungen
 
         private CreateViewModel CreateCreateViewModel()
         {
-            return new CreateViewModel(navigationStore, CreateLoginPlayerOneViewModel);
+            return new CreateViewModel(navigationStore, CreateLoginPlayerOneViewModel, CreateGameModeSelectionViewModel);
         }
 
         private LoginPlayerOneViewModel CreateLoginPlayerOneViewModel()
         {
-            return new LoginPlayerOneViewModel(navigationStore, CreateCreateViewModel, createGameModeSelectionViewModel);
+            return new LoginPlayerOneViewModel(navigationStore, CreateCreateViewModel, CreateGameModeSelectionViewModel);
         }
 
-        private GameModeSelectionViewModel createGameModeSelectionViewModel()
+        private GameModeSelectionViewModel CreateGameModeSelectionViewModel()
         {
-            return new GameModeSelectionViewModel(new Player(), navigationStore, CreateLoginPlayerTwoViewModel, CreateSingleplayerGameViewModel);
+            return new GameModeSelectionViewModel(new Player(), navigationStore, CreateLoginPlayerOneViewModel, CreateLoginPlayerTwoViewModel, CreateSingleplayerGameViewModel);
         }
 
         private LoginPlayerTwoViewModel CreateLoginPlayerTwoViewModel()
