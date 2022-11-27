@@ -41,13 +41,13 @@ namespace SchaebigeSchaetzungen.ViewModel
             }
         }
 
-        //private Game game;
+        private Game game;
 
-        //public Game Game
-        //{
-        //    get { return game; }
-        //    set { game = value; }
-        //}
+        public Game Game
+        {
+            get { return game; }
+            set { game = value; }
+        }
 
 
         public ICommand LoginCommand { get; }
@@ -56,6 +56,7 @@ namespace SchaebigeSchaetzungen.ViewModel
 
 
 
+<<<<<<< Updated upstream
         public LoginPlayerOneViewModel(NavigationStore navigationStore,Game game1, Func<CreateViewModel> createCreateViewModel, Func<GameModeSelectionViewModel> createGameModeSelectionViewModel)
         {
             //TODO DELETE FOLLOWING LINE
@@ -63,6 +64,13 @@ namespace SchaebigeSchaetzungen.ViewModel
             this.CreateCommand = new NavigateCommand(navigationStore, createCreateViewModel,game1);
             //this.LoginCommand = new NavigateCommand(navigationStore, createGameModeSelectionViewModel);
             this.LoginCommand = new CreateGameCommand(navigationStore, createGameModeSelectionViewModel,game1,this.username);
+=======
+        public LoginPlayerOneViewModel(NavigationStore navigationStore, Game game, Func<CreateViewModel> createCreateViewModel, Func<GameModeSelectionViewModel> createGameModeSelectionViewModel)
+        {
+            this.Game = game;
+            this.CreateCommand = new NavigateCommand(navigationStore, Game, createCreateViewModel);
+            this.LoginCommand = new NavigateCommand(navigationStore, Game, createGameModeSelectionViewModel);
+>>>>>>> Stashed changes
         }
     }
 }

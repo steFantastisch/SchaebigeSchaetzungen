@@ -53,12 +53,20 @@ namespace SchaebigeSchaetzungen.ViewModel
 
         public ICommand StartCommand { get; }
 
+<<<<<<< Updated upstream
         public LoginPlayerTwoViewModel(NavigationStore navigationStore, Game game1, Func<MultiplayerGameViewModel> createMultiplayerGameViewModel, Player playerOne)
+=======
+        public LoginPlayerTwoViewModel(NavigationStore navigationStore, Game game, Func<MultiplayerGameViewModel> createMultiplayerGameViewModel, Player playerOne)
+>>>>>>> Stashed changes
         {
             //TODO DELETE FOLLOWING LINE
             this.Username = "Simon";
             this.playerOne = playerOne;
+<<<<<<< Updated upstream
             this.StartCommand = new NavigateCommand(navigationStore, createMultiplayerGameViewModel, game1);
+=======
+            this.StartCommand = new NavigateCommand(navigationStore, game, createMultiplayerGameViewModel);
+>>>>>>> Stashed changes
         }
     }
 }

@@ -40,10 +40,17 @@ namespace SchaebigeSchaetzungen.ViewModel
         public ICommand FinishCommand { get; }
         public ICommand CancelCommand { get; }
 
+<<<<<<< Updated upstream
 		public CreateViewModel(NavigationStore navigationStore, Game game1, Func<LoginPlayerOneViewModel> createUserCredentialViewModel, Func<GameModeSelectionViewModel> createGameModeSelectionViewModel)
 		{
 			this.FinishCommand = new NavigateCommand(navigationStore, createGameModeSelectionViewModel,game1);
             this.CancelCommand = new NavigateCommand(navigationStore, createUserCredentialViewModel, game1);
+=======
+		public CreateViewModel(NavigationStore navigationStore, Game game, Func<LoginPlayerOneViewModel> createUserCredentialViewModel, Func<GameModeSelectionViewModel> createGameModeSelectionViewModel)
+		{
+			this.FinishCommand = new NavigateCommand(navigationStore, game, createGameModeSelectionViewModel);
+            this.CancelCommand = new NavigateCommand(navigationStore, game, createUserCredentialViewModel);
+>>>>>>> Stashed changes
         }
     }
 }
