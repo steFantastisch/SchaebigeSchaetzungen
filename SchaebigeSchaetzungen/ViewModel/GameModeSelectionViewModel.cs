@@ -14,6 +14,7 @@ namespace SchaebigeSchaetzungen.ViewModel
     {
         private Player _playerOne;
         private Game _game1;
+        //Nur TEMP Variable zu testzwecken
         private string _NAMEY;
         public string nameEY
         {
