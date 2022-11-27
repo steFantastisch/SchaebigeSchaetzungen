@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SchaebigeSchaetzungen.View"
+             xmlns:local="clr-namespace:SchaebigeSchaetzungen.View" 
+             xmlns:viewmodel="clr-namespace:SchaebigeSchaetzungen.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:GameModeSelectionViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -21,6 +22,6 @@
         <Button x:Name="btnSingle" Command="{Binding SingleplayerCommand}" Grid.Column="0" Grid.Row="1" Content="Singleplayer" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button x:Name="btnMulti" Command="{Binding MultiplayerCommand}" Grid.Column="0" Grid.Row="2" Content="Multiplayer" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button x:Name="btnCancel" Command="{Binding CancelCommand}" Grid.Column="0" Grid.Row="3" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Content="Momentaner User" HorizontalAlignment="Left" Margin="301,225,0,0" Grid.Row="4"/>
+        <Label Content="{Binding nameEy}" HorizontalAlignment="Left" Margin="301,225,0,0" Grid.Row="4"/>
     </Grid>
 </UserControl>

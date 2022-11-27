@@ -13,21 +13,25 @@ namespace SchaebigeSchaetzungen.Command
     {
         private readonly NavigationStore navigationStore;
         private readonly Func<ViewModelBase> createViewModel;
-        
-        string Name;
+        private readonly Game game1;
+        private readonly string Name;
 
-        public CreateGameCommand(NavigationStore navigationStore, Func<ViewModelBase> createViewModel,string User)
+        public CreateGameCommand(NavigationStore navigationStore, Func<ViewModelBase> createViewModel,Game game1,string Username)
         {
-            this.Name= User;
+            this.Name= Username;
             this.navigationStore = navigationStore;
+            this.game1 = game1;
             this.createViewModel = createViewModel;
             
 
         }
         public override void Execute(object parameter)
         {
+            //TODO
+            //In zukunft darf ja nicht hier jeder spieler erstellt werden sondern durch die anmeldedaten überprüft werden
             Player Spieler1 = new Player();
             Spieler1.Name = Name;
+            game1.PlayerOne = Spieler1;
            
             //Navigation zum nächsten Fenster
             navigationStore.CurrentViewModel = createViewModel();
