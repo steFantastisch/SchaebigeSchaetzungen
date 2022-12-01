@@ -6,15 +6,57 @@
              xmlns:local="clr-namespace:SchaebigeSchaetzungen.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Label Content="Singleplayer"/>
-        <GridSplitter />
+    <Grid >
 
-        <WebBrowser x:Name="webBrowser1" Margin="57,8,75,78" Height="Auto" Width="Auto"  />
-        <Label Content="Your Guess" HorizontalAlignment="Left" Margin="57,377,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.048,0.463"/>
-        <CheckBox Margin="594,377,75,47" Content="Hints"/>
-        <TextBox Margin="153,377,516,47"/>
-        
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="261"/>
+            <RowDefinition Height="537.96"/>
+
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Singleplayer" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Width="82" />
+
+
+        <WebBrowser x:Name="webBrowser1" Margin="21,28,189,10" Height="Auto" Width="Auto" Grid.Column="1" Grid.Row="0" >
+            <UIElement.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </UIElement.RenderTransform>
+        </WebBrowser>
+
+
+        <Label Content="Your Guess" HorizontalAlignment="Left" Margin="0,57,0,352" RenderTransformOrigin="-0.048,0.463" Width="68" Grid.Row="1">
+            <UIElement.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </UIElement.RenderTransform>
+        </Label>
+        <CheckBox Grid.Column="1" Margin="283,106,330,367" Content="Hints" Grid.Row="1">
+            <UIElement.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </UIElement.RenderTransform>
+        </CheckBox>
+        <TextBox Grid.Column="1" Margin="84,106,414,400" Grid.Row="1"/>
+
 
 
     </Grid>
