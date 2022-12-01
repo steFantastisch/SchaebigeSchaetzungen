@@ -7,7 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label Content="GAMESINGLE"/>
+        <Label Content="Singleplayer"/>
+        <GridSplitter />
+
+        <WebBrowser x:Name="webBrowser1" Margin="57,8,75,78" Height="Auto" Width="Auto"  />
+        <Label Content="Your Guess" HorizontalAlignment="Left" Margin="57,377,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.048,0.463"/>
+        <CheckBox Margin="594,377,75,47" Content="Hints"/>
+        <TextBox Margin="153,377,516,47"/>
+        
+
 
     </Grid>
 </UserControl>
