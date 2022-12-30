@@ -37,7 +37,7 @@ namespace SchaebigeSchaetzungen.View
                  "<html>"
                 +"<head><meta http-equiv='X-UA-Compatible' content='IE=11' />"
                 + "<body>" + "\r\n"
-                + "<iframe src=\"" + url1 +  "\" width=\"520\" height=\"230\" frameborder=\"0\" allowfullscreen></iframe>"
+                + "<iframe src=\"" + url1 +  "\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen></iframe>"
                 + "</body></html>";
             webBrowser1.NavigateToString(page);
 
