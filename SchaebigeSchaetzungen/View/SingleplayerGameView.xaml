@@ -13,18 +13,20 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <WebBrowser x:Name="webBrowser1" Grid.Row="0" Grid.ColumnSpan="3" />
-            
-            <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Label Content="Your Guess" Grid.Column="0"/>
-           
-            <TextBox Width="247" />
-            <Button Content="Submit" Grid.Column="1"/>
-            <CheckBox Grid.Column="2" HorizontalAlignment="Right"  /> 
-            </StackPanel>
+        <WebBrowser x:Name="webBrowser1" Grid.Row="0" Grid.ColumnSpan="4" />
+
+
+        <Label Content="Your Guess" Grid.Row="1" Grid.Column="0"/>
+
+        <TextBox Width="247" Margin="0,0,0,10" Grid.Row="1" Grid.Column="1"/>
+        <Button Content="Submit" Grid.Column="2" Grid.Row="1" Margin="0,0,0,10" />
+        <Label Content="Hints" HorizontalAlignment="Right" Margin="0,0,15,10" Grid.Row="1" Grid.Column="3" />
+        <CheckBox  HorizontalAlignment="Right" Margin="0,0,0,10"  VerticalAlignment="Center" Grid.Row="1" Grid.Column="3"   />
+
     </Grid>
 </UserControl>
