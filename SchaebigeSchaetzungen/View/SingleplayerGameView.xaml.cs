@@ -21,28 +21,21 @@ using System.Runtime.Serialization.Json;
 namespace SchaebigeSchaetzungen.View
 {
     public class Item
-    {
-        public string kind { get; set; }
-        public string etag { get; set; }
-        public string id { get; set; }
+    {      
         public Snippet snippet { get; set; }
         public Statistics statistics { get; set; }
     }
 
     public class RootObject
     {
-        public string kind { get; set; }
-        public string etag { get; set; }
         public List<Item> items { get; set; }
     }
 
     public class Snippet
     {
         public string publishedAt { get; set; }
-        public string channelId { get; set; }
         public string title { get; set; }
         public string description { get; set; }
-        public Thumbnails thumbnails { get; set; }
         public string defaultLanguage { get; set; }
     }
 
@@ -54,33 +47,6 @@ namespace SchaebigeSchaetzungen.View
 
     }
 
-    public class Thumbnails
-    {
-        public Default @default { get; set; }
-        public Medium medium { get; set; }
-        public High high { get; set; }
-    }
-
-    public class Default
-    {
-        public string url { get; set; }
-        public int width { get; set; }
-        public int height { get; set; }
-    }
-
-    public class Medium
-    {
-        public string url { get; set; }
-        public int width { get; set; }
-        public int height { get; set; }
-    }
-
-    public class High
-    {
-        public string url { get; set; }
-        public int width { get; set; }
-        public int height { get; set; }
-    }
     /// <summary>
     /// Interaction logic for SingleplayerGameView.xaml
     /// </summary>
@@ -139,7 +105,8 @@ namespace SchaebigeSchaetzungen.View
                 int likeCount = rootObject.items[0].statistics.likeCount;
                 string lang = rootObject.items[0].snippet.defaultLanguage;
 
-                Console.WriteLine("ALles gut: " + response.StatusCode);
+                Console.WriteLine("Fehler beim Abrufen der API-Antwort: " + response.StatusCode);
+
                 // Hier können Sie das JSON-String verarbeiten
             }
             else
