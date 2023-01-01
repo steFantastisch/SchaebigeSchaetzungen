@@ -13,18 +13,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.Http;
+
 
 namespace SchaebigeSchaetzungen.View
 {
+
     /// <summary>
     /// Interaction logic for SingleplayerGameView.xaml
     /// </summary>
+    /// 
     public partial class SingleplayerGameView : UserControl
     {
         public SingleplayerGameView()
         {
             InitializeComponent();
             Display("https://www.youtube.com/watch?v=iSfPNVf0_JM");
+            //TODO id übergeben
+            GetDetailsAsync("");
         }
         //brauchen wir evt 
         private Regex YouTubeURLIDRegex = new Regex(@"[?&]v=(?<v>[^&]+)");
@@ -42,8 +48,37 @@ namespace SchaebigeSchaetzungen.View
             webBrowser1.NavigateToString(page);
 
         }
+        private async Task GetDetailsAsync(string id)
+        {
+            //TODO DELETE FOLLOWING LINE id muss aus link extrahiert werden
+            id= "dQw4w9WgXcQ";
+            string apiUrl = "https://youtube.googleapis.com/youtube/v3/videos?id="+ id +"&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
+
+            HttpClient client = new HttpClient();
+
+            HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+
+                Console.WriteLine("ALles gut: " + response.StatusCode);
+                // Hier können Sie das JSON-String verarbeiten
+            }
+            else
+            {
+                Console.WriteLine("Fehler beim Abrufen der API-Antwort: " + response.StatusCode);
+            }
+
+
+
+        }
     }
 
-    
-    
+
+
+
+
+
+
 }
