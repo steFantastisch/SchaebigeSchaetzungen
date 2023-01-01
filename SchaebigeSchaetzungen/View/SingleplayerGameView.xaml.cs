@@ -14,11 +14,73 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Http;
-
+using Newtonsoft.Json;
+using System.IO;
+using System.Runtime.Serialization.Json;
 
 namespace SchaebigeSchaetzungen.View
 {
+    public class Item
+    {
+        public string kind { get; set; }
+        public string etag { get; set; }
+        public string id { get; set; }
+        public Snippet snippet { get; set; }
+        public Statistics statistics { get; set; }
+    }
 
+    public class RootObject
+    {
+        public string kind { get; set; }
+        public string etag { get; set; }
+        public List<Item> items { get; set; }
+    }
+
+    public class Snippet
+    {
+        public string publishedAt { get; set; }
+        public string channelId { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
+        public Thumbnails thumbnails { get; set; }
+        public string defaultLanguage { get; set; }
+    }
+
+    public class Statistics
+    {
+        public int viewCount { get; set; }
+        public int likeCount { get; set; }
+        public int commentCount { get; set; }
+
+    }
+
+    public class Thumbnails
+    {
+        public Default @default { get; set; }
+        public Medium medium { get; set; }
+        public High high { get; set; }
+    }
+
+    public class Default
+    {
+        public string url { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
+    }
+
+    public class Medium
+    {
+        public string url { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
+    }
+
+    public class High
+    {
+        public string url { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
+    }
     /// <summary>
     /// Interaction logic for SingleplayerGameView.xaml
     /// </summary>
@@ -60,7 +122,22 @@ namespace SchaebigeSchaetzungen.View
 
             if (response.IsSuccessStatusCode)
             {
+                //JSON-Dokument aus GET auslesen
                 string json = await response.Content.ReadAsStringAsync();
+
+                // JSON-Dokument in einen Stream schreiben
+                byte[] byteArray = Encoding.UTF8.GetBytes(json);
+                MemoryStream stream = new MemoryStream(byteArray);
+
+                // Serialisierer und Klasse für das Deserialisieren vorbereiten
+                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(RootObject));
+                RootObject rootObject = (RootObject)serializer.ReadObject(stream);
+
+                //Daten auslesen
+                int viewCount = rootObject.items[0].statistics.viewCount;
+                int commentCount = rootObject.items[0].statistics.commentCount;
+                int likeCount = rootObject.items[0].statistics.likeCount;
+                string lang = rootObject.items[0].snippet.defaultLanguage;
 
                 Console.WriteLine("ALles gut: " + response.StatusCode);
                 // Hier können Sie das JSON-String verarbeiten
