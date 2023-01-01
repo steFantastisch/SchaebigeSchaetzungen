@@ -14,19 +14,22 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <WebBrowser x:Name="webBrowser1" Grid.Row="0" Grid.ColumnSpan="4" />
 
 
-        <Label Content="Your Guess" Grid.Row="1" Grid.Column="0"/>
+        <Label x:Name="GuessLabel" Content="Your Guess" Grid.Row="1" Grid.Column="0"/>
+        <TextBox x:Name="TextBox1" Width="247" Margin="0,0,0,10" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="SubmitBtn" Content="Submit" Grid.Column="2" Grid.Row="1" Margin="20,0,20,10"  Click="Button_Click"  />
+        <Label x:Name="HintLabel" Content="Hints" HorizontalAlignment="Right" Margin="0,0,15,10" Grid.Row="1" Grid.Column="3" />
+        <CheckBox x:Name="HintCheckBox" HorizontalAlignment="Right" Margin="0,0,0,10"  VerticalAlignment="Center" Grid.Row="1" Grid.Column="3"   />
 
-        <TextBox Width="247" Margin="0,0,0,10" Grid.Row="1" Grid.Column="1"/>
-        <Button Content="Submit" Grid.Column="2" Grid.Row="1" Margin="0,0,0,10" />
-        <Label Content="Hints" HorizontalAlignment="Right" Margin="0,0,15,10" Grid.Row="1" Grid.Column="3" />
-        <CheckBox  HorizontalAlignment="Right" Margin="0,0,0,10"  VerticalAlignment="Center" Grid.Row="1" Grid.Column="3"   />
-
+        <Label x:Name="LikeLabel" Content="TEEEEST" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Visibility="Collapsed" />
+        <Label x:Name="CommentLabel" Content="TEEEEST" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="1" Visibility="Collapsed" />
+        <Label x:Name="ViewLabel" Content="TEEEEST" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="2" Visibility="Collapsed" />
+        <Label x:Name="LanguageLabel" Content="TEEEEST" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="3" Visibility="Collapsed" />
     </Grid>
 </UserControl>

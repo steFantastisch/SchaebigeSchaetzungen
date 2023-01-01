@@ -36,7 +36,7 @@ namespace SchaebigeSchaetzungen.View
         public string publishedAt { get; set; }
         public string title { get; set; }
         public string description { get; set; }
-        public string defaultLanguage { get; set; }
+        public string defaultAudioLanguage { get; set; }
     }
 
     public class Statistics
@@ -53,6 +53,11 @@ namespace SchaebigeSchaetzungen.View
     /// 
     public partial class SingleplayerGameView : UserControl
     {
+        int viewCount;
+        int commentCount;
+        int likeCount;
+        string language;
+
         public SingleplayerGameView()
         {
             InitializeComponent();
@@ -79,7 +84,7 @@ namespace SchaebigeSchaetzungen.View
         private async Task GetDetailsAsync(string id)
         {
             //TODO DELETE FOLLOWING LINE id muss aus link extrahiert werden
-            id= "dQw4w9WgXcQ";
+            id= "Ep0uIWmXV_g";
             string apiUrl = "https://youtube.googleapis.com/youtube/v3/videos?id="+ id +"&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
 
             HttpClient client = new HttpClient();
@@ -100,12 +105,11 @@ namespace SchaebigeSchaetzungen.View
                 RootObject rootObject = (RootObject)serializer.ReadObject(stream);
 
                 //Daten auslesen
-                int viewCount = rootObject.items[0].statistics.viewCount;
-                int commentCount = rootObject.items[0].statistics.commentCount;
-                int likeCount = rootObject.items[0].statistics.likeCount;
-                string lang = rootObject.items[0].snippet.defaultLanguage;
+                viewCount = rootObject.items[0].statistics.viewCount;
+                commentCount = rootObject.items[0].statistics.commentCount;
+                likeCount = rootObject.items[0].statistics.likeCount;
+                language = rootObject.items[0].snippet.defaultAudioLanguage;
 
-                Console.WriteLine("Fehler beim Abrufen der API-Antwort: " + response.StatusCode);
 
                 // Hier können Sie das JSON-String verarbeiten
             }
@@ -116,6 +120,24 @@ namespace SchaebigeSchaetzungen.View
 
 
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            TextBox1.Visibility= Visibility.Collapsed;
+            GuessLabel.Visibility= Visibility.Collapsed;
+            SubmitBtn.Visibility= Visibility.Collapsed; 
+            HintCheckBox.Visibility= Visibility.Collapsed;
+            HintLabel.Visibility= Visibility.Collapsed;
+
+            LikeLabel.Content = "Likes: " + likeCount.ToString();
+            LikeLabel.Visibility = Visibility.Visible;
+            CommentLabel.Content = "Comments: "+ commentCount.ToString();
+            CommentLabel.Visibility = Visibility.Visible;
+            ViewLabel.Content= "Views: " + viewCount.ToString();
+            ViewLabel.Visibility = Visibility.Visible;
+            LanguageLabel.Content="Language: "+language;
+            LanguageLabel.Visibility = Visibility.Visible;
         }
     }
 
