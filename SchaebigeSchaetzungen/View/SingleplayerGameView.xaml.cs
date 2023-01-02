@@ -161,13 +161,13 @@ namespace SchaebigeSchaetzungen.View
                 language = rootObject.items[0].snippet.defaultAudioLanguage;
 
 
-              stream.Close(); 
-               /// client.Dispose();   
+                stream.Close();
+                /// client.Dispose();   
             }
             else
             {
                 //TODO Handle HTTP ERROR
-                Console.WriteLine("Fehler beim Abrufen der API-Antwort: " + response.StatusCode);
+                // Console.WriteLine("Fehler beim Abrufen der API-Antwort: " + response.StatusCode);
             }
 
 
@@ -186,10 +186,10 @@ namespace SchaebigeSchaetzungen.View
                     HintCheckBox.Visibility= Visibility.Collapsed;
                     HintLikes.Visibility = Visibility.Collapsed;
                     HintComments.Visibility = Visibility.Collapsed;
-
+                    //TODO Punkte verarbeiten
                     ViewLabel.Content= ">>>Views: " + viewCount.ToString() + "<<<    ->?? Punkte";
                     HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
-                    //TODO Punkte verarbeiten
+
                     ViewLabel.Visibility = Visibility.Visible;
                     LanguageLabel.Content="Language: "+language;
                     LanguageLabel.Visibility = Visibility.Visible;
