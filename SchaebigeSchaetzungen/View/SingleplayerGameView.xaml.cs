@@ -18,6 +18,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Net;
+using Amazon.DynamoDBv2.Model.Internal.MarshallTransformations;
 
 namespace SchaebigeSchaetzungen.View
 {
@@ -48,7 +49,10 @@ namespace SchaebigeSchaetzungen.View
 
     }
 
-    class Youtube
+    /// <summary>
+    /// necessary for randomizing youtube videos
+    /// </summary>
+    public class Youtube
     {
         private static Random random = new Random();
 
@@ -75,7 +79,6 @@ namespace SchaebigeSchaetzungen.View
                 foreach (var line in jsonObject["items"])
                 {
                     i++;
-                    //Console.WriteLine(line["id"]["videoId"]);
                     vidIDs[i]=(string)(line["id"]["videoId"]);
 
                 }
@@ -124,6 +127,11 @@ namespace SchaebigeSchaetzungen.View
             webBrowser1.NavigateToString(page);
 
         }
+        /// <summary>
+        /// Get Details from the Video like LIKES, VIEWS, COMMENTS, and LANGUAGE 
+        /// </summary>
+        /// <param name="id"> Video ID</param>
+        /// <returns></returns>
         private async Task GetDetailsAsync(string id)
         {
 
@@ -153,10 +161,11 @@ namespace SchaebigeSchaetzungen.View
                 language = rootObject.items[0].snippet.defaultAudioLanguage;
 
 
-                // Hier können Sie das JSON-String verarbeiten
+               stream.Close();  
             }
             else
             {
+                //TODO Handle HTTP ERROR
                 Console.WriteLine("Fehler beim Abrufen der API-Antwort: " + response.StatusCode);
             }
 
@@ -174,9 +183,11 @@ namespace SchaebigeSchaetzungen.View
                     TextBox1.Visibility= Visibility.Collapsed;
                     GuessLabel.Visibility= Visibility.Collapsed;
                     HintCheckBox.Visibility= Visibility.Collapsed;
+                    HintLikes.Visibility = Visibility.Collapsed;
+                    HintComments.Visibility = Visibility.Collapsed;
 
-                    ViewLabel.Content= "Views: " + viewCount.ToString();
-                    HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg! -> ?? Punkte";
+                    ViewLabel.Content= ">>>Views: " + viewCount.ToString() + "<<<    ->?? Punkte";
+                    HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
                     //TODO Punkte verarbeiten
                     ViewLabel.Visibility = Visibility.Visible;
                     LanguageLabel.Content="Language: "+language;
