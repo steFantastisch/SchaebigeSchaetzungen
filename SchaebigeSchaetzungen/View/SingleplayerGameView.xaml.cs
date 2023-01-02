@@ -17,11 +17,12 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using System.Net;
 
 namespace SchaebigeSchaetzungen.View
 {
     public class Item
-    {      
+    {
         public Snippet snippet { get; set; }
         public Statistics statistics { get; set; }
     }
@@ -47,6 +48,42 @@ namespace SchaebigeSchaetzungen.View
 
     }
 
+    class Youtube
+    {
+        private static Random random = new Random();
+
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        public static string[] randomVidIDs()
+        {
+            var count = 50;
+            string[] vidIDs = new string[count];
+            var API_KEY = "AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
+            var q = RandomString(3);
+            var url = "https://www.googleapis.com/youtube/v3/search?key=" + API_KEY + "&maxResults="+count+"&part=snippet&type=video&q=" +q;
+
+            using (WebClient wc = new WebClient())
+            {
+                var json = wc.DownloadString(url);
+                dynamic jsonObject = JsonConvert.DeserializeObject(json);
+                int i = -1;
+                foreach (var line in jsonObject["items"])
+                {
+                    i++;
+                    //Console.WriteLine(line["id"]["videoId"]);
+                    vidIDs[i]=(string)(line["id"]["videoId"]);
+
+                }
+                return vidIDs;
+            }
+        }
+    }
+
     /// <summary>
     /// Interaction logic for SingleplayerGameView.xaml
     /// </summary>
@@ -57,13 +94,19 @@ namespace SchaebigeSchaetzungen.View
         int commentCount;
         int likeCount;
         string language;
+        int round;
+        string[] VideoIDs;
+        int guess;
 
         public SingleplayerGameView()
         {
+            round=0;
             InitializeComponent();
-            Display("https://www.youtube.com/watch?v=iSfPNVf0_JM");
+
             //TODO id übergeben
-            GetDetailsAsync("");
+            VideoIDs= Youtube.randomVidIDs();
+            Display("https://www.youtube.com/watch?v="+VideoIDs[round]);
+            GetDetailsAsync(VideoIDs[round]);
         }
         //brauchen wir evt 
         private Regex YouTubeURLIDRegex = new Regex(@"[?&]v=(?<v>[^&]+)");
@@ -76,15 +119,14 @@ namespace SchaebigeSchaetzungen.View
                  "<html>"
                 +"<head><meta http-equiv='X-UA-Compatible' content='IE=11' />"
                 + "<body>" + "\r\n"
-                + "<iframe src=\"" + url1 +  " \" width=\"770px\" ?showinfo=\"0\" height=\"350px\" frameborder=\"0\" allowfullscreen></iframe>"
+                + "<iframe src=\"" + url1 +  " \" width=\"770px\" height=\"350px\" frameborder=\"0\" allowfullscreen></iframe>"
                 + "</body></html>";
             webBrowser1.NavigateToString(page);
 
         }
         private async Task GetDetailsAsync(string id)
         {
-            //TODO DELETE FOLLOWING LINE id muss aus link extrahiert werden
-            id= "Ep0uIWmXV_g";
+
             string apiUrl = "https://youtube.googleapis.com/youtube/v3/videos?id="+ id +"&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
 
             HttpClient client = new HttpClient();
@@ -124,20 +166,45 @@ namespace SchaebigeSchaetzungen.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            TextBox1.Visibility= Visibility.Collapsed;
-            GuessLabel.Visibility= Visibility.Collapsed;
-            SubmitBtn.Visibility= Visibility.Collapsed; 
-            HintCheckBox.Visibility= Visibility.Collapsed;
-            HintLabel.Visibility= Visibility.Collapsed;
+            if (SubmitBtn.Content.ToString() == "Submit")
+            {
+                if (Int32.TryParse(TextBox1.Text, out guess))
+                {
+                    SubmitBtn.Content="Next Round";
+                    TextBox1.Visibility= Visibility.Collapsed;
+                    GuessLabel.Visibility= Visibility.Collapsed;
+                    HintCheckBox.Visibility= Visibility.Collapsed;
 
-            LikeLabel.Content = "Likes: " + likeCount.ToString();
-            LikeLabel.Visibility = Visibility.Visible;
-            CommentLabel.Content = "Comments: "+ commentCount.ToString();
-            CommentLabel.Visibility = Visibility.Visible;
-            ViewLabel.Content= "Views: " + viewCount.ToString();
-            ViewLabel.Visibility = Visibility.Visible;
-            LanguageLabel.Content="Language: "+language;
-            LanguageLabel.Visibility = Visibility.Visible;
+                    ViewLabel.Content= "Views: " + viewCount.ToString();
+                    HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg! -> ?? Punkte";
+                    //TODO Punkte verarbeiten
+                    ViewLabel.Visibility = Visibility.Visible;
+                    LanguageLabel.Content="Language: "+language;
+                    LanguageLabel.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    //TODO
+                    //Fehlermessage wegen falscheingabe
+                    return;
+                }
+
+            }
+            else
+            {
+                TextBox1.Visibility= Visibility.Visible;
+                GuessLabel.Visibility= Visibility.Visible;
+                HintCheckBox.Visibility= Visibility.Visible;
+                HintLabel.Content= "Hints";
+                ViewLabel.Visibility = Visibility.Collapsed;
+                LanguageLabel.Visibility = Visibility.Collapsed;
+                SubmitBtn.Content="Submit";
+                TextBox1.Text="";
+                round++;
+                Display("https://www.youtube.com/watch?v="+VideoIDs[round]);
+                GetDetailsAsync(VideoIDs[round]);
+            }
+
         }
 
         private void HintCheckBox_Checked(object sender, RoutedEventArgs e)
@@ -154,10 +221,5 @@ namespace SchaebigeSchaetzungen.View
         }
     }
 
-
-
-
-
-
-
 }
+

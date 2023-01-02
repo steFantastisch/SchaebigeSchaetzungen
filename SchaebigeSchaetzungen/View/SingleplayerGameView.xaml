@@ -13,8 +13,8 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -22,18 +22,15 @@
 
 
         <Label x:Name="GuessLabel" Content="Your Guess" Grid.Row="1" Grid.Column="0"/>
-        <TextBox x:Name="TextBox1" Width="247" Margin="0,0,0,10" Grid.Row="1" Grid.Column="1"/>
-        <Button x:Name="SubmitBtn" Content="Submit" Grid.Column="2" Grid.Row="1" Margin="20,0,20,10"  Click="Button_Click"  />
+        <TextBox x:Name="TextBox1" Margin="0,5,0,10" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="SubmitBtn" Content="Submit" Grid.Column="2" Width="80" Grid.Row="1" Margin="10,5,10,10"  Click="Button_Click"  />
         <Label x:Name="HintLabel" Content="Hints" HorizontalAlignment="Right" Margin="0,0,25,10" Grid.Row="1" Grid.Column="3" />
         <CheckBox x:Name="HintCheckBox"  Margin="0,5,10,0" HorizontalAlignment="Right"  VerticalAlignment="Top" Grid.Row="1" Grid.Column="3" Unchecked="HintCheckBox_Unchecked" Checked="HintCheckBox_Checked"   />
 
         <Label x:Name="HintLikes" Content="" HorizontalAlignment="Center" Margin="0,0,15,10" Grid.Row="1" Grid.Column="3" Visibility="Collapsed" />
         <Label x:Name="HintComments" Content="" HorizontalAlignment="Left" Margin="0,0,15,10" Grid.Row="1" Grid.Column="3" Visibility="Collapsed" />
         
-        
-        <Label x:Name="LikeLabel" Content="" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Visibility="Collapsed" />
-        <Label x:Name="CommentLabel" Content="" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="1" Visibility="Collapsed" />
-        <Label x:Name="ViewLabel" Content="" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="2" Visibility="Collapsed" />
-        <Label x:Name="LanguageLabel" Content="" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="3" Visibility="Collapsed" />
+        <Label x:Name="ViewLabel" Content="" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="1" Visibility="Collapsed" />
+        <Label x:Name="LanguageLabel" Content="" HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="0" Visibility="Collapsed" />
     </Grid>
 </UserControl>
