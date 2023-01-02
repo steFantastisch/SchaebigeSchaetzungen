@@ -70,6 +70,9 @@ namespace SchaebigeSchaetzungen
         {
             return new MultiplayerGameViewModel();
         }
-
+        private GameEndViewModel CreateGameEndViewModel()
+        {
+            return new GameEndViewModel(navigationStore, game, CreateGameModeSelectionViewModel, CreateSingleplayerGameViewModel);
+        }
     }
 }
