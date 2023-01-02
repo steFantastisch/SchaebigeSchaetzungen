@@ -76,7 +76,7 @@ namespace SchaebigeSchaetzungen.View
                  "<html>"
                 +"<head><meta http-equiv='X-UA-Compatible' content='IE=11' />"
                 + "<body>" + "\r\n"
-                + "<iframe src=\"" + url1 +  "\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen></iframe>"
+                + "<iframe src=\"" + url1 +  " \" width=\"770px\" ?showinfo=\"0\" height=\"350px\" frameborder=\"0\" allowfullscreen></iframe>"
                 + "</body></html>";
             webBrowser1.NavigateToString(page);
 
@@ -138,6 +138,19 @@ namespace SchaebigeSchaetzungen.View
             ViewLabel.Visibility = Visibility.Visible;
             LanguageLabel.Content="Language: "+language;
             LanguageLabel.Visibility = Visibility.Visible;
+        }
+
+        private void HintCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            HintLikes.Content = "Likes: " + likeCount.ToString();
+            HintLikes.Visibility = Visibility.Visible;
+            HintComments.Content = "Comments: "+ commentCount.ToString();
+            HintComments.Visibility = Visibility.Visible;
+        }
+        private void HintCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            HintLikes.Visibility = Visibility.Collapsed;
+            HintComments.Visibility = Visibility.Collapsed;
         }
     }
 
