@@ -161,7 +161,8 @@ namespace SchaebigeSchaetzungen.View
                 language = rootObject.items[0].snippet.defaultAudioLanguage;
 
 
-               stream.Close();  
+               stream.Close(); 
+                client.Dispose();   
             }
             else
             {
