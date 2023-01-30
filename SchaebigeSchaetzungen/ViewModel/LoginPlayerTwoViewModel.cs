@@ -48,6 +48,13 @@ namespace SchaebigeSchaetzungen.ViewModel
             get { return playerOne; }
             set { playerOne = value; }
         }
+        private Game game;
+
+        public Game Game
+        {
+            get { return game; }
+            set { game = value; }
+        }
 
 
 
@@ -57,8 +64,9 @@ namespace SchaebigeSchaetzungen.ViewModel
         {
             //TODO DELETE FOLLOWING LINE
             this.Username = "Simon";
+            this.Game = game;
             this.playerOne = playerOne;
-            this.StartCommand = new NavigateCommand(navigationStore, game, createMultiplayerGameViewModel);
+            this.StartCommand = new NavigateCommand(navigationStore, Game, createMultiplayerGameViewModel);
         }
     }
 }
