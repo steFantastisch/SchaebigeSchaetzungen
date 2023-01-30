@@ -30,8 +30,8 @@ namespace SchaebigeSchaetzungen
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            navigationStore.CurrentViewModel = new LoginPlayerOneViewModel(navigationStore, game, CreateCreateViewModel, CreateGameModeSelectionViewModel);
-
+             navigationStore.CurrentViewModel = new LoginPlayerOneViewModel(navigationStore, game, CreateCreateViewModel, CreateGameModeSelectionViewModel);
+        
 
 
             MainWindow = new MainWindow()
@@ -59,7 +59,7 @@ namespace SchaebigeSchaetzungen
 
         private LoginPlayerTwoViewModel CreateLoginPlayerTwoViewModel()
         {
-            return new LoginPlayerTwoViewModel(navigationStore, game, CreateMultiplayerGameViewModel, new Player());
+            return new LoginPlayerTwoViewModel(navigationStore, game, CreateMultiplayerGameViewModel);
         }
 
         private SingleplayerGameViewModel CreateSingleplayerGameViewModel()

@@ -60,12 +60,12 @@ namespace SchaebigeSchaetzungen.ViewModel
 
         public ICommand StartCommand { get; }
 
-        public LoginPlayerTwoViewModel(NavigationStore navigationStore, Game game, Func<MultiplayerGameViewModel> createMultiplayerGameViewModel, Player playerOne)
+        public LoginPlayerTwoViewModel(NavigationStore navigationStore, Game game, Func<MultiplayerGameViewModel> createMultiplayerGameViewModel)
         {
             //TODO DELETE FOLLOWING LINE
             this.Username = "Simon";
             this.Game = game;
-            this.playerOne = playerOne;
+            //this.playerOne = playerOne;
             this.StartCommand = new NavigateCommand(navigationStore, Game, createMultiplayerGameViewModel);
         }
     }
