@@ -23,33 +23,7 @@ using SchaebigeSchaetzungen.Helpers;
 
 namespace SchaebigeSchaetzungen.View
 {
-    public class Item
-    {
-        public Snippet snippet { get; set; }
-        public Statistics statistics { get; set; }
-    }
-
-    public class RootObject
-    {
-        public List<Item> items { get; set; }
-    }
-
-    public class Snippet
-    {
-        public string publishedAt { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
-        public string defaultAudioLanguage { get; set; }
-    }
-
-    public class Statistics
-    {
-        public int viewCount { get; set; }
-        public int likeCount { get; set; }
-        public int commentCount { get; set; }
-
-    }
-
+   
     /// <summary>
     /// Interaction logic for SingleplayerGameView.xaml
     /// </summary>
@@ -61,7 +35,6 @@ namespace SchaebigeSchaetzungen.View
         int likeCount;
         string language;
         int round;
-        private HTTPHelper Helper;
         string[] VideoIDs;
         int guess;
 
@@ -83,7 +56,7 @@ namespace SchaebigeSchaetzungen.View
             Video.language=language;
 
             //consider taking the next line into the constructor due to potential performance loss
-            VideoIDs= Youtube.randomVidIDs();
+            VideoIDs= YoutubeRandom.randomVidIDs();
             HTTPHelper Helper = new HTTPHelper();
             webBrowser1.NavigateToString(Helper.Display("https://www.youtube.com/watch?v="+VideoIDs[round]));
         }
