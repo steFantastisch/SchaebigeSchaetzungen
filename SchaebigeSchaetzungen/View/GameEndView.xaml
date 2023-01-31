@@ -11,11 +11,13 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBlock Text="Herzlichen Glückwunsch!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Foreground="#FF1C417D" FontFamily="Segoe UI" />
         <TextBlock Text="Deine Punkte: 100" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="#FF1C417D" FontFamily="Segoe UI" Grid.Row="1" />
-        <Button Content="Highscores" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,10,10" Grid.Row="2" />
-        <Button Content="Exit" FontSize="30" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,10,10,10" Grid.Row="2" />
-        <Button Content="Erneut spielen" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Grid.Row="2" />
+        <TextBlock Text="Deine Punkte: 150" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="#FF1C417D" FontFamily="Segoe UI" Grid.Row="2" />
+        <Button Content="Highscores" FontSize="30"  Command="{Binding HighscoreCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,10,10" Grid.Row="3" />
+        <Button Content="Exit" FontSize="30" Command="{Binding ExitCommand}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,10,10,10" Grid.Row="3" />
+        <Button Content="Erneut spielen" FontSize="30" Command="{Binding PlayagainCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Grid.Row="3" />
     </Grid>
 </UserControl>

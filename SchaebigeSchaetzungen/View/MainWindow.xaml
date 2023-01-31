@@ -28,6 +28,12 @@
             <DataTemplate DataType="{x:Type vms:MultiplayerGameViewModel}">
                 <view:MultiplayerGameView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:GameEndViewModel}">
+                <view:GameEndView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:HighscoreViewModel}">
+                <view:HighscoreView/>
+            </DataTemplate>
         </Grid.Resources>
         <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
