@@ -180,7 +180,8 @@ namespace SchaebigeSchaetzungen.View
             {
                 if (Int32.TryParse(TextBox1.Text, out guess))
                 {
-                    if (round > 4) // Maximum 5 Runden
+                    //TODO change to 4
+                    if (round > 2) // Maximum 5 Runden
                     {
 
                         SubmitBtn.Visibility= Visibility.Collapsed;
