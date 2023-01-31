@@ -51,44 +51,6 @@ namespace SchaebigeSchaetzungen.View
     }
 
     /// <summary>
-    /// necessary for randomizing youtube videos
-    /// </summary>
-    public class Youtube
-    {
-        private static Random random = new Random();
-
-        public static string RandomString(int length)
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
-
-        public static string[] randomVidIDs()
-        {
-            var count = 50;
-            string[] vidIDs = new string[count];
-            var API_KEY = "AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
-            var q = RandomString(3);
-            var url = "https://www.googleapis.com/youtube/v3/search?key=" + API_KEY + "&maxResults="+count+"&part=snippet&type=video&q=" +q;
-
-            using (WebClient wc = new WebClient())
-            {
-                var json = wc.DownloadString(url);
-                dynamic jsonObject = JsonConvert.DeserializeObject(json);
-                int i = -1;
-                foreach (var line in jsonObject["items"])
-                {
-                    i++;
-                    vidIDs[i]=(string)(line["id"]["videoId"]);
-
-                }
-                return vidIDs;
-            }
-        }
-    }
-
-    /// <summary>
     /// Interaction logic for SingleplayerGameView.xaml
     /// </summary>
     /// 
@@ -107,60 +69,23 @@ namespace SchaebigeSchaetzungen.View
         {
             round=0;
             InitializeComponent();
+            Init();
 
-            Helper = new Helpers.HTTPHelper();
-
-            //TODO id übergeben
-            VideoIDs= Youtube.randomVidIDs();
-            webBrowser1.NavigateToString(Helper.Display("https://www.youtube.com/watch?v="+VideoIDs[round]));
-            GetDetailsAsync(VideoIDs[round]);
         }
 
-        /// <summary>
-        /// Get Details from the Video like LIKES, VIEWS, COMMENTS, and LANGUAGE 
-        /// </summary>
-        /// <param name="id"> Video ID</param>
-        /// <returns></returns>
-        private async Task GetDetailsAsync(string id)
+        public void Init()
         {
+            VideoInfo Video = new VideoInfo();
+            Video.GetDetailsAsync(VideoIDs[round]);
+            Video.viewCount=viewCount; 
+            Video.likeCount=likeCount;
+            Video.commentCount=commentCount;
+            Video.language=language;
 
-            string apiUrl = "https://youtube.googleapis.com/youtube/v3/videos?id="+ id +"&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
-
-            HttpClient client = new HttpClient();
-
-            HttpResponseMessage response = await client.GetAsync(apiUrl);
-
-            if (response.IsSuccessStatusCode)
-            {
-                //JSON-Dokument aus GET auslesen
-                string json = await response.Content.ReadAsStringAsync();
-
-                // JSON-Dokument in einen Stream schreiben
-                byte[] byteArray = Encoding.UTF8.GetBytes(json);
-                MemoryStream stream = new MemoryStream(byteArray);
-
-                // Serialisierer und Klasse für das Deserialisieren vorbereiten
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(RootObject));
-                RootObject rootObject = (RootObject)serializer.ReadObject(stream);
-
-                //Daten auslesen
-                viewCount = rootObject.items[0].statistics.viewCount;
-                commentCount = rootObject.items[0].statistics.commentCount;
-                likeCount = rootObject.items[0].statistics.likeCount;
-                language = rootObject.items[0].snippet.defaultAudioLanguage;
-
-
-                stream.Close();
-                /// client.Dispose();   
-            }
-            else
-            {
-                //TODO Handle HTTP ERROR
-                // Console.WriteLine("Fehler beim Abrufen der API-Antwort: " + response.StatusCode);
-            }
-
-
-
+            //consider taking the next line into the constructor due to potential performance loss
+            VideoIDs= Youtube.randomVidIDs();
+            HTTPHelper Helper = new HTTPHelper();
+            webBrowser1.NavigateToString(Helper.Display("https://www.youtube.com/watch?v="+VideoIDs[round]));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -174,7 +99,7 @@ namespace SchaebigeSchaetzungen.View
                     {
 
                         SubmitBtn.Visibility= Visibility.Collapsed;
-                        ResultBtn.Visibility= Visibility.Visible;   
+                        ResultBtn.Visibility= Visibility.Visible;
                     }
                     else
                     {
@@ -202,7 +127,7 @@ namespace SchaebigeSchaetzungen.View
                 }
 
             }
-           
+
             else
             {
                 TextBox1.Visibility= Visibility.Visible;
@@ -219,8 +144,7 @@ namespace SchaebigeSchaetzungen.View
                 SubmitBtn.Content="Submit";
                 TextBox1.Text="";
                 round++;
-                Helper.Display("https://www.youtube.com/watch?v="+VideoIDs[round]);
-                GetDetailsAsync(VideoIDs[round]);
+                Init();
             }
 
         }
