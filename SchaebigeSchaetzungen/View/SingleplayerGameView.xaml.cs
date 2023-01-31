@@ -180,6 +180,16 @@ namespace SchaebigeSchaetzungen.View
             {
                 if (Int32.TryParse(TextBox1.Text, out guess))
                 {
+                    if (round > 4) // Maximum 5 Runden
+                    {
+
+                        SubmitBtn.Visibility= Visibility.Collapsed;
+                        ResultBtn.Visibility= Visibility.Visible;   
+                    }
+                    else
+                    {
+                        SubmitBtn.Content="Next Round";
+                    }
                     SubmitBtn.Content="Next Round";
                     TextBox1.Visibility= Visibility.Collapsed;
                     GuessLabel.Visibility= Visibility.Collapsed;
@@ -202,6 +212,7 @@ namespace SchaebigeSchaetzungen.View
                 }
 
             }
+           
             else
             {
                 TextBox1.Visibility= Visibility.Visible;

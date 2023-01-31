@@ -64,11 +64,11 @@ namespace SchaebigeSchaetzungen
 
         private SingleplayerGameViewModel CreateSingleplayerGameViewModel()
         {
-            return new SingleplayerGameViewModel();
+            return new SingleplayerGameViewModel(navigationStore, game, CreateGameEndViewModel);
         }
         private MultiplayerGameViewModel CreateMultiplayerGameViewModel()
         {
-            return new MultiplayerGameViewModel();
+            return new MultiplayerGameViewModel(navigationStore, game, CreateGameEndViewModel);
         }
         private GameEndViewModel CreateGameEndViewModel()
         {
