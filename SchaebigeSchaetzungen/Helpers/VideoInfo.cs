@@ -73,10 +73,10 @@ namespace SchaebigeSchaetzungen.Helpers
                 RootObject rootObject = (RootObject)serializer.ReadObject(stream);
 
                 //Daten auslesen
-                viewCount = rootObject.items[0].statistics.viewCount;
-                commentCount = rootObject.items[0].statistics.commentCount;
-                likeCount = rootObject.items[0].statistics.likeCount;
-                language = rootObject.items[0].snippet.defaultAudioLanguage;
+                this.viewCount = rootObject.items[0].statistics.viewCount;
+                this.commentCount = rootObject.items[0].statistics.commentCount;
+                this.likeCount = rootObject.items[0].statistics.likeCount;
+                this.language = rootObject.items[0].snippet.defaultAudioLanguage;
 
 
                 stream.Close();
@@ -88,9 +88,6 @@ namespace SchaebigeSchaetzungen.Helpers
                 //TODO Handle HTTP ERROR
                 // Console.WriteLine("Fehler beim Abrufen der API-Antwort: " + response.StatusCode);
             }
-
-
-
         }
     }
 }
