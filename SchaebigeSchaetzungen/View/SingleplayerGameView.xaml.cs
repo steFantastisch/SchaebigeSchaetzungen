@@ -19,6 +19,7 @@ using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Net;
 using Amazon.DynamoDBv2.Model.Internal.MarshallTransformations;
+using SchaebigeSchaetzungen.Helpers;
 
 namespace SchaebigeSchaetzungen.View
 {
@@ -98,6 +99,7 @@ namespace SchaebigeSchaetzungen.View
         int likeCount;
         string language;
         int round;
+        private HTTPHelper Helper;
         string[] VideoIDs;
         int guess;
 
@@ -106,27 +108,14 @@ namespace SchaebigeSchaetzungen.View
             round=0;
             InitializeComponent();
 
+            Helper = new Helpers.HTTPHelper();
+
             //TODO id übergeben
             VideoIDs= Youtube.randomVidIDs();
-            Display("https://www.youtube.com/watch?v="+VideoIDs[round]);
+            webBrowser1.NavigateToString(Helper.Display("https://www.youtube.com/watch?v="+VideoIDs[round]));
             GetDetailsAsync(VideoIDs[round]);
         }
-        //brauchen wir evt 
-        private Regex YouTubeURLIDRegex = new Regex(@"[?&]v=(?<v>[^&]+)");
-        public void Display(string url)
-        {
-            Match m = YouTubeURLIDRegex.Match(url);
-            String id = m.Groups["v"].Value;
-            string url1 = "http://www.youtube.com/embed/" + id;
-            string page =
-                 "<html>"
-                +"<head><meta http-equiv='X-UA-Compatible' content='IE=11' />"
-                + "<body>" + "\r\n"
-                + "<iframe src=\"" + url1 +  " \" width=\"770px\" height=\"350px\" frameborder=\"0\" allowfullscreen></iframe>"
-                + "</body></html>";
-            webBrowser1.NavigateToString(page);
 
-        }
         /// <summary>
         /// Get Details from the Video like LIKES, VIEWS, COMMENTS, and LANGUAGE 
         /// </summary>
@@ -230,7 +219,7 @@ namespace SchaebigeSchaetzungen.View
                 SubmitBtn.Content="Submit";
                 TextBox1.Text="";
                 round++;
-                Display("https://www.youtube.com/watch?v="+VideoIDs[round]);
+                Helper.Display("https://www.youtube.com/watch?v="+VideoIDs[round]);
                 GetDetailsAsync(VideoIDs[round]);
             }
 
