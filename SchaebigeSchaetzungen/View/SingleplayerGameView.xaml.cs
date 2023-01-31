@@ -219,6 +219,11 @@ namespace SchaebigeSchaetzungen.View
                 TextBox1.Visibility= Visibility.Visible;
                 GuessLabel.Visibility= Visibility.Visible;
                 HintCheckBox.Visibility= Visibility.Visible;
+                if (HintCheckBox.IsEnabled)
+                {
+                    HintLikes.Visibility= Visibility.Visible;
+                    HintComments.Visibility= Visibility.Visible;
+                }
                 HintLabel.Content= "Hints";
                 ViewLabel.Visibility = Visibility.Collapsed;
                 LanguageLabel.Visibility = Visibility.Collapsed;
