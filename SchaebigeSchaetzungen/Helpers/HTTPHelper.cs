@@ -14,10 +14,9 @@ using System.Windows.Controls;
 
 namespace SchaebigeSchaetzungen.Helpers
 {
- 
-    
-    //TODO rename to Youtube tab
-    public class HTTPHelper
+
+    //Single responsibility principle
+    public class YoutubeTab
     {
         private Regex YouTubeURLIDRegex = new Regex(@"[?&]v=(?<v>[^&]+)");
         public string Display(string url)

@@ -55,38 +55,38 @@ namespace SchaebigeSchaetzungen.Helpers
 
             string apiUrl = "https://youtube.googleapis.com/youtube/v3/videos?id="+ id +"&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
 
-            HttpClient client = new HttpClient();
-
-            HttpResponseMessage response = await client.GetAsync(apiUrl);
-
-            if (response.IsSuccessStatusCode)
+            using (HttpClient client = new HttpClient())
             {
-                //JSON-Dokument aus GET auslesen
-                string json = await response.Content.ReadAsStringAsync();
 
-                // JSON-Dokument in einen Stream schreiben
-                byte[] byteArray = Encoding.UTF8.GetBytes(json);
-                MemoryStream stream = new MemoryStream(byteArray);
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
 
-                // Serialisierer und Klasse für das Deserialisieren vorbereiten
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(RootObject));
-                RootObject rootObject = (RootObject)serializer.ReadObject(stream);
+                if (response.IsSuccessStatusCode)
+                {
+                    //JSON-Dokument aus GET auslesen
+                    string json = await response.Content.ReadAsStringAsync();
 
-                //Daten auslesen
-                this.viewCount = rootObject.items[0].statistics.viewCount;
-                this.commentCount = rootObject.items[0].statistics.commentCount;
-                this.likeCount = rootObject.items[0].statistics.likeCount;
-                this.language = rootObject.items[0].snippet.defaultAudioLanguage;
+                    // JSON-Dokument in einen Stream schreiben
+                    byte[] byteArray = Encoding.UTF8.GetBytes(json);
+                    using (MemoryStream stream = new MemoryStream(byteArray))
+                    {
 
+                        // Serialisierer und Klasse für das Deserialisieren vorbereiten
+                        DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(RootObject));
+                        RootObject rootObject = (RootObject)serializer.ReadObject(stream);
 
-                stream.Close();
-                //vielleicht etwas returnen?
-                /// client.Dispose();   
-            }
-            else
-            {
-                //TODO Handle HTTP ERROR
-                // Console.WriteLine("Fehler beim Abrufen der API-Antwort: " + response.StatusCode);
+                        //Daten auslesen
+                        this.viewCount = rootObject.items[0].statistics.viewCount;
+                        this.commentCount = rootObject.items[0].statistics.commentCount;
+                        this.likeCount = rootObject.items[0].statistics.likeCount;
+                        this.language = rootObject.items[0].snippet.defaultAudioLanguage;
+
+                    } 
+                }
+                else
+                {
+                    //TODO Handle HTTP ERROR
+                    // Console.WriteLine("Fehler beim Abrufen der API-Antwort: " + response.StatusCode);
+                }
             }
         }
     }

@@ -58,7 +58,7 @@ namespace SchaebigeSchaetzungen.View
             commentCount=Video.commentCount;
             language=Video.language;
 
-            HTTPHelper Helper = new HTTPHelper();
+            YoutubeTab Helper = new YoutubeTab();
             webBrowser1.NavigateToString(Helper.Display("https://www.youtube.com/watch?v="+VideoIDs[round]));
         }
 
