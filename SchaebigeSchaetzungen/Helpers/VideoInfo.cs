@@ -43,7 +43,7 @@ namespace SchaebigeSchaetzungen.Helpers
         public int viewCount;
         public int commentCount;
         public int likeCount;
-        public string language;
+        public string? language;
 
         /// <summary>
         /// Get Details from the Video like LIKES, VIEWS, COMMENTS, and LANGUAGE 

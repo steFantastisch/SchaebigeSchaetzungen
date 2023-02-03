@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace SchaebigeSchaetzungen.ViewModel
@@ -29,6 +30,7 @@ namespace SchaebigeSchaetzungen.ViewModel
             Game game,
             Func<GameEndViewModel> createGameEndViewModel)
         {
+          
             this.Game = game;
             this.GameEndCommand = new NavigateCommand(navigationStore, game, createGameEndViewModel);
 
