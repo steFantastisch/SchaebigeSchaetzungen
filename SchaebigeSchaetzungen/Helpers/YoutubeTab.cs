@@ -21,7 +21,7 @@ namespace SchaebigeSchaetzungen.Helpers
         private Regex YouTubeURLIDRegex = new Regex(@"[?&]v=(?<v>[^&]+)");
         public string Display(string url)
         {
-            Match m = YouTubeURLIDRegex.Match(url);
+            Match m = YouTubeURLIDRegex.Match("https://www.youtube.com/watch?v="+url);
             String id = m.Groups["v"].Value;
             string url1 = "http://www.youtube.com/embed/" + id;
             string page =

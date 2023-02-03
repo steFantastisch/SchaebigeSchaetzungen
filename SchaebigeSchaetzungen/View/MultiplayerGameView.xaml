@@ -31,16 +31,16 @@
         <TextBox x:Name="TextBox2" Width="247" Margin="0,0,0,5" Grid.Row="2" Grid.Column="1"/>
         <Button x:Name="P2Submit" Content="Submit" Grid.Column="2" Grid.Row="2" Margin="0,0,0,5" Click="P2Submit_Click" />
 
-        <Button x:Name="ResultBtn" Content="Results" Command="{Binding GameEndCommand}" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,0,0,5" Visibility="Collapsed"  />
-        <Button x:Name="NextRound" Content="Next Round" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,0,0,5" Click="NextRound_Click" Visibility="Collapsed" />
+        <Button x:Name="ResultBtn" Content="Results" Command="{Binding GameEndCommand}" Grid.Column="3" Grid.RowSpan="2" Grid.Row="1" Margin="0,0,0,5" HorizontalAlignment="Left" Visibility="Collapsed"  />
+        <Button x:Name="NextRound" Content="Next Round" Grid.Column="3"  Grid.Row="1" Grid.RowSpan="2" Margin="0,0,0,5" Click="NextRound_Click" HorizontalAlignment="Left" Visibility="Collapsed" />
 
         <Label x:Name="HintLabel" Content="Hints" HorizontalAlignment="Right" Margin="0,0,15,5" Grid.Row="1" Grid.Column="3" />
-        <CheckBox  x:Name="HintCheckBox" Margin="444,6,0,0"  VerticalAlignment="Top" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Width="16" Checked="HintCheckBox_Checked"  Unchecked="HintCheckBox_Unchecked"  />
+        <CheckBox  x:Name="HintCheckBox" Margin="444,6,0,0"  VerticalAlignment="Top" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Width="16" IsChecked="False" Checked="HintCheckBox_Checked"  Unchecked="HintCheckBox_Unchecked"  />
         <Label x:Name="HintLikes" Content="" HorizontalAlignment="Center" Margin="0,0,15,10" Grid.Row="1" Grid.Column="3" Visibility="Collapsed" />
         <Label x:Name="HintComments" Content="" HorizontalAlignment="Left" Margin="0,0,15,10" Grid.Row="1" Grid.Column="3" Visibility="Collapsed" />
 
         <Label x:Name="LanguageLabel" Content="" HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="0" Visibility="Collapsed" />
-        <Label x:Name="ViewLabel" Content="" HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="1" Visibility="Collapsed" />
+        <Label x:Name="ViewLabel" Content="" HorizontalAlignment="Left" Margin="20,0,20,10" Grid.Row="1" Grid.Column="1" Visibility="Collapsed" />
 
 
 

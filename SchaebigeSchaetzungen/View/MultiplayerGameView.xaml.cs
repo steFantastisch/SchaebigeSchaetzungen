@@ -53,6 +53,30 @@ namespace SchaebigeSchaetzungen.View
 
             YoutubeTab Helper = new YoutubeTab();
             webBrowser1.NavigateToString(Helper.Display(VideoIDs[round]));
+
+
+            P1Submit.Visibility= Visibility.Visible;
+            TextBox1.Visibility= Visibility.Visible;
+            P1.Visibility= Visibility.Visible;
+            P2Submit.Visibility= Visibility.Visible;
+            TextBox2.Visibility= Visibility.Visible;
+            P2.Visibility= Visibility.Visible;
+            HintCheckBox.Visibility= Visibility.Visible;
+            if (HintCheckBox.IsChecked==true)
+            {
+                HintLikes.Content = "Likes: " + likeCount.ToString();
+                HintLikes.Visibility = Visibility.Visible;
+                HintComments.Content = "Comments: "+ commentCount.ToString();
+                HintComments.Visibility = Visibility.Visible;
+            }
+
+            HintLabel.Content= "Hints";
+            ViewLabel.Visibility = Visibility.Collapsed;
+            LanguageLabel.Visibility = Visibility.Collapsed;
+            NextRound.Visibility = Visibility.Collapsed;
+            TextBox1.Text="";
+            TextBox2.Text="";
+            
         }
 
         private void P1Submit_Click(object sender, RoutedEventArgs e)
@@ -66,80 +90,40 @@ namespace SchaebigeSchaetzungen.View
             }
             if (P2Submit.Visibility==Visibility.Collapsed) //Zweiter spieler hat schon getippt
             {
-                P1Submit.Visibility= Visibility.Collapsed;
-                TextBox1.Visibility= Visibility.Collapsed;
-                P1.Visibility= Visibility.Collapsed;
-                //TODO change to 3
-                if (round > 1) // Spiel vorbei?
-                {
-                    ResultBtn.Visibility= Visibility.Visible;
-                }
-                else
-                {
-                    NextRound.Visibility= Visibility.Visible;
-                }
+                InitNR();
+               
             }
             else //Zweiter Spieler noch nicht getippt
-
             {
                 P1Submit.Visibility= Visibility.Collapsed;
                 TextBox1.Text="******************";            
-            }
-
-            else
-            {
-                SubmitBtn.Content="Next Round";
-            }
-            SubmitBtn.Content="Next Round";
-            TextBox1.Visibility= Visibility.Collapsed;
-            GuessLabel.Visibility= Visibility.Collapsed;
-            HintCheckBox.Visibility= Visibility.Collapsed;
-            HintLikes.Visibility = Visibility.Collapsed;
-            HintComments.Visibility = Visibility.Collapsed;
-
-            CalcPoints Rechner = new CalcPoints();
-            ViewLabel.Content= Rechner.SingleplayerPts(guess, viewCount);
-
-            HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
-
-            ViewLabel.Visibility = Visibility.Visible;
-            LanguageLabel.Content="Language: "+language;
-            LanguageLabel.Visibility = Visibility.Visible;
-            return;
-
-
-
-            else if (SubmitBtn.Content.ToString() == "Next Round")
-            {
-                Init();
-                TextBox1.Visibility= Visibility.Visible;
-                GuessLabel.Visibility= Visibility.Visible;
-                HintCheckBox.Visibility= Visibility.Visible;
-                if (HintCheckBox.IsEnabled)
-                {
-                    HintLikes.Content = "Likes: " + likeCount.ToString();
-                    HintLikes.Visibility = Visibility.Visible;
-                    HintComments.Content = "Comments: "+ commentCount.ToString();
-                    HintComments.Visibility = Visibility.Visible;
-                }
-
-                HintLabel.Content= "Hints";
-                ViewLabel.Visibility = Visibility.Collapsed;
-                LanguageLabel.Visibility = Visibility.Collapsed;
-                SubmitBtn.Content="Submit";
-                TextBox1.Text="";
-                round++;
-
             }
         }
 
         private void P2Submit_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!Int32.TryParse(TextBox2.Text, out PlayerTwoguess))
+            {
+                //TODO
+                //Fehlermessage wegen falscheingabe
+                return;
+            }
+            if (P1Submit.Visibility==Visibility.Collapsed) //Erster spieler hat schon getippt
+            {
+                InitNR();
+                   
+            }
+            else //Zweiter Spieler noch nicht getippt
+            {
+                P2Submit.Visibility= Visibility.Collapsed;
+                TextBox2.Text="******************";
+            }
         }
 
         private void NextRound_Click(object sender, RoutedEventArgs e)
         {
+            Init();
+            round++;
 
         }
 
@@ -154,6 +138,34 @@ namespace SchaebigeSchaetzungen.View
         {
             HintLikes.Visibility = Visibility.Collapsed;
             HintComments.Visibility = Visibility.Collapsed;
+        }
+        private void InitNR()
+        {
+            HintCheckBox.Visibility= Visibility.Collapsed;
+            HintLikes.Visibility = Visibility.Collapsed;
+            HintComments.Visibility = Visibility.Collapsed;
+            HintLabel.Content= " Du lagst " +Math.Abs(viewCount - PlayerOneguess)+ " von der richtigen Lösung weg!\nDu lagst" +Math.Abs(viewCount - PlayerTwoguess)+ " von der richtigen Lösung weg!";
+            LanguageLabel.Content="Language: "+language;
+            LanguageLabel.Visibility = Visibility.Visible;
+            CalcPoints Rechner = new CalcPoints();
+            ViewLabel.Content= Rechner.MultiplayerPtns(PlayerOneguess, PlayerTwoguess, viewCount);
+            ViewLabel.Visibility = Visibility.Visible;
+
+            P1Submit.Visibility= Visibility.Collapsed;
+            TextBox1.Visibility= Visibility.Collapsed;
+            P1.Visibility= Visibility.Collapsed;
+            P2Submit.Visibility= Visibility.Collapsed;
+            TextBox2.Visibility= Visibility.Collapsed;
+            P2.Visibility= Visibility.Collapsed;
+            TextBox1.Text="";
+            if (round > 1) // Spiel vorbei?
+            {
+                ResultBtn.Visibility= Visibility.Visible;
+            }
+            else
+            {
+                NextRound.Visibility= Visibility.Visible;
+            }
         }
     }
 }

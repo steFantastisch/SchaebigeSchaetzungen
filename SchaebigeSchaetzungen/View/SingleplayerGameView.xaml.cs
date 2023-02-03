@@ -109,7 +109,7 @@ namespace SchaebigeSchaetzungen.View
                 TextBox1.Visibility= Visibility.Visible;
                 GuessLabel.Visibility= Visibility.Visible;
                 HintCheckBox.Visibility= Visibility.Visible;
-                if (HintCheckBox.IsEnabled)
+                if (HintCheckBox.IsChecked==true)
                 {
                     HintLikes.Content = "Likes: " + likeCount.ToString();
                     HintLikes.Visibility = Visibility.Visible;
