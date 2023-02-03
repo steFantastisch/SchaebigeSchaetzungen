@@ -24,7 +24,6 @@ namespace SchaebigeSchaetzungen.ViewModel
 
         public ICommand GameEndCommand { get; }
 
-
         public MultiplayerGameViewModel(
             NavigationStore navigationStore,
             Game game,

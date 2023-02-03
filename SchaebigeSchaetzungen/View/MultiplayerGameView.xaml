@@ -23,14 +23,17 @@
         <WebBrowser x:Name="webBrowser1" Grid.Row="0" Grid.ColumnSpan="4" />
 
 
-        <Label Content="Player 1" Grid.Row="1" Grid.Column="0"/>
-        <TextBox Width="247" Margin="0,0,0,10" Grid.Row="1" Grid.Column="1"/>
-        <Button Content="Submit" Grid.Column="2" Grid.Row="1" Margin="0,0,0,10" />
-        <Label Content="Hints" HorizontalAlignment="Right" Margin="0,0,15,10" Grid.Row="1" Grid.Column="3" />
-        <CheckBox  HorizontalAlignment="Right" Margin="0,0,0,10"  VerticalAlignment="Center" Grid.Row="1" Grid.Column="3"   />
+        <Label Content="Player 1" Grid.Row="1" Grid.Column="0" Margin="0,0,0,5"/>
+        <TextBox x:Name="TextBox1" Width="247" Margin="0,0,0,5" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="P1Submit"  Content="Submit" Grid.Column="2" Grid.Row="1" Margin="0,0,0,5" Click="P1Submit_Click" />
+
+        <Label Content="Player 2" Grid.Row="2" Grid.Column="0" Margin="0,0,0,5"/>
+        <TextBox x:Name="TextBox2" Width="247" Margin="0,0,0,5" Grid.Row="2" Grid.Column="1"/>
+        <Button x:Name="P2Submit" Content="Submit" Grid.Column="2" Grid.Row="2" Margin="0,0,0,5" Click="P2Submit_Click" />
+        
+        <Label Content="Hints" HorizontalAlignment="Right" Margin="0,0,15,5" Grid.Row="1" Grid.Column="3" />
+        <CheckBox  HorizontalAlignment="Right" Margin="0,0,0,5"  VerticalAlignment="Center" Grid.Row="1" Grid.Column="3"   />
        
-        <Label Content="Player 2" Grid.Row="2" Grid.Column="0"/>
-        <TextBox Width="247" Margin="0,0,0,10" Grid.Row="2" Grid.Column="1"/>
-        <Button Content="Submit" Grid.Column="2" Grid.Row="2" Margin="0,0,0,10" />
+        
     </Grid>
 </UserControl>

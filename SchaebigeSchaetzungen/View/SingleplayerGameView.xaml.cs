@@ -59,7 +59,7 @@ namespace SchaebigeSchaetzungen.View
             language=Video.language;
 
             YoutubeTab Helper = new YoutubeTab();
-            webBrowser1.NavigateToString(Helper.Display("https://www.youtube.com/watch?v="+VideoIDs[round]));
+            webBrowser1.NavigateToString(Helper.Display(VideoIDs[round]));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
