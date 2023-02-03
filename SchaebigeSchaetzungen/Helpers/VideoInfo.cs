@@ -57,7 +57,6 @@ namespace SchaebigeSchaetzungen.Helpers
 
             using (HttpClient client = new HttpClient())
             {
-
                 HttpResponseMessage response = await client.GetAsync(apiUrl);
 
                 if (response.IsSuccessStatusCode)
@@ -69,7 +68,6 @@ namespace SchaebigeSchaetzungen.Helpers
                     byte[] byteArray = Encoding.UTF8.GetBytes(json);
                     using (MemoryStream stream = new MemoryStream(byteArray))
                     {
-
                         // Serialisierer und Klasse für das Deserialisieren vorbereiten
                         DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(RootObject));
                         RootObject rootObject = (RootObject)serializer.ReadObject(stream);
@@ -79,7 +77,6 @@ namespace SchaebigeSchaetzungen.Helpers
                         this.commentCount = rootObject.items[0].statistics.commentCount;
                         this.likeCount = rootObject.items[0].statistics.likeCount;
                         this.language = rootObject.items[0].snippet.defaultAudioLanguage;
-
                     } 
                 }
                 else

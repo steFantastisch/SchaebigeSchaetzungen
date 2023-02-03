@@ -90,8 +90,10 @@ namespace SchaebigeSchaetzungen.View
                 HintCheckBox.Visibility= Visibility.Collapsed;
                 HintLikes.Visibility = Visibility.Collapsed;
                 HintComments.Visibility = Visibility.Collapsed;
-                //TODO Punkte verarbeiten
-                ViewLabel.Content= ">>>Views: " + viewCount.ToString() + "<<<    ->?? Punkte";
+
+                CalcPoints Rechner = new CalcPoints();
+                ViewLabel.Content= Rechner.SingleplayerPts(guess,viewCount);
+
                 HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
 
                 ViewLabel.Visibility = Visibility.Visible;
