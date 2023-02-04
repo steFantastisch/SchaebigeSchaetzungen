@@ -59,7 +59,16 @@ namespace SchaebigeSchaetzungen.ViewModel
 
         public LoginPlayerOneViewModel(NavigationStore navigationStore, Game game, Func<CreateViewModel> createCreateViewModel, Func<GameModeSelectionViewModel> createGameModeSelectionViewModel)
         {
+
             this.Game = game;
+            if (this.Game.PlayerOne == null)
+            {
+                this.Game.PlayerOne = new Player();
+                //TODO Delete following Line
+                game.PlayerOne.Name = "Stefan";
+            }
+
+
             this.CreateCommand = new NavigateCommand(navigationStore, Game, createCreateViewModel);
             this.LoginCommand = new NavigateCommand(navigationStore, Game, createGameModeSelectionViewModel);
         }

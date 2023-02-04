@@ -16,9 +16,12 @@ namespace SchaebigeSchaetzungen.ViewModel
         {
            
             this.Game = game;
-            this.Game.PlayerTwo = new Player();
-            //TODO DELETE FOLLOWING LINE
-            Game.PlayerTwo.Name = "Simon";
+            if (this.Game.PlayerTwo == null)
+            {
+                this.Game.PlayerTwo = new Player();
+                //TODO DELETE FOLLOWING LINE
+                Game.PlayerTwo.Name = "Simon";
+            }
             this.StartCommand = new NavigateCommand(navigationStore, Game, createMultiplayerGameViewModel);
         }
         private string username;

@@ -22,10 +22,7 @@ namespace SchaebigeSchaetzungen
         public App()
         {
             navigationStore = new NavigationStore();
-            game = new Game();
-            game.PlayerOne = new Player();
-            game.PlayerOne.Name = "Stefan";
-         
+            game = new Game();       
         }
 
         protected override void OnStartup(StartupEventArgs e)
