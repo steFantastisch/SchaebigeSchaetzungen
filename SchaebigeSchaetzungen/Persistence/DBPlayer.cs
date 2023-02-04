@@ -26,18 +26,20 @@ namespace SchaebigeSchaetzungen.Persistence
             player.PlayerID = DBAccess.GetLastInsertId(con);
             DBAccess.CloseDB(con);
         }
-        public static void Read(Player p)
+
+        public static Player Read(Player p)
         {
             MySqlConnection con = DBAccess.OpenDB();
 
-            string sql = $"SELECT * FROM Player WHERE PlayerID = '{p.PlayerID}'";
+            //string sql = $"SELECT * FROM Player WHERE PlayerID = '{p.PlayerID}'";
+            string sql = $"SELECT * FROM Player WHERE Mail = '{p.Mail}' AND Password = '{p.Password}'";
             MySqlDataReader rd = DBAccess.ExecuteReader(sql, con);
 
             try
             {
                 while (rd.Read())
                 {
-                    GetDataFromReader(rd, p);
+                    p= GetDataFromReader(rd, p);
                 }
             }
             catch (Exception)
@@ -49,6 +51,7 @@ namespace SchaebigeSchaetzungen.Persistence
                 rd.Close();
                 DBAccess.CloseDB(con);
             }
+            return p;
         }
 
         public static void Update(Player player)
@@ -98,7 +101,7 @@ namespace SchaebigeSchaetzungen.Persistence
             }
         }
 
-        private static void GetDataFromReader(MySqlDataReader rdr, Player p)
+        private static Player GetDataFromReader(MySqlDataReader rdr, Player p)
         {
             p.PlayerID = rdr.GetInt32("PlayerID");
             p.Name = rdr.GetString("Name");
@@ -106,6 +109,7 @@ namespace SchaebigeSchaetzungen.Persistence
             p.Mail = rdr.GetString("Mail");
             p.Crowns = rdr.GetInt32("Crowns");
             p.Avatar = new Avatar(rdr.GetInt32("Avatar"));
+            return p;
         }
     }
 }
