@@ -25,7 +25,7 @@ namespace SchaebigeSchaetzungen
             game = new Game();
             game.PlayerOne = new Player();
             game.PlayerOne.Name = "Stefan";
-            //game.PlayerTwo.Name = "Simon";
+         
         }
 
         protected override void OnStartup(StartupEventArgs e)

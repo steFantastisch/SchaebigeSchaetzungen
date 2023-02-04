@@ -14,11 +14,11 @@ namespace SchaebigeSchaetzungen.ViewModel
     {
         public LoginPlayerTwoViewModel(NavigationStore navigationStore, Game game, Func<MultiplayerGameViewModel> createMultiplayerGameViewModel)
         {
-            //TODO DELETE FOLLOWING LINE
-            //this.Username = "Simon";
+           
             this.Game = game;
             this.Game.PlayerTwo = new Player();
-            //this.playerTwo = playerTwo;
+            //TODO DELETE FOLLOWING LINE
+            Game.PlayerTwo.Name = "Simon";
             this.StartCommand = new NavigateCommand(navigationStore, Game, createMultiplayerGameViewModel);
         }
         private string username;
