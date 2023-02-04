@@ -23,11 +23,11 @@
         <WebBrowser x:Name="webBrowser1" Grid.Row="0" Grid.ColumnSpan="4" />
 
 
-        <Label x:Name="P1" Content="Player 1" Grid.Row="1" Grid.Column="0" Margin="0,0,0,5"/>
+        <Label x:Name="P1" Content="{Binding Game.PlayerOne.Name}" Grid.Row="1" Grid.Column="0" Margin="0,0,0,5"/>
         <TextBox x:Name="TextBox1" Width="247" Margin="0,0,0,5" Grid.Row="1" Grid.Column="1"/>
         <Button x:Name="P1Submit"  Content="Submit" Grid.Column="2" Grid.Row="1" Margin="0,0,0,5" Click="P1Submit_Click" />
 
-        <Label x:Name="P2" Content="Player 2" Grid.Row="2" Grid.Column="0" Margin="0,0,0,5"/>
+        <Label x:Name="P2" Content="{Binding Game.PlayerTwo.Name}" Grid.Row="2" Grid.Column="0" Margin="0,0,0,5"/>
         <TextBox x:Name="TextBox2" Width="247" Margin="0,0,0,5" Grid.Row="2" Grid.Column="1"/>
         <Button x:Name="P2Submit" Content="Submit" Grid.Column="2" Grid.Row="2" Margin="0,0,0,5" Click="P2Submit_Click" />
 

@@ -12,6 +12,15 @@ namespace SchaebigeSchaetzungen.ViewModel
 {
     public class LoginPlayerTwoViewModel : ViewModelBase
     {
+        public LoginPlayerTwoViewModel(NavigationStore navigationStore, Game game, Func<MultiplayerGameViewModel> createMultiplayerGameViewModel)
+        {
+            //TODO DELETE FOLLOWING LINE
+            //this.Username = "Simon";
+            this.Game = game;
+            this.Game.PlayerTwo = new Player();
+            //this.playerTwo = playerTwo;
+            this.StartCommand = new NavigateCommand(navigationStore, Game, createMultiplayerGameViewModel);
+        }
         private string username;
         private string password;
 
@@ -24,6 +33,7 @@ namespace SchaebigeSchaetzungen.ViewModel
             set
             {
                 username = value;
+               this.Game.PlayerTwo.Name = username;
                 OnPropertyChanged(nameof(Username));
             }
         }
@@ -41,12 +51,12 @@ namespace SchaebigeSchaetzungen.ViewModel
             }
         }
 
-        private Player playerOne;
+        private Player playerTwo;
 
-        public Player PlayerOne
+        public Player PlayerTwo
         {
-            get { return playerOne; }
-            set { playerOne = value; }
+            get { return playerTwo; }
+            set { playerTwo = value; }
         }
         private Game game;
 
@@ -60,13 +70,6 @@ namespace SchaebigeSchaetzungen.ViewModel
 
         public ICommand StartCommand { get; }
 
-        public LoginPlayerTwoViewModel(NavigationStore navigationStore, Game game, Func<MultiplayerGameViewModel> createMultiplayerGameViewModel)
-        {
-            //TODO DELETE FOLLOWING LINE
-            this.Username = "Simon";
-            this.Game = game;
-            //this.playerOne = playerOne;
-            this.StartCommand = new NavigateCommand(navigationStore, Game, createMultiplayerGameViewModel);
-        }
+        
     }
 }

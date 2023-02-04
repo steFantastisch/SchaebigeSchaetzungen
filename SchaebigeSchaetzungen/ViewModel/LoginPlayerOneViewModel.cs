@@ -24,6 +24,7 @@ namespace SchaebigeSchaetzungen.ViewModel
             set
             {
                 username = value;
+                this.Game.PlayerOne.Name = username;
                 OnPropertyChanged(nameof(Username));
             }
         }
