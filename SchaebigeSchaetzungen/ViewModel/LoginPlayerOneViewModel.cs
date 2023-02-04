@@ -70,7 +70,8 @@ namespace SchaebigeSchaetzungen.ViewModel
 
 
             this.CreateCommand = new NavigateCommand(navigationStore, Game, createCreateViewModel);
-            this.LoginCommand = new NavigateCommand(navigationStore, Game, createGameModeSelectionViewModel);
+            // this.LoginCommand = new NavigateCommand(navigationStore, Game, createGameModeSelectionViewModel);
+            this.LoginCommand = new LoginCommand(navigationStore, Game, createGameModeSelectionViewModel, this.game.PlayerOne);
         }
     }
 }
