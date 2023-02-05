@@ -26,8 +26,8 @@
         <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Avatar" />
 
 
-        <TextBox x:Name="tbName" Text="{Binding Name}" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="20,0,100,0"/>
-        <TextBox x:Name="tbMail" Text="{Binding Mail}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="20,0,100,0"/>
+        <TextBox x:Name="tbName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="20,0,100,0"/>
+        <TextBox x:Name="tbMail" Text="{Binding Mail, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="20,0,100,0"/>
         <PasswordBox x:Name="pbPassword" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="20,0,100,0"/>
         <Button x:Name="btnUpload" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"  Content="Upload png/jpg" Margin="20,0,100,0" Click="btnUpload_Click"/>
         <Button x:Name="btnCreate" Command="{Binding FinishCommand}" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Finish" Margin="20,10,100,0"/>
