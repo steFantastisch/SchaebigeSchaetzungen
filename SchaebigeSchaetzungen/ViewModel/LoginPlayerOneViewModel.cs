@@ -24,7 +24,6 @@ namespace SchaebigeSchaetzungen.ViewModel
             set
             {
                 username = value;
-                this.Game.PlayerOne.Name = username;
                 OnPropertyChanged(nameof(Username));
             }
         }
@@ -65,13 +64,14 @@ namespace SchaebigeSchaetzungen.ViewModel
             {
                 this.Game.PlayerOne = new Player();
                 //TODO Delete following Line
-                game.PlayerOne.Name = "Stefan";
+                game.PlayerOne.Mail = "Stefan@wolfi.de";
+                game.PlayerOne.Name = "tempname1";
             }
 
 
             this.CreateCommand = new NavigateCommand(navigationStore, Game, createCreateViewModel);
-            // this.LoginCommand = new NavigateCommand(navigationStore, Game, createGameModeSelectionViewModel);
-            this.LoginCommand = new LoginCommand(navigationStore, Game, createGameModeSelectionViewModel, this.game.PlayerOne);
+            this.LoginCommand = new NavigateCommand(navigationStore, Game, createGameModeSelectionViewModel);
+            
         }
     }
 }

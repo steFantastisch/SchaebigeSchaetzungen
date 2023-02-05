@@ -20,7 +20,8 @@ namespace SchaebigeSchaetzungen.ViewModel
             {
                 this.Game.PlayerTwo = new Player();
                 //TODO DELETE FOLLOWING LINE
-                Game.PlayerTwo.Name = "Simon";
+                Game.PlayerTwo.Mail = "Simon@Stenzel.de";
+                game.PlayerTwo.Name = "tempname2";
             }
             this.StartCommand = new NavigateCommand(navigationStore, Game, createMultiplayerGameViewModel);
         }

@@ -65,6 +65,7 @@ namespace SchaebigeSchaetzungen
         }
         private MultiplayerGameViewModel CreateMultiplayerGameViewModel()
         {
+            game.PlayerTwo=DBPlayer.Read(game.PlayerTwo);
             return new MultiplayerGameViewModel(navigationStore, game, CreateGameEndViewModel);
         }
         private GameEndViewModel CreateGameEndViewModel()

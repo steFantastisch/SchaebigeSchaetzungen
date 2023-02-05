@@ -35,7 +35,7 @@
         <Button x:Name="NextRound" Content="Next Round" Grid.Column="3"  Grid.Row="1" Grid.RowSpan="2" Margin="0,0,0,5" Click="NextRound_Click" HorizontalAlignment="Left" Visibility="Collapsed" />
 
         <Label x:Name="HintLabel" Content="Hints" HorizontalAlignment="Right" Margin="0,1,20,4" Grid.Column="3" Grid.Row="1" />
-        <CheckBox  x:Name="HintCheckBox" Margin="425,6,0,0"  VerticalAlignment="Top" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Width="16" IsChecked="False" Checked="HintCheckBox_Checked"  Unchecked="HintCheckBox_Unchecked" RenderTransformOrigin="-0.58,0.392"  />
+        <CheckBox  x:Name="HintCheckBox" Margin="0,6,0,0"  VerticalAlignment="Top" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Width="16" IsChecked="False" Checked="HintCheckBox_Checked"  Unchecked="HintCheckBox_Unchecked" RenderTransformOrigin="-0.58,0.392"  />
         <Label x:Name="HintLikes" Content="" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" Grid.Column="3" Visibility="Collapsed" />
         <Label x:Name="HintComments" Content="" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="1" Grid.Column="3" Visibility="Collapsed" />
 
