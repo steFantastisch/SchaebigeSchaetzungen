@@ -1,4 +1,5 @@
 ﻿using SchaebigeSchaetzungen.Model;
+using SchaebigeSchaetzungen.Persistence;
 using SchaebigeSchaetzungen.Store;
 using SchaebigeSchaetzungen.ViewModel;
 using System;
@@ -28,8 +29,6 @@ namespace SchaebigeSchaetzungen
         protected override void OnStartup(StartupEventArgs e)
         {
              navigationStore.CurrentViewModel = new LoginPlayerOneViewModel(navigationStore, game, CreateCreateViewModel, CreateGameModeSelectionViewModel);
-        
-
 
             MainWindow = new MainWindow()
             {
@@ -51,6 +50,7 @@ namespace SchaebigeSchaetzungen
 
         private GameModeSelectionViewModel CreateGameModeSelectionViewModel()
         {
+            game.PlayerOne=DBPlayer.Read(game.PlayerOne);
             return new GameModeSelectionViewModel(navigationStore, game, CreateLoginPlayerOneViewModel, CreateLoginPlayerTwoViewModel, CreateSingleplayerGameViewModel);
         }
 

@@ -18,7 +18,7 @@ namespace SchaebigeSchaetzungen.Command
         private readonly Game game;
         private readonly Player player;
 
-        public LoginCommand(NavigationStore navigationStore, Game game, Func<ViewModelBase> createViewModel,Player player)
+        public LoginCommand(NavigationStore navigationStore, Game game, Func<ViewModelBase> createViewModel, Player player)
         {
             this.navigationStore = navigationStore;
             this.createViewModel = createViewModel;
@@ -27,10 +27,10 @@ namespace SchaebigeSchaetzungen.Command
         }
 
         public override void Execute(object parameter)
-        {   
-            DBPlayer.Read(this.player);
-           
+        {
+
             navigationStore.CurrentViewModel = createViewModel();
+
         }
     }
 }
