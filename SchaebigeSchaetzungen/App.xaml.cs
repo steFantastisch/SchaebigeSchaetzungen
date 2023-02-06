@@ -50,7 +50,8 @@ namespace SchaebigeSchaetzungen
 
         private GameModeSelectionViewModel CreateGameModeSelectionViewModel()
         {
-            game.PlayerOne=DBPlayer.Read(game.PlayerOne);
+            //erst nachdem DB läuft
+            //game.PlayerOne=DBPlayer.Read(game.PlayerOne);
             return new GameModeSelectionViewModel(navigationStore, game, CreateLoginPlayerOneViewModel, CreateLoginPlayerTwoViewModel, CreateSingleplayerGameViewModel);
         }
 
@@ -65,7 +66,7 @@ namespace SchaebigeSchaetzungen
         }
         private MultiplayerGameViewModel CreateMultiplayerGameViewModel()
         {
-            game.PlayerTwo=DBPlayer.Read(game.PlayerTwo);
+            //game.PlayerTwo=DBPlayer.Read(game.PlayerTwo);
             return new MultiplayerGameViewModel(navigationStore, game, CreateGameEndViewModel);
         }
         private GameEndViewModel CreateGameEndViewModel()

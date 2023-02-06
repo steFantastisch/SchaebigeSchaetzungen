@@ -7,7 +7,7 @@
         xmlns:view="clr-namespace:SchaebigeSchaetzungen.View"
         xmlns:vms="clr-namespace:SchaebigeSchaetzungen.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="472" Width="803">
+        Title="Schaebige Schaetzungen" Height="472" Width="803">
     <Grid Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.Resources>
             <DataTemplate DataType="{x:Type vms:LoginPlayerOneViewModel}">
