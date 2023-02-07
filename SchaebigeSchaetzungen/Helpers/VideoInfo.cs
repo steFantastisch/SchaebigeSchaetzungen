@@ -77,13 +77,14 @@ namespace SchaebigeSchaetzungen.Helpers
                         this.commentCount = rootObject.items[0].statistics.commentCount;
                         this.likeCount = rootObject.items[0].statistics.likeCount;
                         this.language = rootObject.items[0].snippet.defaultAudioLanguage;
-                    } 
+                    }
                 }
                 else
                 {
                     //TODO Handle HTTP ERROR
                     // Console.WriteLine("Fehler beim Abrufen der API-Antwort: " + response.StatusCode);
                 }
+                return;
             }
         }
     }

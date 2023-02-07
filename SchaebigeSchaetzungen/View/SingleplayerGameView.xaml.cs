@@ -33,7 +33,7 @@ namespace SchaebigeSchaetzungen.View
         int viewCount;
         int commentCount;
         int likeCount;
-        string language;
+        string? language;
         int round;
         string[] VideoIDs;
         int guess;

@@ -24,7 +24,7 @@ namespace SchaebigeSchaetzungen.Helpers
 
         public static string[] randomVidIDs()
         {
-            var count = 50;
+            var count = 10;
             string[] vidIDs = new string[count];
             var API_KEY = "AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
             var q = RandomString(3);
