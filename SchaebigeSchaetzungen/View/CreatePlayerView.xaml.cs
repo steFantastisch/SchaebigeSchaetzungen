@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using SchaebigeSchaetzungen.Model;
+using SchaebigeSchaetzungen.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,7 @@ namespace SchaebigeSchaetzungen.View
             {
                 //TODO AVATAR
                 Player temp = new Player(this.tbName.Text, this.pbPassword.Password, this.tbMail.Text);
+                DBPlayer.Insert(temp);
                 MessageBox.Show("Sucess");
             }
             catch (Exception ex)

@@ -59,7 +59,6 @@ namespace SchaebigeSchaetzungen.ViewModel
             set { game = value; }
         }
 
-        public ICommand FinishCommand { get; }
         public ICommand CancelCommand { get; }
 
 
@@ -69,9 +68,7 @@ namespace SchaebigeSchaetzungen.ViewModel
 			//this.FinishCommand = new NavigateCommand(navigationStore, game, createGameModeSelectionViewModel);
             //TODO Avatar
             this.Game= game;
-            //this.Player=new Player();
-
-			//this.FinishCommand = new CreatePlayerCommand(game,this.Player);
+            this.Player=new Player();
             
             this.CancelCommand = new NavigateCommand(navigationStore, game, createUserCredentialViewModel);
         }

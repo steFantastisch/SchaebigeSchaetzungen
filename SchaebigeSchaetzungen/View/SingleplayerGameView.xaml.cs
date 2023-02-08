@@ -48,8 +48,8 @@ namespace SchaebigeSchaetzungen.View
 
         public async void Init()
         {
-            Model.Video video= new Model.Video();
-           await video.GetDetailsAsync(video.VideoID);
+            Model.Video video = new Model.Video();
+            await video.GetDetailsAsync(video.VideoID);
             webBrowser1.NavigateToString(video.Dispstr);
 
             viewCount=video.Views;
@@ -89,7 +89,7 @@ namespace SchaebigeSchaetzungen.View
                 HintComments.Visibility = Visibility.Collapsed;
 
                 CalcPoints Rechner = new CalcPoints();
-                ViewLabel.Content= Rechner.SingleplayerPts(guess,viewCount);
+                ViewLabel.Content= Rechner.SingleplayerPts(guess, viewCount);
 
                 HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
 
