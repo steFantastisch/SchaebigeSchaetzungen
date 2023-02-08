@@ -100,7 +100,7 @@ namespace SchaebigeSchaetzungen.Persistence
         //wofür??
         public static int GetLastInsertId(MySqlConnection con)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT LAST_INSERT_ID()", con);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM player ORDER BY PlayerID DESC LIMIT 1;", con);
             return Convert.ToInt32(cmd.ExecuteScalar());
         }
     }

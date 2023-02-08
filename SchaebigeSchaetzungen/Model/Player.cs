@@ -90,7 +90,7 @@ namespace SchaebigeSchaetzungen.Model
         {
             Password=password;
             Mail=mail;
-            DBPlayer.Read(this);
+           // DBPlayer.Read(this);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace SchaebigeSchaetzungen.Model
             Mail=mail;
             Name=name;
             //TODO Avatar ?
-            DBPlayer.Insert(this);
+            // DBPlayer.Insert(this);  liebr manuell immer sorgt sonst für verwirrung
         }
         public Player()
         {

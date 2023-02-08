@@ -55,7 +55,7 @@ namespace SchaebigeSchaetzungen.View
                 //TODO AVATAR
                 Player temp = new Player(this.tbName.Text, this.pbPassword.Password, this.tbMail.Text);
                 DBPlayer.Insert(temp);
-                MessageBox.Show("Sucess");
+                MessageBox.Show("Success");
             }
             catch (Exception ex)
             {
