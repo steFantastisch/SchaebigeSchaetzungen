@@ -62,7 +62,7 @@ namespace SchaebigeSchaetzungen.Model
             set { german = value; }
         }
 
-        private bool timmecode;
+        private bool timecode;
 
         public bool Timecode
         {
@@ -156,29 +156,6 @@ namespace SchaebigeSchaetzungen.Model
 
             }
             return views;
-        }
-
-        public static List<Video> GeneratePlaylist(Game game)
-        {
-            //TODO implement
-            List<Video> playlist = new List<Video>();
-
-            if (game.Gamemode == Gamemode.Singleplayer)
-            {
-                //load 10 random videos from the database which playerTwo already guessed
-                //playerOne will play against the old guessings from playerTwo
-            }
-
-            else
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    //Add random videos and save them in the database
-                }
-
-            }
-
-            return playlist;
         }
     }
 }

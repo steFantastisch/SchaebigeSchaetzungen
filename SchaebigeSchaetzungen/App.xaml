@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:SchaebigeSchaetzungen">
     <Application.Resources>
+        <!--
+        später für design
+        
         <Style TargetType="Button">
             <Setter Property="Padding" Value="10 5" />
         </Style>
@@ -12,6 +15,6 @@
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Helvetica"/>
             <Setter Property="FontSize" Value="18"/>
-        </Style>
+        </Style>-->
     </Application.Resources>
 </Application>
