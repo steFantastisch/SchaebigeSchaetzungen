@@ -12,23 +12,24 @@ namespace SchaebigeSchaetzungen.Persistence
     {
         public static void Insert(Player player)
         {
-            
+
             //String sql = $"Insert into Player (Name, Mail, Password, Avatar, Crowns) " +
             //    $"values ('{player.Name}', '{player.Mail}', '{player.Password}' , {player.Avatar.AvatarID}, 0)";
             //TEMP:
-            
-            String sql = $"Insert into Player (Name, Mail, Password, Crowns) " +
-                $"values ('{player.Name}', '{player.Mail}', '{player.Password}', 0)";
+
+
 
             MySqlConnection con = DBAccess.OpenDB();
-player.PlayerID = DBAccess.GetLastInsertId(con);
+             player.PlayerID = DBAccess.GetLastInsertId(con)+1;
+           
+             String sql = $"Insert into Player (PlayerID, Name, Mail, Password, Crowns) " +
+                $"values ('{player.PlayerID}','{player.Name}', '{player.Mail}', '{player.Password}', 0)";
+
             int ret = DBAccess.ExecuteNonQuery(sql, con);
-
-
             if (ret != 1)
                 throw new Exception("Insert failed!");
 
-            
+
             DBAccess.CloseDB(con);
         }
 
@@ -61,12 +62,12 @@ player.PlayerID = DBAccess.GetLastInsertId(con);
 
         public static void Update(Player player)
         {
-            String sql = 
+            String sql =
                 $"Update player set Name ='{player.Name}', password ='{player.Password}', Mail='{player.Mail}' where PlayerID = {player.PlayerID}";
 
             int anz = DBAccess.ExecuteNonQuery(sql);
 
-            if (anz != 1) 
+            if (anz != 1)
                 throw new Exception("Speichern fehlgeschlagen!");
         }
 

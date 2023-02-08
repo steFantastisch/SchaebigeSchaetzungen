@@ -97,7 +97,7 @@ namespace SchaebigeSchaetzungen.Persistence
             return cmd.ExecuteReader();
         }
 
-
+        //wofür??
         public static int GetLastInsertId(MySqlConnection con)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT LAST_INSERT_ID()", con);
