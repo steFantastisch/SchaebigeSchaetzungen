@@ -52,18 +52,11 @@ namespace SchaebigeSchaetzungen.View
            await video.GetDetailsAsync(video.VideoID);
             webBrowser1.NavigateToString(video.Dispstr);
 
-            ////consider taking the next line into the constructor due to potential performance loss
-            //VideoIDs= YoutubeRandom.randomVidIDs();
+            viewCount=video.Views;
+            likeCount=video.Likes;
+            commentCount=video.Comments;
+            language=video.Language;
 
-            //VideoInfo Video = new VideoInfo();
-            //await Video.GetDetailsAsync(VideoIDs[round]);
-            //viewCount=Video.viewCount;
-            //likeCount=Video.likeCount;
-            //commentCount=Video.commentCount;
-            //language=Video.language;
-
-            //YoutubeTab Helper = new YoutubeTab();
-            //webBrowser1.NavigateToString(Helper.Display(VideoIDs[round]));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
