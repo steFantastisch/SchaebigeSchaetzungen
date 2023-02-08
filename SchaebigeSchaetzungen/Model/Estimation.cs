@@ -64,17 +64,17 @@ namespace SchaebigeSchaetzungen.Model
 
 		public void Insert()
 		{
-			DBEstimation.Insert(this);
+			//DBEstimation.Insert(this);
 		}
 
 		public void Read()
 		{
-			DBEstimation.Read(this);
+			//DBEstimation.Read(this);
 		}
 
-		public static List<Estimation> ReadAll()
-		{
-			return DBEstimation.ReadAll();
-		}
+		//public static List<Estimation> ReadAll()
+		//{
+		//	return DBEstimation.ReadAll();
+		//}
 	}
 }

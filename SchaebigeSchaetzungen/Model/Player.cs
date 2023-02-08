@@ -81,17 +81,9 @@ namespace SchaebigeSchaetzungen.Model
 			this.Points += value;
 		}
 
-		public void MakeEstimation(Video video, int estimation)
-		{
-			//TODO implement in Game or Estimation class??
-			Estimation temp = new Estimation();
-			temp.Video = video;
-			temp.Difference = video.Views - estimation;
-		}
-
 		public void Insert()
 		{
-			DBPlayer.Insert(this);
+			//DBPlayer.Insert(this);
 		}
 
 	}

@@ -1,10 +1,17 @@
 ﻿using HtmlAgilityPack;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using SchaebigeSchaetzungen.Helpers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Runtime.Serialization.Json;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Documents;
 
 namespace SchaebigeSchaetzungen.Model
@@ -12,22 +19,27 @@ namespace SchaebigeSchaetzungen.Model
     public class Video
     {
         private static Random random = new Random();
+        private string videoID;
 
-
-        private int videoID;
-
-        public int VideoID
+        public string VideoID
         {
             get { return videoID; }
             set { videoID = value; }
         }
 
-        private string title;
+        private string language;
 
-        public string Title
+        public string Language
         {
-            get { return title; }
-            set { title = value; }
+            get { return language; }
+            set { language = value; }
+        }
+        private string dispstr;
+
+        public string Dispstr
+        {
+            get { return dispstr; }
+            set { dispstr = value; }
         }
 
         private string url;
@@ -36,6 +48,20 @@ namespace SchaebigeSchaetzungen.Model
         {
             get { return url; }
             set { url = value; }
+        }
+        private int comments;
+
+        public int Comments
+        {
+            get { return comments; }
+            set { comments = value; }
+        }
+        private int likes;
+
+        public int Likes
+        {
+            get { return likes; }
+            set { likes = value; }
         }
 
         private int views;
@@ -66,8 +92,8 @@ namespace SchaebigeSchaetzungen.Model
 
         public bool Timecode
         {
-            get { return timmecode; }
-            set { timmecode = value; }
+            get { return timecode; }
+            set { timecode = value; }
         }
 
         private Player creator;
@@ -86,16 +112,27 @@ namespace SchaebigeSchaetzungen.Model
         /// </summary>
         public Video()
         {
-            this.url = this.GenerateRandomVideo();
-            this.views = Video.GetCurrentViewsWithWebscraper(this.url);
+            this.videoID = randomVidID();
+            this.dispstr= Display(videoID);
+            //Getdetails klappt hier nicht rein wegen awaiten
+
         }
 
-        public Video(int videoID)
+        private Regex YouTubeURLIDRegex = new Regex(@"[?&]v=(?<v>[^&]+)");
+        private string Display(string url)
         {
-            this.videoID = videoID;
+            Match m = YouTubeURLIDRegex.Match("https://www.youtube.com/watch?v="+url);
+            String id = m.Groups["v"].Value;
+            string url1 = "http://www.youtube.com/embed/" + id;
+            string page =
+                 "<html>"
+                +"<head><meta http-equiv='X-UA-Compatible' content='IE=11' />"
+                + "<body>" + "\r\n"
+                + "<iframe src=\"" + url1 +  " \" width=\"770px\" height=\"350px\" frameborder=\"0\" allowfullscreen></iframe>"
+                + "</body></html>";
+            return page;
+
         }
-
-
         private static string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -103,59 +140,67 @@ namespace SchaebigeSchaetzungen.Model
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        private string GenerateRandomVideo()
+
+        private static string randomVidID()
         {
             var count = 1;
+            string vidID="";
             var API_KEY = "AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
             var q = RandomString(3);
-            var url = "https://www.googleapis.com/youtube/v3/search?key=" + API_KEY + "&maxResults=" + count + "&part=snippet&type=video&q=" + q;
+            var url = "https://www.googleapis.com/youtube/v3/search?key=" + API_KEY + "&maxResults="+count+"&part=snippet&type=video&q=" +q;
 
             using (WebClient wc = new WebClient())
             {
                 var json = wc.DownloadString(url);
                 dynamic jsonObject = JsonConvert.DeserializeObject(json);
-                string link = "";
-
+                int i = -1;
                 foreach (var line in jsonObject["items"])
                 {
-                    /*store id*/
-                    link = line["id"]["videoId"].ToString();
+                    i++;
+                     vidID=(string)(line["id"]["videoId"]);
                 }
-                return "https://www.youtube.com/watch?v=" + link;
+                return vidID;
             }
         }
-
-
         /// <summary>
-        /// Get the current views with a web scrapper
+        /// Get Details from the Video like LIKES, VIEWS, COMMENTS, and LANGUAGE 
         /// </summary>
-        /// <param name="url"></param>
+        /// <param name="id"> Video ID</param>
         /// <returns></returns>
-        private static int GetCurrentViewsWithWebscraper(string url)
+        public async Task GetDetailsAsync(string id)
         {
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument doc = web.Load(url);
-            string innerHtml = doc.DocumentNode.InnerHtml;
-
-            string start = "\"viewCount\":\"";
-            int indexStart = innerHtml.IndexOf(start) + start.Length;
-            int indexEnd = innerHtml.IndexOf("\",\"author\":\"");
-
-            return Convert.ToInt32(innerHtml.Substring(indexStart, indexEnd - indexStart));
-        }
-
-        private static int GetCurrentViewsWithApi(string url)
-        {
-            url = "https://youtube.googleapis.com/youtube/v3/videos?id=dQw4w9WgXcQ&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
-            int views;
-            using (WebClient wc = new WebClient())
+            string apiUrl = "https://youtube.googleapis.com/youtube/v3/videos?id="+ id +"&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
+            using (HttpClient client = new HttpClient())
             {
-                var json = wc.DownloadString(url);
-                var data = (JObject)JsonConvert.DeserializeObject(json);
-                views = Convert.ToInt32(data.SelectToken("items.[0].statistics.viewCount").Value<string>());
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
 
+                if (response.IsSuccessStatusCode)
+                {
+                    //JSON-Dokument aus GET auslesen
+                    string json = await response.Content.ReadAsStringAsync();
+
+                    // JSON-Dokument in einen Stream schreiben
+                    byte[] byteArray = Encoding.UTF8.GetBytes(json);
+                    using (MemoryStream stream = new MemoryStream(byteArray))
+                    {
+                        // Serialisierer und Klasse für das Deserialisieren vorbereiten
+                        DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(RootObject));
+                        RootObject rootObject = (RootObject)serializer.ReadObject(stream);
+
+                        //Daten auslesen
+                        this.views = rootObject.items[0].statistics.viewCount;
+                        this.comments = rootObject.items[0].statistics.commentCount;
+                        this.likes = rootObject.items[0].statistics.likeCount;
+                        this.language = rootObject.items[0].snippet.defaultAudioLanguage;
+                    }
+                }
+                else
+                {
+                    //TODO Handle HTTP ERROR
+                    // Console.WriteLine("Fehler beim Abrufen der API-Antwort: " + response.StatusCode);
+                }
+                return;
             }
-            return views;
         }
     }
 }

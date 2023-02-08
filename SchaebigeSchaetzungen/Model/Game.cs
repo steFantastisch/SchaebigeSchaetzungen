@@ -60,10 +60,7 @@ namespace SchaebigeSchaetzungen.Model
             this.PlayerOne = playerOne;
             this.PlayerTwo = playerTwo;
             this.Gamemode = gamemode;
-            this.Playlist = Video.GeneratePlaylist(this);
 
-            playerOne.Fishcard = true;
-            playerTwo.Fishcard = true;
 
             playerOne.Points = 0;
             playerTwo.Points = 0;
