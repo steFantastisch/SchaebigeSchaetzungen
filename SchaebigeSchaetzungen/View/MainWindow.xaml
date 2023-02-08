@@ -3,23 +3,38 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SchaebigeSchaetzungen"
+        xmlns:local="clr-namespace:SchaebigeSchaetzungen" 
+        xmlns:view="clr-namespace:SchaebigeSchaetzungen.View"
+        xmlns:vms="clr-namespace:SchaebigeSchaetzungen.ViewModel"
         mc:Ignorable="d"
-<<<<<<< HEAD
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
-    <Grid>
-        <!--<views:Registration DataContext="{Binding CurrentViewModels}" />-->
-=======
-        Title="Schäbige Schätzungen" Height="450" Width="800">
-    <Window.DataContext>
-        <local:MainWindowViewModel />
-    </Window.DataContext>
-    <Grid>
-        <Button Content="Play" HorizontalAlignment="Left" Margin="489,313,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="34" Margin="129,173,0,0" TextWrapping="Wrap" Text="{Binding Spielername}" VerticalAlignment="Top" Width="121" TextChanged="TextBox_TextChanged"/>
-        <Button Content="Highscore" HorizontalAlignment="Left" Margin="318,313,0,0" VerticalAlignment="Top"/>
-        <Button Content="Account" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="190,313,0,0"/>
-
->>>>>>> parent of f11d1df (Neue Start Up logik und MainViewModel + Mainwindow angelegt)
+        Title="Schaebige Schaetzungen" Height="472" Width="803">
+    <Grid Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:LoginPlayerOneViewModel}">
+                <view:LoginPlayerOneView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:LoginPlayerTwoViewModel}">
+                <view:LoginPlayerTwoView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:GameModeSelectionViewModel}">
+                <view:GameModeSelectionView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:CreateViewModel}">
+                <view:CreatePlayerView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:SingleplayerGameViewModel}">
+                <view:SingleplayerGameView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:MultiplayerGameViewModel}">
+                <view:MultiplayerGameView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:GameEndViewModel}">
+                <view:GameEndView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:HighscoreViewModel}">
+                <view:HighscoreView/>
+            </DataTemplate>
+        </Grid.Resources>
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

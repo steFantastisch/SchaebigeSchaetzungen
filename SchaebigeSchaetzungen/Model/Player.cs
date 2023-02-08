@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchaebigeSchaetzungen.Persistence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,19 +52,47 @@ namespace SchaebigeSchaetzungen.Model
 		}
 
 
-		/*
-		TODO
-		Datatype maybe incorrect
-		Find something which can be converted from ab blob
-		 */
-		private BitmapImage image;
+		private Avatar image;
 
-		public BitmapImage Image
-        {
+		public Avatar Avatar
+		{
 			get { return image; }
 			set { image = value; }
 		}
 
+		private bool fishcard;
+
+		public bool Fishcard
+		{
+			get { return fishcard; }
+			set { fishcard = value; }
+		}
+
+		private int points;
+
+		public int Points
+		{
+			get { return points; }
+			set { points = value; }
+		}
+
+		public void AddPoints(int value)
+		{
+			this.Points += value;
+		}
+
+		public void MakeEstimation(Video video, int estimation)
+		{
+			//TODO implement in Game or Estimation class??
+			Estimation temp = new Estimation();
+			temp.Video = video;
+			temp.Difference = video.Views - estimation;
+		}
+
+		public void Insert()
+		{
+			DBPlayer.Insert(this);
+		}
 
 	}
 }

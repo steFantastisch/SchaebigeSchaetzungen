@@ -1,19 +1,17 @@
-﻿using SchaebigeSchaetzungen.Model;
+﻿using Microsoft.Win32;
+using SchaebigeSchaetzungen.Model;
 using SchaebigeSchaetzungen.Persistence;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
+using System.Drawing;
+using MySql.Data.MySqlClient;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media;
+using System.Drawing.Imaging;
+using System.Linq;
+using SchaebigeSchaetzungen.View;
 
 namespace SchaebigeSchaetzungen
 {
@@ -26,17 +24,8 @@ namespace SchaebigeSchaetzungen
         {
 
             InitializeComponent();
-           
+
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            List<Player> temp = DBPlayer.ReadAll();
-        }
     }
 }

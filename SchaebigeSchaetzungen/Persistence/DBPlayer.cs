@@ -10,33 +10,36 @@ namespace SchaebigeSchaetzungen.Persistence
 {
     public class DBPlayer
     {
-        private static void GetDataFromReader(MySqlDataReader rdr, Player p)
+        public static void Insert(Player player)
         {
-            p.PlayerID = rdr.GetInt32("PlayerID");
-            p.Name = rdr.GetString("Name");
-            p.Password = rdr.GetString("Password");
-            p.Mail = rdr.GetString("Mail");
-            p.Crowns = rdr.GetInt32("Crowns");
+            String sql = $"Insert into Player (Name, Mail, Password, Avatar, Crowns) " +
+                $"values ('{player.Name}', '{player.Mail}', '{player.Password}' , {player.Avatar.AvatarID}, 0)";
 
-            /*
-             *  TODO
-             *  Load avatar 
-             *  var test = rdr.GetOrdinal("Avatar");
-             */
+            MySqlConnection con = DBAccess.OpenDB();
+
+            int ret = DBAccess.ExecuteNonQuery(sql, con);
+
+
+            if (ret != 1)
+                throw new Exception("Insert failed!");
+
+            player.PlayerID = DBAccess.GetLastInsertId(con);
+            DBAccess.CloseDB(con);
         }
 
-        public static void Read(Player p)
+        public static Player Read(Player p)
         {
             MySqlConnection con = DBAccess.OpenDB();
 
-            string sql = $"SELECT * FROM Player WHERE PlayerID = '{p.PlayerID}'";
+            //string sql = $"SELECT * FROM Player WHERE PlayerID = '{p.PlayerID}'";
+            string sql = $"SELECT * FROM Player WHERE Mail = '{p.Mail}' AND Password = '{p.Password}'";
             MySqlDataReader rd = DBAccess.ExecuteReader(sql, con);
 
             try
             {
                 while (rd.Read())
                 {
-                    GetDataFromReader(rd, p);
+                    p= GetDataFromReader(rd, p);
                 }
             }
             catch (Exception)
@@ -48,9 +51,26 @@ namespace SchaebigeSchaetzungen.Persistence
                 rd.Close();
                 DBAccess.CloseDB(con);
             }
+            return p;
         }
 
+        public static void Update(Player player)
+        {
+            String sql = 
+                $"Update player set Name ='{player.Name}', password ='{player.Password}', Mail='{player.Mail}' where PlayerID = {player.PlayerID}";
 
+            int anz = DBAccess.ExecuteNonQuery(sql);
+
+            if (anz != 1) 
+                throw new Exception("Speichern fehlgeschlagen!");
+        }
+
+        public static void Delete(Player player)
+        {
+            /*
+             * Probably not to implement
+            */
+        }
 
         public static List<Player> ReadAll()
         {
@@ -81,5 +101,15 @@ namespace SchaebigeSchaetzungen.Persistence
             }
         }
 
+        private static Player GetDataFromReader(MySqlDataReader rdr, Player p)
+        {
+            p.PlayerID = rdr.GetInt32("PlayerID");
+            p.Name = rdr.GetString("Name");
+            p.Password = rdr.GetString("Password");
+            p.Mail = rdr.GetString("Mail");
+            p.Crowns = rdr.GetInt32("Crowns");
+            p.Avatar = new Avatar(rdr.GetInt32("Avatar"));
+            return p;
+        }
     }
 }
