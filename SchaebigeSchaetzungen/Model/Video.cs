@@ -192,6 +192,7 @@ namespace SchaebigeSchaetzungen.Model
                         this.comments = rootObject.items[0].statistics.commentCount;
                         this.likes = rootObject.items[0].statistics.likeCount;
                         this.language = rootObject.items[0].snippet.defaultAudioLanguage;
+                        if (this.language=="de") { this.german=true; }
                     }
                 }
                 else
