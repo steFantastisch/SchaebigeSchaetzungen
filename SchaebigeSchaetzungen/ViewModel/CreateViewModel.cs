@@ -12,20 +12,13 @@ namespace SchaebigeSchaetzungen.ViewModel
 {
     public class CreateViewModel : ViewModelBase
     {
-        private Player player;
-
-        public Player Player
-        {
-            get { return player; }
-            set { player = value; }
-        }
         private string name;
 
 		public string Name
 		{
 			get { return name; }
 			set { name = value;
-                this.Player.Name=Name;
+              //  this.Player.Name=Name;
                 OnPropertyChanged(nameof(Name));
             }
 		}
@@ -36,7 +29,7 @@ namespace SchaebigeSchaetzungen.ViewModel
 		{
 			get { return mail; }
 			set { mail = value;
-				this.Player.Mail=mail;
+				//this.Player.Mail=mail;
                 OnPropertyChanged(nameof(Mail));
             }
 		}
@@ -47,7 +40,7 @@ namespace SchaebigeSchaetzungen.ViewModel
 		{
 			get { return password; }
 			set { password = value;
-                this.Player.Password=Password;
+               // this.Player.Password=Password;
                 OnPropertyChanged(nameof(Password));
             }
 		}
@@ -67,9 +60,7 @@ namespace SchaebigeSchaetzungen.ViewModel
             
 			//this.FinishCommand = new NavigateCommand(navigationStore, game, createGameModeSelectionViewModel);
             //TODO Avatar
-            this.Game= game;
-            this.Player=new Player();
-            
+            this.Game= game;       
             this.CancelCommand = new NavigateCommand(navigationStore, game, createUserCredentialViewModel);
         }
     }
