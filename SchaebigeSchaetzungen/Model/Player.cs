@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using System.Windows.Xps;
 
 namespace SchaebigeSchaetzungen.Model
 {
@@ -77,10 +78,8 @@ namespace SchaebigeSchaetzungen.Model
             set { points = value; }
         }
 
-        public void AddPoints(int value)
-        {
-            this.Points += value;
-        }
+       
+
         /// <summary>
         /// LOGIN
         /// </summary>
