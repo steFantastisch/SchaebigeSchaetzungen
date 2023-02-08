@@ -144,7 +144,7 @@ namespace SchaebigeSchaetzungen.Model
         private static string randomVidID()
         {
             var count = 1;
-            string vidID="";
+            string vidID = "";
             var API_KEY = "AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
             var q = RandomString(3);
             var url = "https://www.googleapis.com/youtube/v3/search?key=" + API_KEY + "&maxResults="+count+"&part=snippet&type=video&q=" +q;
@@ -157,7 +157,7 @@ namespace SchaebigeSchaetzungen.Model
                 foreach (var line in jsonObject["items"])
                 {
                     i++;
-                     vidID=(string)(line["id"]["videoId"]);
+                    vidID=(string)(line["id"]["videoId"]);
                 }
                 return vidID;
             }
@@ -202,5 +202,31 @@ namespace SchaebigeSchaetzungen.Model
                 return;
             }
         }
+    }
+    public class Item
+    {
+        public Snippet snippet { get; set; }
+        public Statistics statistics { get; set; }
+    }
+
+    public class RootObject
+    {
+        public List<Item> items { get; set; }
+    }
+
+    public class Snippet
+    {
+        public string publishedAt { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
+        public string defaultAudioLanguage { get; set; }
+    }
+
+    public class Statistics
+    {
+        public int viewCount { get; set; }
+        public int likeCount { get; set; }
+        public int commentCount { get; set; }
+
     }
 }
