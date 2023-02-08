@@ -64,13 +64,15 @@ namespace SchaebigeSchaetzungen.ViewModel
             {
                 this.Game.PlayerOne = new Player();
                 //TODO Delete following Line
-                game.PlayerOne.Mail = "Stefan@wolfi.de";
+                game.PlayerOne.Mail = Username;
+                game.PlayerOne.Password=Password;
                 game.PlayerOne.Name = "tempname1";
             }
 
 
             this.CreateCommand = new NavigateCommand(navigationStore, Game, createCreateViewModel);
-            this.LoginCommand = new NavigateCommand(navigationStore, Game, createGameModeSelectionViewModel);
+            this.LoginCommand= new LoginCheckCommand(navigationStore, Game, createGameModeSelectionViewModel, game.PlayerOne);
+            //this.LoginCommand = new NavigateCommand(navigationStore, Game, createGameModeSelectionViewModel);
             
         }
     }

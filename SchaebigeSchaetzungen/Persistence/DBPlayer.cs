@@ -114,7 +114,7 @@ namespace SchaebigeSchaetzungen.Persistence
             p.Password = rdr.GetString("Password");
             p.Mail = rdr.GetString("Mail");
             p.Crowns = rdr.GetInt32("Crowns");
-            p.Avatar = new Avatar(rdr.GetInt32("Avatar"));
+           // p.Avatar = new Avatar(rdr.GetInt32("Avatar"));
             return p;
         }
     }
