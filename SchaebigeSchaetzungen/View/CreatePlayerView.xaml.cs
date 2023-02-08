@@ -49,25 +49,17 @@ namespace SchaebigeSchaetzungen.View
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    Player temp = new Player()
-            //    {
-            //        Name = this.tbName.Text,
-            //        Mail = this.tbMail.Text,
-            //        Password = this.pbPassword.Password,
-            //        Avatar = this._avatar
-            //    };
-            //    temp.Insert();
-            //    this.DialogResult = true;
-            //    this.Close();
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //    //empty textboxes and delete last avatar if not null
-            //}
+            try
+            {
+                //TODO AVATAR
+                Player temp = new Player(this.tbName.Text, this.pbPassword.Password, this.tbMail.Text);
+                MessageBox.Show("Sucess");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //empty textboxes and delete last avatar if not null
+            }
 
         }
     }

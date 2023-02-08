@@ -11,80 +11,106 @@ namespace SchaebigeSchaetzungen.Model
 
     public class Player
     {
-		private int playerID;
+        private int playerID;
 
-		public int PlayerID
-		{
-			get { return playerID; }
-			set { playerID = value; }
-		}
+        public int PlayerID
+        {
+            get { return playerID; }
+            set { playerID = value; }
+        }
 
-		private string name;
+        private string name;
 
-		public string Name
-		{
-			get { return name; }
-			set { name = value; }
-		}
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
 
-		private string password;
+        private string password;
 
-		public string Password
-		{
-			get { return password; }
-			set { password = value; }
-		}
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
 
-		private string mail;
+        private string mail;
 
-		public string Mail
-		{
-			get { return mail; }
-			set { mail = value; }
-		}
+        public string Mail
+        {
+            get { return mail; }
+            set { mail = value; }
+        }
 
-		private int crowns;
+        private int crowns;
 
-		public int Crowns
-		{
-			get { return crowns; }
-			set { crowns = value; }
-		}
+        public int Crowns
+        {
+            get { return crowns; }
+            set { crowns = value; }
+        }
 
 
-		private Avatar image;
+        private Avatar image;
 
-		public Avatar Avatar
-		{
-			get { return image; }
-			set { image = value; }
-		}
+        public Avatar Avatar
+        {
+            get { return image; }
+            set { image = value; }
+        }
 
-		private bool fishcard;
+        private bool fishcard;
 
-		public bool Fishcard
-		{
-			get { return fishcard; }
-			set { fishcard = value; }
-		}
+        public bool Fishcard
+        {
+            get { return fishcard; }
+            set { fishcard = value; }
+        }
 
-		private int points;
+        private int points;
 
-		public int Points
-		{
-			get { return points; }
-			set { points = value; }
-		}
 
-		public void AddPoints(int value)
-		{
-			this.Points += value;
-		}
+        public int Points
+        {
+            get { return points; }
+            set { points = value; }
+        }
 
-		public void Insert()
-		{
-			//DBPlayer.Insert(this);
-		}
+        public void AddPoints(int value)
+        {
+            this.Points += value;
+        }
+        /// <summary>
+        /// LOGIN
+        /// </summary>
+        /// <param name="password"></param>
+        /// <param name="mail"></param>
+        public Player(string password, string mail)
+        {
+            Password=password;
+            Mail=mail;
+            DBPlayer.Read(this);
+        }
 
-	}
+        /// <summary>
+        /// SIGN UP
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        /// <param name="mail"></param>
+        public Player(string name ,string password, string mail)
+        {
+            Password=password;
+            Mail=mail;
+            Name=name;
+            //TODO Avatar ?
+            DBPlayer.Insert(this);
+        }
+        public Player()
+        {
+           //TEMP
+        }
+
+    }
 }

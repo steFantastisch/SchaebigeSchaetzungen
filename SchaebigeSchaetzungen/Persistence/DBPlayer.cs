@@ -12,8 +12,11 @@ namespace SchaebigeSchaetzungen.Persistence
     {
         public static void Insert(Player player)
         {
-            String sql = $"Insert into Player (Name, Mail, Password, Avatar, Crowns) " +
-                $"values ('{player.Name}', '{player.Mail}', '{player.Password}' , {player.Avatar.AvatarID}, 0)";
+            //String sql = $"Insert into Player (Name, Mail, Password, Avatar, Crowns) " +
+            //    $"values ('{player.Name}', '{player.Mail}', '{player.Password}' , {player.Avatar.AvatarID}, 0)";
+            //TEMP:
+            String sql = $"Insert into Player (Name, Mail, Password, Crowns) " +
+                $"values ('{player.Name}', '{player.Mail}', '{player.Password}', 0)";
 
             MySqlConnection con = DBAccess.OpenDB();
 
