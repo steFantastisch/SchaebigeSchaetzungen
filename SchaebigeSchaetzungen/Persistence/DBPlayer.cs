@@ -43,10 +43,8 @@ namespace SchaebigeSchaetzungen.Persistence
 
             try
             {
-                while (rd.Read())
-                {
-                    p= GetDataFromReader(rd, p);
-                }
+                while (rd.Read()) {  p= GetDataFromReader(rd, p);  }
+                p= GetDataFromReader(rd, p);
             }
             catch (Exception)
             {
