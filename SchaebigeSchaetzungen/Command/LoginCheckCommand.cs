@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SchaebigeSchaetzungen.Command
 {
@@ -14,7 +15,7 @@ namespace SchaebigeSchaetzungen.Command
     {
         private readonly NavigationStore navigationStore;
         private readonly Func<ViewModelBase> createViewModel;
-        private  Game game;
+        private Game game;
         Player player;
 
         public LoginCheckCommand(NavigationStore navigationStore, Game game, Func<ViewModelBase> createViewModel, Player p)
@@ -22,13 +23,21 @@ namespace SchaebigeSchaetzungen.Command
             this.navigationStore = navigationStore;
             this.createViewModel = createViewModel;
             this.game = game;
-            this.player = p;   
+            this.player = p;
 
         }
 
         public override void Execute(object parameter)
         {
-            game.PlayerOne=DBPlayer.Read(player);
+            try
+            {
+                game.PlayerOne=DBPlayer.Read(player);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Player not found!  ");
+            }
+
             navigationStore.CurrentViewModel = createViewModel();
         }
     }

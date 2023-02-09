@@ -66,7 +66,7 @@ namespace SchaebigeSchaetzungen.ViewModel
                 //TODO Delete following Line
                 game.PlayerOne.Mail = Username;
                 game.PlayerOne.Password=Password;
-                game.PlayerOne.Name = "tempname1";
+                //game.PlayerOne.Name = "tempname1";
             }
 
 
