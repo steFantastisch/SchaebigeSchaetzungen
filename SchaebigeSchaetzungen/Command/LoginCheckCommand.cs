@@ -32,13 +32,13 @@ namespace SchaebigeSchaetzungen.Command
             try
             {
                 game.PlayerOne=DBPlayer.Read(player);
+                navigationStore.CurrentViewModel = createViewModel();
             }
             catch (Exception)
             {
                 MessageBox.Show("Player not found!  ");
             }
 
-            navigationStore.CurrentViewModel = createViewModel();
         }
     }
 }

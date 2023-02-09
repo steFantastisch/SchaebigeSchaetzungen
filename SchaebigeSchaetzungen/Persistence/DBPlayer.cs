@@ -43,12 +43,20 @@ namespace SchaebigeSchaetzungen.Persistence
 
             try
             {
-                while (rd.Read()) {  p= GetDataFromReader(rd, p);  }
-                p= GetDataFromReader(rd, p);
+
+                if (rd.Read())
+                {
+                    p = GetDataFromReader(rd, p);
+                }
+                else
+                {
+                    throw new Exception("Kein Spieler gefunden.");
+                }
+
             }
             catch (Exception)
             {
-                throw new Exception("Kein Player gefunden!");
+                throw new Exception("Eintragen in die Datenbank hat nicht funktioniert");
             }
             finally
             {
