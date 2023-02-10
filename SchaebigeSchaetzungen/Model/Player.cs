@@ -62,7 +62,6 @@ namespace SchaebigeSchaetzungen.Model
         }
 
         private bool fishcard;
-
         public bool Fishcard
         {
             get { return fishcard; }
@@ -70,15 +69,20 @@ namespace SchaebigeSchaetzungen.Model
         }
 
         private int points;
-
-
         public int Points
         {
             get { return points; }
             set { points = value; }
         }
 
-       
+        private int guess;
+        public int Guess
+        {
+            get { return guess; }
+            set { guess = value; }
+        }
+
+
 
         /// <summary>
         /// LOGIN

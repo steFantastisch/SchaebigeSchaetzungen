@@ -19,7 +19,8 @@ using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Net;
 using Amazon.DynamoDBv2.Model.Internal.MarshallTransformations;
-using SchaebigeSchaetzungen.Helpers;
+using SchaebigeSchaetzungen.Command;
+using SchaebigeSchaetzungen.ViewModel;
 
 namespace SchaebigeSchaetzungen.View
 {
@@ -37,6 +38,7 @@ namespace SchaebigeSchaetzungen.View
         int round;
         string[] VideoIDs;
         int guess;
+        
 
         public SingleplayerGameView()
         {
@@ -88,8 +90,10 @@ namespace SchaebigeSchaetzungen.View
                 HintLikes.Visibility = Visibility.Collapsed;
                 HintComments.Visibility = Visibility.Collapsed;
 
-                CalcPointsCommand Rechner = new CalcPointsCommand();
-                ViewLabel.Content= Rechner.SingleplayerPts(guess, viewCount);
+               
+                //Binding{ ViewModel.SingleplayerGameViewModel }
+                //CalcPointsCommand Rechner = new CalcPointsCommand();+ pts + " Punkte"
+                ViewLabel.Content=  ">>> Views: " + viewCount.ToString() + " <<<    --> " ;
 
                 HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
 

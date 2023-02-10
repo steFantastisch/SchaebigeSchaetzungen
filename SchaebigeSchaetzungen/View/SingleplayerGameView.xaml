@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SchaebigeSchaetzungen.View"
+              xmlns:test="clr-namespace:SchaebigeSchaetzungen.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -22,8 +23,8 @@
 
 
         <Label x:Name="GuessLabel" Content="Your Guess" Grid.Row="1" Grid.Column="0"/>
-        <TextBox x:Name="TextBox1" Margin="0,5,0,10" Grid.Row="1" Grid.Column="1"/>
-        <Button x:Name="SubmitBtn" Content="Submit" Grid.Column="2" Width="80" Grid.Row="1" Margin="10,5,10,10"  Click="Button_Click"  />
+        <TextBox x:Name="TextBox1"  Margin="0,5,0,10" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="SubmitBtn" Command="{Binding CalculatePts}" Content="Submit" Grid.Column="2" Width="80" Grid.Row="1" Margin="10,5,10,10"  Click="Button_Click"  />
         <Button x:Name="ResultBtn" Command="{Binding GameEndCommand}" Content="Results" Grid.Column="2" Width="80" Grid.Row="1" Margin="10,5,10,10"  Click="Button_Click" Visibility="Collapsed"  />
         <Label x:Name="HintLabel" Content="Hints" HorizontalAlignment="Right" Margin="0,0,25,10" Grid.Row="1" Grid.Column="3" />
         <CheckBox x:Name="HintCheckBox"  Margin="0,5,10,0" HorizontalAlignment="Right"  VerticalAlignment="Top" Grid.Row="1" Grid.Column="3" Unchecked="HintCheckBox_Unchecked" Checked="HintCheckBox_Checked"   />

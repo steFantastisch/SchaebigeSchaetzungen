@@ -1,5 +1,4 @@
-﻿using SchaebigeSchaetzungen.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -144,8 +143,8 @@ namespace SchaebigeSchaetzungen.View
             HintLabel.Content= " Du lagst " +Math.Abs(viewCount - PlayerOneguess)+ " von der richtigen Lösung weg!\nDu lagst" +Math.Abs(viewCount - PlayerTwoguess)+ " von der richtigen Lösung weg!";
             LanguageLabel.Content="Language: "+language;
             LanguageLabel.Visibility = Visibility.Visible;
-            CalcPointsCommand Rechner = new CalcPointsCommand();
-            ViewLabel.Content= Rechner.MultiplayerPtns(PlayerOneguess, PlayerTwoguess, viewCount);
+            //CalcPointsCommand Rechner = new CalcPointsCommand();
+           // ViewLabel.Content= Rechner.MultiplayerPtns(PlayerOneguess, PlayerTwoguess, viewCount);
             ViewLabel.Visibility = Visibility.Visible;
 
             P1Submit.Visibility= Visibility.Collapsed;

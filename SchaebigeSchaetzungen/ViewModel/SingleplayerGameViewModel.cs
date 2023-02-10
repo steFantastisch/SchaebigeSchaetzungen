@@ -12,6 +12,20 @@ namespace SchaebigeSchaetzungen.ViewModel
 {
     public class SingleplayerGameViewModel : ViewModelBase
     {
+        private int guess;
+        public int Guess
+        {
+            get
+            {
+                //VIelleicht hier ein cast von int nach string
+                return guess;
+            }
+            set
+            {
+                guess = value;
+                //OnPropertyChanged(nameof(Guess));
+            }
+        }
         private Game game;
 
         public Game Game
@@ -23,7 +37,7 @@ namespace SchaebigeSchaetzungen.ViewModel
 
 
         public ICommand GameEndCommand { get; }
-      
+        public ICommand CalculatePts { get; }
 
         public SingleplayerGameViewModel(
             NavigationStore navigationStore,
@@ -31,8 +45,9 @@ namespace SchaebigeSchaetzungen.ViewModel
             Func<GameEndViewModel> createGameEndViewModel)
         {
             this.Game = game;
+            game.PlayerOne.Guess=Guess;
             this.GameEndCommand = new NavigateCommand(navigationStore, game, createGameEndViewModel);
-      
+            this.CalculatePts = new CalcPointsCommand(game);
         }
     }
 }

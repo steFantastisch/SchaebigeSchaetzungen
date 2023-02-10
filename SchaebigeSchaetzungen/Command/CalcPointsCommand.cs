@@ -15,25 +15,20 @@ namespace SchaebigeSchaetzungen.Command
         private Game game;
         int P1guess;
         int P2guess;
-            
-       
 
-        public CalcPointsCommand( Game game, int p1, int p2)
-        {
-            
-            this.game = game;
-            this.P1guess = p1;
-            this.P2guess = p2; 
 
-        }
 
-        public CalcPointsCommand(Game game, int p1)
+        public CalcPointsCommand(Game game)
         {
 
             this.game = game;
-            this.P1guess = p1;
-
+            this.P1guess = game.PlayerOne.Guess;
+            if (game.PlayerTwo!=null)
+            {
+                this.P2guess = game.PlayerTwo.Guess;
+            }
         }
+
         public string SingleplayerPts(int Playerguess, int Views)
         {
             int pts = 1;
@@ -51,8 +46,8 @@ namespace SchaebigeSchaetzungen.Command
 
         public override void Execute(object parameter)
         {
-            
-            throw new NotImplementedException();
+            return;
+           
         }
     }
 }
