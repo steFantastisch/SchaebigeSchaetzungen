@@ -93,7 +93,7 @@ namespace SchaebigeSchaetzungen.View
                
                 //Binding{ ViewModel.SingleplayerGameViewModel }
                 //CalcPointsCommand Rechner = new CalcPointsCommand();+ pts + " Punkte"
-                ViewLabel.Content=  ">>> Views: " + viewCount.ToString() + " <<<    --> " ;
+                ViewLabel.Content=  ">>> Views: " + viewCount.ToString() + " <<<   --> ???? Punkte";
 
                 HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
 
