@@ -88,7 +88,7 @@ namespace SchaebigeSchaetzungen.View
                 HintLikes.Visibility = Visibility.Collapsed;
                 HintComments.Visibility = Visibility.Collapsed;
 
-                CalcPoints Rechner = new CalcPoints();
+                CalcPointsCommand Rechner = new CalcPointsCommand();
                 ViewLabel.Content= Rechner.SingleplayerPts(guess, viewCount);
 
                 HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
