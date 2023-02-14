@@ -75,6 +75,13 @@ namespace SchaebigeSchaetzungen.Model
             set { points = value; }
         }
 
+        private int endpoints;
+        public int EndPoints
+        {
+            get { return endpoints; }
+            set { endpoints = value; }
+        }
+
         private int guess;
         public int Guess
         {

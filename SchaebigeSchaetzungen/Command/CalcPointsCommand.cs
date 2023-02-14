@@ -46,8 +46,15 @@ namespace SchaebigeSchaetzungen.Command
 
         public override void Execute(object parameter)
         {
-            return;
-           
+            if (game.PlayerTwo!=null)
+            {
+                //MultiplayerPtns();
+            }
+            else
+            {
+              // SingleplayerPts();
+            }
+
         }
     }
 }
