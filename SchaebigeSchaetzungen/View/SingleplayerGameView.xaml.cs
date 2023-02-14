@@ -50,6 +50,7 @@ namespace SchaebigeSchaetzungen.View
 
         public async void Init()
         {
+            TextBox1.Text="";
             Model.Video video = new Model.Video();
             await video.GetDetailsAsync(video.VideoID);
             webBrowser1.NavigateToString(video.Dispstr);
@@ -59,7 +60,7 @@ namespace SchaebigeSchaetzungen.View
             commentCount=video.Comments;
             language=video.Language;
             //game.PlayerOne.guess =1;
-            TextBox1.Text="";
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
