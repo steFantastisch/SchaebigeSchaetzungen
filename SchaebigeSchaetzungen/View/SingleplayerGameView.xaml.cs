@@ -93,8 +93,8 @@ namespace SchaebigeSchaetzungen.View
 
                
                
-                ViewLabel.Text= viewCount.ToString();
-                BindingExpression binding = ViewLabel.GetBindingExpression(TextBox.TextProperty);
+                ViewTextBox.Text= viewCount.ToString();
+                BindingExpression binding = ViewTextBox.GetBindingExpression(TextBox.TextProperty);
                 binding.UpdateSource();
 
                 HintLabel.Content= "";
@@ -102,7 +102,7 @@ namespace SchaebigeSchaetzungen.View
                // HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
 
 
-                ViewLabel.Visibility = Visibility.Visible;
+                ViewTextBox.Visibility = Visibility.Visible;
                 LanguageLabel.Content="Language: "+language;
                 LanguageLabel.Visibility = Visibility.Visible;
                 return;
@@ -124,7 +124,7 @@ namespace SchaebigeSchaetzungen.View
                 }
 
                 HintLabel.Content= "Hints";
-                ViewLabel.Visibility = Visibility.Collapsed;
+                ViewTextBox.Visibility = Visibility.Collapsed;
                 LanguageLabel.Visibility = Visibility.Collapsed;
                 SubmitBtn.Content="Submit";
                 TextBox1.Text="";
