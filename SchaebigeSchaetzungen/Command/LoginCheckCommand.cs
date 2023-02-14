@@ -29,14 +29,30 @@ namespace SchaebigeSchaetzungen.Command
 
         public override void Execute(object parameter)
         {
-            try
+            if (game.PlayerTwo!=null)
             {
-                game.PlayerOne=DBPlayer.Read(player);
-                navigationStore.CurrentViewModel = createViewModel();
+                try
+                {
+                    game.PlayerTwo=DBPlayer.Read(player);
+                    navigationStore.CurrentViewModel = createViewModel();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Player not found!  ");
+                }
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("Player not found!  ");
+                try
+                {
+                    game.PlayerOne=DBPlayer.Read(player);
+                    navigationStore.CurrentViewModel = createViewModel();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Player not found!  ");
+                }
+
             }
 
         }

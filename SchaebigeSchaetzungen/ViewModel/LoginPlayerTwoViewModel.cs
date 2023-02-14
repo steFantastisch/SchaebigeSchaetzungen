@@ -23,9 +23,11 @@ namespace SchaebigeSchaetzungen.ViewModel
                 game.PlayerTwo.Mail = Username;
                 game.PlayerTwo.Name = Password;
                 //TODO DELETE FOLLOWING LINEs
+                game.PlayerTwo.Mail = "testuuu";
+                game.PlayerTwo.Password = "1234";
 
             }
-            this.StartCommand = new NavigateCommand(navigationStore, Game, createMultiplayerGameViewModel);
+            this.StartCommand = new LoginCheckCommand(navigationStore, Game, createMultiplayerGameViewModel, game.PlayerTwo);
         }
         private string username;
         private string password;
@@ -56,13 +58,7 @@ namespace SchaebigeSchaetzungen.ViewModel
             }
         }
 
-        private Player playerTwo;
-
-        public Player PlayerTwo
-        {
-            get { return playerTwo; }
-            set { playerTwo = value; }
-        }
+        
         private Game game;
 
         public Game Game
