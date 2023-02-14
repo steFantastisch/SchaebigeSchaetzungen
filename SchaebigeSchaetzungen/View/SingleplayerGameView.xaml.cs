@@ -46,7 +46,7 @@ namespace SchaebigeSchaetzungen.View
             round=0;
             InitializeComponent();
             Init();
-            TextBox1.Text="";
+            
         }
 
         public async void Init()

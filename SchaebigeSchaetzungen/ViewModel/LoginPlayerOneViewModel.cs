@@ -63,10 +63,12 @@ namespace SchaebigeSchaetzungen.ViewModel
             if (this.Game.PlayerOne == null)
             {
                 this.Game.PlayerOne = new Player();
-                //TODO Delete following Line
+                
                 game.PlayerOne.Mail = Username;
                 game.PlayerOne.Password=Password;
-                //game.PlayerOne.Name = "tempname1";
+                //TODO delete the following lines for no prefilled pw and mail
+                game.PlayerOne.Mail = "webde";
+                game.PlayerOne.Password = "1234";
             }
 
 

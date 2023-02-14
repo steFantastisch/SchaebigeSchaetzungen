@@ -19,9 +19,11 @@ namespace SchaebigeSchaetzungen.ViewModel
             if (this.Game.PlayerTwo == null)
             {
                 this.Game.PlayerTwo = new Player();
-                //TODO DELETE FOLLOWING LINE
-                Game.PlayerTwo.Mail = "Simon@Stenzel.de";
-                game.PlayerTwo.Name = "tempname2";
+
+                game.PlayerTwo.Mail = Username;
+                game.PlayerTwo.Name = Password;
+                //TODO DELETE FOLLOWING LINEs
+
             }
             this.StartCommand = new NavigateCommand(navigationStore, Game, createMultiplayerGameViewModel);
         }
@@ -37,7 +39,6 @@ namespace SchaebigeSchaetzungen.ViewModel
             set
             {
                 username = value;
-               this.Game.PlayerTwo.Name = username;
                 OnPropertyChanged(nameof(Username));
             }
         }
