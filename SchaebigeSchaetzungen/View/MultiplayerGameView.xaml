@@ -40,13 +40,14 @@
         <Label x:Name="HintComments" Content="" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="1" Grid.Column="3" Visibility="Collapsed" />
 
         <Label x:Name="LanguageLabel" Content="" HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="0" Visibility="Collapsed" />
-        <Label x:Name="ViewLabel" Content="" HorizontalAlignment="Left" Margin="20,0,20,10" Grid.Row="1" Grid.Column="1" Visibility="Collapsed" />
+        
         
         <TextBox  x:Name="ViewTextBox" Text="{Binding Game.CurrentViews, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Left" Margin="47,5,0,10" Width="Auto" Grid.Column="1" Grid.Row="1"  Visibility="Collapsed"/>
-        <Label x:Name="ViewLabel1" Content="Views: " HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="1"   Visibility="Collapsed"/>
-        <Label x:Name="PointsLabel" Content="Points: " HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="3" Visibility="Collapsed"  />
+        <Label x:Name="ViewLabel" Content="Views: " HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="1"   Visibility="Collapsed"/>
+        <Label x:Name="PointsLabel" Content="P1 Points: " HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="3" Visibility="Collapsed"  />
         <TextBox  x:Name="PointsTextBox" Text="{Binding Game.PlayerOne.Points, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Left" Grid.Column="3" Margin="50,5,0,10" Width="Auto" Grid.Row="1" Visibility="Collapsed"/>
-
+        <Label x:Name="PointsLabel2" Content="P2 Points: " HorizontalAlignment="Left"  Grid.Row="2" Grid.Column="3" Visibility="Collapsed"  />
+        <TextBox  x:Name="PointsTextBox2" Text="{Binding Game.PlayerTwo.Points, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Left" Grid.Column="3" Margin="50,5,0,10" Width="Auto" Grid.Row="2" Visibility="Collapsed"/>
 
 
     </Grid>

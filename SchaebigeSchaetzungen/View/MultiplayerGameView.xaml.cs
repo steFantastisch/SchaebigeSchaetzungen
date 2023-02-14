@@ -67,7 +67,15 @@ namespace SchaebigeSchaetzungen.View
             }
 
             HintLabel.Content= "Hints";
-            ViewLabel.Visibility = Visibility.Collapsed;
+
+
+            ViewTextBox.Visibility = Visibility.Collapsed;
+            PointsTextBox.Visibility= Visibility.Collapsed;
+            PointsTextBox2.Visibility= Visibility.Collapsed;
+            ViewLabel.Visibility= Visibility.Collapsed;
+            PointsLabel.Visibility= Visibility.Collapsed;
+            PointsLabel2.Visibility= Visibility.Collapsed;
+
             LanguageLabel.Visibility = Visibility.Collapsed;
             NextRound.Visibility = Visibility.Collapsed;
             TextBox1.Text="";
@@ -149,15 +157,19 @@ namespace SchaebigeSchaetzungen.View
             BindingExpression binding3 = PointsTextBox2.GetBindingExpression(TextBox.TextProperty);
             binding3.UpdateSource();
 
+            ViewTextBox.Visibility = Visibility.Visible;
+            PointsTextBox.Visibility= Visibility.Visible;
+            PointsTextBox2.Visibility= Visibility.Visible;
+            ViewLabel.Visibility= Visibility.Visible;
+            PointsLabel.Visibility= Visibility.Visible;
+            PointsLabel2.Visibility= Visibility.Visible;
+
             HintCheckBox.Visibility= Visibility.Collapsed;
             HintLikes.Visibility = Visibility.Collapsed;
             HintComments.Visibility = Visibility.Collapsed;
             HintLabel.Content= "Du lagst " +Math.Abs(viewCount - PlayerOneguess)+ " von der richtigen Lösung weg!\nDu lagst" +Math.Abs(viewCount - PlayerTwoguess)+ " von der richtigen Lösung weg!";
             LanguageLabel.Content="Language: "+language;
             LanguageLabel.Visibility = Visibility.Visible;
-            //CalcPointsCommand Rechner = new CalcPointsCommand();
-            // ViewLabel.Content= Rechner.MultiplayerPtns(PlayerOneguess, PlayerTwoguess, viewCount);
-            ViewLabel.Visibility = Visibility.Visible;
 
 
             P1Submit.Visibility= Visibility.Collapsed;
