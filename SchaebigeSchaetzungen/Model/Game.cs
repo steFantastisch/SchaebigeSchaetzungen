@@ -41,6 +41,12 @@ namespace SchaebigeSchaetzungen.Model
             set { gamemode = value; }
         }
 
+        private int currentViews;
+        public int CurrentViews
+        {
+            get { return currentViews; }
+            set { currentViews = value; }
+        }
         private List<Video> playlist;
 
         public List<Video> Playlist

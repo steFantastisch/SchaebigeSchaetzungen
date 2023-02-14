@@ -58,6 +58,7 @@ namespace SchaebigeSchaetzungen.View
             likeCount=video.Likes;
             commentCount=video.Comments;
             language=video.Language;
+            //game.PlayerOne.guess =1;
 
         }
 
@@ -92,9 +93,12 @@ namespace SchaebigeSchaetzungen.View
 
                
                
-                ViewLabel.Content=  ">>> Views: " + viewCount.ToString() + " <<<   --> ???? Punkte";
+                ViewLabel.Content=  ">>> Views: " + viewCount.ToString() + " <<<  + Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg! ???? Punkte";
+    
+                 HintLabel.Content= "";
+                PointsLabel.Content=SingleplayerPts(guess,viewCount);
+               // HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
 
-                HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
 
                 ViewLabel.Visibility = Visibility.Visible;
                 LanguageLabel.Content="Language: "+language;
@@ -126,6 +130,12 @@ namespace SchaebigeSchaetzungen.View
 
             }
 
+        }
+        public string SingleplayerPts(int Playerguess, int Views)
+        {
+            int pts = 120;
+           
+            return pts.ToString();
         }
 
         private void HintCheckBox_Checked(object sender, RoutedEventArgs e)

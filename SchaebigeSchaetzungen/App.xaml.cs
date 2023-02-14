@@ -50,7 +50,7 @@ namespace SchaebigeSchaetzungen
 
         private GameModeSelectionViewModel CreateGameModeSelectionViewModel()
         {
-            //erst nachdem DB läuft
+            //erst nachdem DB läuft ; Edit brauchen wir wahrscheinlich nicht
             //game.PlayerOne=DBPlayer.Read(game.PlayerOne);
             return new GameModeSelectionViewModel(navigationStore, game, CreateLoginPlayerOneViewModel, CreateLoginPlayerTwoViewModel, CreateSingleplayerGameViewModel);
         }
