@@ -21,6 +21,21 @@ namespace SchaebigeSchaetzungen.ViewModel
             set { game = value; }
         }
 
+        private int views;
+        public int Views
+        {
+            get
+            {
+                return views;
+            }
+            set
+            {
+                views = value;
+                OnPropertyChanged(nameof(views));
+            }
+        }
+
+
 
 
         public ICommand GameEndCommand { get; }

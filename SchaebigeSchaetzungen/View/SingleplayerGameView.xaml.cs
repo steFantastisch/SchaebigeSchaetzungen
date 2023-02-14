@@ -93,9 +93,11 @@ namespace SchaebigeSchaetzungen.View
 
                
                
-                ViewLabel.Content=  ">>> Views: " + viewCount.ToString() + " <<<  + Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg! ???? Punkte";
-    
-                 HintLabel.Content= "";
+                ViewLabel.Content= viewCount.ToString();
+                BindingExpression binding = ViewLabel.GetBindingExpression(Label.ContentProperty);
+                binding.UpdateSource();
+
+                HintLabel.Content= "";
                 PointsLabel.Content=SingleplayerPts(guess,viewCount);
                // HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
 

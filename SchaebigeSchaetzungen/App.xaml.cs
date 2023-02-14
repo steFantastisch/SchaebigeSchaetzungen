@@ -26,6 +26,8 @@ namespace SchaebigeSchaetzungen
             game = new Game();       
         }
 
+        public Game getGame() { return game; }
+
         protected override void OnStartup(StartupEventArgs e)
         {
              navigationStore.CurrentViewModel = new LoginPlayerOneViewModel(navigationStore, game, CreateCreateViewModel, CreateGameModeSelectionViewModel);
