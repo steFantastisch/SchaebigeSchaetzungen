@@ -70,7 +70,7 @@ namespace SchaebigeSchaetzungen.View
             }
 
             HintLabel.Content= "Hints";
-
+            AbstandLabel.Content="";
 
             ViewTextBox.Visibility = Visibility.Collapsed;
             PointsTextBox.Visibility= Visibility.Collapsed;
@@ -78,6 +78,7 @@ namespace SchaebigeSchaetzungen.View
             ViewLabel.Visibility= Visibility.Collapsed;
             PointsLabel.Visibility= Visibility.Collapsed;
             PointsLabel2.Visibility= Visibility.Collapsed;
+        
 
             LanguageLabel.Visibility = Visibility.Collapsed;
             NextRound.Visibility = Visibility.Collapsed;
