@@ -96,6 +96,9 @@ namespace SchaebigeSchaetzungen.View
                 //Fehlermessage wegen falscheingabe
                 return;
             }
+            BindingExpression binding = TextBox1.GetBindingExpression(TextBox.TextProperty);
+            binding.UpdateSource();
+
             if (P2Submit.Visibility==Visibility.Collapsed) //Zweiter spieler hat schon getippt
             {
                 InitNR();
@@ -116,6 +119,9 @@ namespace SchaebigeSchaetzungen.View
                 //Fehlermessage wegen falscheingabe
                 return;
             }
+            BindingExpression binding = TextBox2.GetBindingExpression(TextBox.TextProperty);
+            binding.UpdateSource();
+
             if (P1Submit.Visibility==Visibility.Collapsed) //Erster spieler hat schon getippt
             {
                 InitNR();

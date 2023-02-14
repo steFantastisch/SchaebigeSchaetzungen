@@ -24,11 +24,11 @@
 
 
         <Label x:Name="P1" Content="{Binding Game.PlayerOne.Name}" Grid.Row="1" Grid.Column="0" Margin="0,0,0,5"/>
-        <TextBox x:Name="TextBox1" Text="{Binding Game.PlayerOne.Guess, UpdateSourceTrigger=LostFocus}" Width="247" Margin="0,0,0,5" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="TextBox1" Text="{Binding Game.PlayerOne.Guess, UpdateSourceTrigger=Explicit}" Width="247" Margin="0,0,0,5" Grid.Row="1" Grid.Column="1"/>
         <Button x:Name="P1Submit"  Content="Submit" Grid.Column="2" Grid.Row="1" Margin="0,0,0,5" Click="P1Submit_Click" />
 
         <Label x:Name="P2" Content="{Binding Game.PlayerTwo.Name}" Grid.Row="2" Grid.Column="0" Margin="0,0,0,5"/>
-        <TextBox x:Name="TextBox2" Text="{Binding Game.PlayerTwo.Guess, UpdateSourceTrigger=LostFocus}" Width="247" Margin="0,0,0,5" Grid.Row="2" Grid.Column="1"/>
+        <TextBox x:Name="TextBox2" Text="{Binding Game.PlayerTwo.Guess, UpdateSourceTrigger=Explicit}" Width="247" Margin="0,0,0,5" Grid.Row="2" Grid.Column="1"/>
         <Button x:Name="P2Submit" Content="Submit" Grid.Column="2" Grid.Row="2" Margin="0,0,0,5" Click="P2Submit_Click" />
 
         <Button x:Name="ResultBtn" Content="Results" Command="{Binding GameEndCommand}" Grid.Column="1" Grid.RowSpan="2" Grid.Row="1" Margin="0,0,0,5" HorizontalAlignment="Left" Visibility="Collapsed"  />
