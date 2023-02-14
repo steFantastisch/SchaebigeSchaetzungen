@@ -38,7 +38,7 @@ namespace SchaebigeSchaetzungen.View
         int round;
         string[] VideoIDs;
         int guess;
-        
+
 
         public SingleplayerGameView()
         {
@@ -59,7 +59,7 @@ namespace SchaebigeSchaetzungen.View
             commentCount=video.Comments;
             language=video.Language;
             //game.PlayerOne.guess =1;
-
+            TextBox1.Text="";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -91,8 +91,8 @@ namespace SchaebigeSchaetzungen.View
                 HintLikes.Visibility = Visibility.Collapsed;
                 HintComments.Visibility = Visibility.Collapsed;
 
-               
-               
+
+
                 ViewTextBox.Text= viewCount.ToString();
                 BindingExpression binding = ViewTextBox.GetBindingExpression(TextBox.TextProperty);
                 binding.UpdateSource();
@@ -101,16 +101,16 @@ namespace SchaebigeSchaetzungen.View
                 BindingExpression binding2 = PointsTextBox.GetBindingExpression(TextBox.TextProperty);
                 binding2.UpdateSource();
 
-         
 
-                // HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
+
+                HintLabel.Content= "Entfernung " +Math.Abs(viewCount - guess);
 
 
                 ViewTextBox.Visibility = Visibility.Visible;
                 PointsTextBox.Visibility= Visibility.Visible;
                 ViewLabel.Visibility= Visibility.Visible;
                 PointsLabel.Visibility= Visibility.Visible;
-                HintLabel.Visibility= Visibility.Collapsed;
+                //HintLabel.Visibility= Visibility.Collapsed;
                 LanguageLabel.Content="Language: "+language;
                 LanguageLabel.Visibility = Visibility.Visible;
                 return;
@@ -131,14 +131,14 @@ namespace SchaebigeSchaetzungen.View
                     HintComments.Visibility = Visibility.Visible;
                 }
 
-                HintLabel.Visibility= Visibility.Visible;
+                HintLabel.Content= "Hints";
                 ViewTextBox.Visibility = Visibility.Collapsed;
                 PointsTextBox.Visibility= Visibility.Collapsed;
                 PointsLabel.Visibility = Visibility.Collapsed;
-                HintLabel.Visibility= Visibility.Collapsed;
+                ViewLabel.Visibility= Visibility.Collapsed;
                 LanguageLabel.Visibility = Visibility.Collapsed;
                 SubmitBtn.Content="Submit";
-                TextBox1.Text="";
+
                 round++;
 
             }
@@ -147,7 +147,7 @@ namespace SchaebigeSchaetzungen.View
         public string SingleplayerPts(int Playerguess, int Views)
         {
             int pts = 120;
-           
+
             return pts.ToString();
         }
 
