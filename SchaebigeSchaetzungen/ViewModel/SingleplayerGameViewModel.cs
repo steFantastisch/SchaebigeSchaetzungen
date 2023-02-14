@@ -23,7 +23,7 @@ namespace SchaebigeSchaetzungen.ViewModel
             set
             {
                 guess = value;
-                //OnPropertyChanged(nameof(Guess));
+                OnPropertyChanged(nameof(Guess));
             }
         }
         private Game game;
