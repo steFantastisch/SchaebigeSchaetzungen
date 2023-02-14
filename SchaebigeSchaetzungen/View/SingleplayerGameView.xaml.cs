@@ -97,9 +97,14 @@ namespace SchaebigeSchaetzungen.View
                 BindingExpression binding = ViewTextBox.GetBindingExpression(TextBox.TextProperty);
                 binding.UpdateSource();
 
+                PointsTextBox.Text=SingleplayerPts(guess, viewCount);
+                BindingExpression binding2 = PointsTextBox.GetBindingExpression(TextBox.TextProperty);
+                binding2.UpdateSource();
+
                 HintLabel.Content= "";
-                PointsLabel.Content=SingleplayerPts(guess,viewCount);
-               // HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
+                ;
+
+                // HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
 
 
                 ViewTextBox.Visibility = Visibility.Visible;
