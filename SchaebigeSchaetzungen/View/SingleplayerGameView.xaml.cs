@@ -101,13 +101,16 @@ namespace SchaebigeSchaetzungen.View
                 BindingExpression binding2 = PointsTextBox.GetBindingExpression(TextBox.TextProperty);
                 binding2.UpdateSource();
 
-                HintLabel.Content= "";
-                ;
+         
 
                 // HintLabel.Content= " Du lagst " +Math.Abs(viewCount - guess)+ " von der richtigen Lösung weg!";
 
 
                 ViewTextBox.Visibility = Visibility.Visible;
+                PointsTextBox.Visibility= Visibility.Visible;
+                ViewLabel.Visibility= Visibility.Visible;
+                PointsLabel.Visibility= Visibility.Visible;
+                HintLabel.Visibility= Visibility.Collapsed;
                 LanguageLabel.Content="Language: "+language;
                 LanguageLabel.Visibility = Visibility.Visible;
                 return;
@@ -128,8 +131,11 @@ namespace SchaebigeSchaetzungen.View
                     HintComments.Visibility = Visibility.Visible;
                 }
 
-                HintLabel.Content= "Hints";
+                HintLabel.Visibility= Visibility.Visible;
                 ViewTextBox.Visibility = Visibility.Collapsed;
+                PointsTextBox.Visibility= Visibility.Collapsed;
+                PointsLabel.Visibility = Visibility.Collapsed;
+                HintLabel.Visibility= Visibility.Collapsed;
                 LanguageLabel.Visibility = Visibility.Collapsed;
                 SubmitBtn.Content="Submit";
                 TextBox1.Text="";
