@@ -93,7 +93,7 @@ namespace SchaebigeSchaetzungen.View
 
                
                
-                ViewLabel.Content= viewCount.ToString();
+                ViewLabel.Text= viewCount.ToString();
                 BindingExpression binding = ViewLabel.GetBindingExpression(TextBox.TextProperty);
                 binding.UpdateSource();
 
