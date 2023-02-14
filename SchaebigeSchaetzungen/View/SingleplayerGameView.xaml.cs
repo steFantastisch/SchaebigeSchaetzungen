@@ -42,10 +42,11 @@ namespace SchaebigeSchaetzungen.View
 
         public SingleplayerGameView()
         {
+            
             round=0;
             InitializeComponent();
             Init();
-
+            TextBox1.Text="";
         }
 
         public async void Init()
