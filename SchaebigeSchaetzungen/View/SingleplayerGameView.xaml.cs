@@ -74,7 +74,8 @@ namespace SchaebigeSchaetzungen.View
                     //Fehlermessage wegen falscheingabe
                     return;
                 }
-
+                BindingExpression binding3 = TextBox1.GetBindingExpression(TextBox.TextProperty);
+                binding3.UpdateSource();
                 //TODO change to 3
                 if (round > 1) // Maximum 5 Runden
                 {
