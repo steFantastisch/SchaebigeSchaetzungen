@@ -39,7 +39,7 @@ namespace SchaebigeSchaetzungen.ViewModel
 
 
         public ICommand GameEndCommand { get; }
-        public ICommand CalculatePts { get; }
+ 
 
         public SingleplayerGameViewModel(
             NavigationStore navigationStore,
@@ -48,7 +48,7 @@ namespace SchaebigeSchaetzungen.ViewModel
         {
             this.Game = game;
             this.GameEndCommand = new NavigateCommand(navigationStore, game, createGameEndViewModel);
-            this.CalculatePts = new CalcPointsCommand(game);
+          
         }
     }
 }
