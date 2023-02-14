@@ -40,7 +40,7 @@ namespace SchaebigeSchaetzungen.View
 
         public async void Init()
         {
-            //consider taking the next line into the constructor due to potential performance loss
+
             Model.Video video = new Model.Video();
             await video.GetDetailsAsync(video.VideoID);
             webBrowser1.NavigateToString(video.Dispstr);
@@ -72,7 +72,7 @@ namespace SchaebigeSchaetzungen.View
             NextRound.Visibility = Visibility.Collapsed;
             TextBox1.Text="";
             TextBox2.Text="";
-            
+
         }
 
         private void P1Submit_Click(object sender, RoutedEventArgs e)
@@ -87,12 +87,12 @@ namespace SchaebigeSchaetzungen.View
             if (P2Submit.Visibility==Visibility.Collapsed) //Zweiter spieler hat schon getippt
             {
                 InitNR();
-               
+
             }
             else //Zweiter Spieler noch nicht getippt
             {
                 P1Submit.Visibility= Visibility.Collapsed;
-                TextBox1.Text="******************";            
+                TextBox1.Text="******************";
             }
         }
 
@@ -107,7 +107,7 @@ namespace SchaebigeSchaetzungen.View
             if (P1Submit.Visibility==Visibility.Collapsed) //Erster spieler hat schon getippt
             {
                 InitNR();
-                   
+
             }
             else //Zweiter Spieler noch nicht getippt
             {
@@ -137,15 +137,24 @@ namespace SchaebigeSchaetzungen.View
         }
         private void InitNR()
         {
+            ViewTextBox.Text= viewCount.ToString();
+            BindingExpression binding = ViewTextBox.GetBindingExpression(TextBox.TextProperty);
+            binding.UpdateSource();
+
+            PointsTextBox.Text=Multiplayer(guess, viewCount);
+            BindingExpression binding2 = PointsTextBox.GetBindingExpression(TextBox.TextProperty);
+            binding2.UpdateSource();
+
             HintCheckBox.Visibility= Visibility.Collapsed;
             HintLikes.Visibility = Visibility.Collapsed;
             HintComments.Visibility = Visibility.Collapsed;
-            HintLabel.Content= " Du lagst " +Math.Abs(viewCount - PlayerOneguess)+ " von der richtigen Lösung weg!\nDu lagst" +Math.Abs(viewCount - PlayerTwoguess)+ " von der richtigen Lösung weg!";
+            HintLabel.Content= "Du lagst " +Math.Abs(viewCount - PlayerOneguess)+ " von der richtigen Lösung weg!\nDu lagst" +Math.Abs(viewCount - PlayerTwoguess)+ " von der richtigen Lösung weg!";
             LanguageLabel.Content="Language: "+language;
             LanguageLabel.Visibility = Visibility.Visible;
             //CalcPointsCommand Rechner = new CalcPointsCommand();
-           // ViewLabel.Content= Rechner.MultiplayerPtns(PlayerOneguess, PlayerTwoguess, viewCount);
+            // ViewLabel.Content= Rechner.MultiplayerPtns(PlayerOneguess, PlayerTwoguess, viewCount);
             ViewLabel.Visibility = Visibility.Visible;
+
 
             P1Submit.Visibility= Visibility.Collapsed;
             TextBox1.Visibility= Visibility.Collapsed;
@@ -162,6 +171,19 @@ namespace SchaebigeSchaetzungen.View
             {
                 NextRound.Visibility= Visibility.Visible;
             }
+
+            int[] CalculateMultiplayerPoints(int P1guess, int P2guess, int views)
+            {
+                int[] pts = new int[2];
+                
+                pts[0] = 125;
+                pts[1]= 150;
+
+
+                return pts;
+
+            }
         }
+
     }
 }
