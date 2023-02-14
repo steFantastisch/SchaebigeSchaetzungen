@@ -11,6 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -36,6 +37,8 @@ namespace SchaebigeSchaetzungen.View
             round=0;
             InitializeComponent();
             Init();
+            TextBox1.Text="0";
+            TextBox2.Text="0";
         }
 
         public async void Init()
@@ -149,7 +152,7 @@ namespace SchaebigeSchaetzungen.View
             BindingExpression binding = ViewTextBox.GetBindingExpression(TextBox.TextProperty);
             binding.UpdateSource();
 
-            int[] pts=CalculateMultiplayerPoints(PlayerOneguess, PlayerTwoguess, viewCount);
+            int[] pts = CalculateMultiplayerPoints(PlayerOneguess, PlayerTwoguess, viewCount);
             PointsTextBox.Text=pts[0].ToString();
             BindingExpression binding2 = PointsTextBox.GetBindingExpression(TextBox.TextProperty);
             binding2.UpdateSource();
@@ -167,7 +170,8 @@ namespace SchaebigeSchaetzungen.View
             HintCheckBox.Visibility= Visibility.Collapsed;
             HintLikes.Visibility = Visibility.Collapsed;
             HintComments.Visibility = Visibility.Collapsed;
-            HintLabel.Content= "Du lagst " +Math.Abs(viewCount - PlayerOneguess)+ " von der richtigen Lösung weg!\nDu lagst" +Math.Abs(viewCount - PlayerTwoguess)+ " von der richtigen Lösung weg!";
+            HintLabel.Content= "Du lagst " +Math.Abs(viewCount - PlayerOneguess)+ " von der richtigen Lösung weg!";
+            AbstandLabel.Content="Du lagst" +Math.Abs(viewCount - PlayerTwoguess)+ " von der richtigen Lösung weg!";
             LanguageLabel.Content="Language: "+language;
             LanguageLabel.Visibility = Visibility.Visible;
 
@@ -191,7 +195,7 @@ namespace SchaebigeSchaetzungen.View
             int[] CalculateMultiplayerPoints(int P1guess, int P2guess, int views)
             {
                 int[] pts = new int[2];
-                
+
                 pts[0] = 125;
                 pts[1]= 150;
 
