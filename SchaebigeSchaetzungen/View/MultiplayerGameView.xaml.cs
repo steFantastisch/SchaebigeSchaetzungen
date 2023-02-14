@@ -141,9 +141,13 @@ namespace SchaebigeSchaetzungen.View
             BindingExpression binding = ViewTextBox.GetBindingExpression(TextBox.TextProperty);
             binding.UpdateSource();
 
-            PointsTextBox.Text=Multiplayer(guess, viewCount);
+            int[] pts=CalculateMultiplayerPoints(PlayerOneguess, PlayerTwoguess, viewCount);
+            PointsTextBox.Text=pts[0].ToString();
             BindingExpression binding2 = PointsTextBox.GetBindingExpression(TextBox.TextProperty);
             binding2.UpdateSource();
+            PointsTextBox2.Text=pts[1].ToString();
+            BindingExpression binding3 = PointsTextBox2.GetBindingExpression(TextBox.TextProperty);
+            binding3.UpdateSource();
 
             HintCheckBox.Visibility= Visibility.Collapsed;
             HintLikes.Visibility = Visibility.Collapsed;
