@@ -94,7 +94,7 @@ namespace SchaebigeSchaetzungen.View
                
                
                 ViewLabel.Content= viewCount.ToString();
-                BindingExpression binding = ViewLabel.GetBindingExpression(Label.ContentProperty);
+                BindingExpression binding = ViewLabel.GetBindingExpression(TextBox.TextProperty);
                 binding.UpdateSource();
 
                 HintLabel.Content= "";
