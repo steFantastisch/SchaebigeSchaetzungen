@@ -1,5 +1,6 @@
 ﻿using SchaebigeSchaetzungen.Command;
 using SchaebigeSchaetzungen.Model;
+using SchaebigeSchaetzungen.Persistence;
 using SchaebigeSchaetzungen.Store;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,12 @@ namespace SchaebigeSchaetzungen.ViewModel
             get { return game; }
             set { game = value; }
         }
+        private List<Player> playerList;
+        public List<Player> PlayerList
+        {
+            get { return playerList; }
+            set { playerList = value; OnPropertyChanged(nameof(PlayerList)); }
+        }
 
         public ICommand ExitCommand { get; }
 
@@ -29,7 +36,10 @@ namespace SchaebigeSchaetzungen.ViewModel
           Func<GameModeSelectionViewModel> createGameModeSelectionViewModel)
         {
             this.Game = game;
+            PlayerList = DBPlayer.ReadAll();
+            PlayerList.OrderByDescending(p => p.Crowns).ToList();
             this.ExitCommand = new NavigateCommand(navigationStore, game, createGameModeSelectionViewModel);
+
         }
     }
 }
