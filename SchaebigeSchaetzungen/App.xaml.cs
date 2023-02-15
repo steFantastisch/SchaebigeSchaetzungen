@@ -71,7 +71,7 @@ namespace SchaebigeSchaetzungen
         }
         private GameEndViewModel CreateGameEndViewModel()
         {
-            return new GameEndViewModel(navigationStore, game, CreateGameModeSelectionViewModel, CreateSingleplayerGameViewModel, CreateHighscoreViewModel);
+            return new GameEndViewModel(navigationStore, game, CreateGameModeSelectionViewModel, CreateSingleplayerGameViewModel,CreateMultiplayerGameViewModel, CreateHighscoreViewModel);
         }
         private HighscoreViewModel CreateHighscoreViewModel()
         {
