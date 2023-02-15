@@ -30,8 +30,10 @@ namespace SchaebigeSchaetzungen.ViewModel
             Game game,
             Func<GameEndViewModel> createGameEndViewModel)
         {
-          
+           
             this.Game = game;
+            game.PlayerOne.GamePoints=0;
+            game.PlayerTwo.GamePoints=0;
             this.GameEndCommand = new NavigateCommand(navigationStore, game, createGameEndViewModel);
 
         }

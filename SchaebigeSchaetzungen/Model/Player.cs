@@ -72,15 +72,25 @@ namespace SchaebigeSchaetzungen.Model
         public int Points
         {
             get { return points; }
-            set { points = value; }
+            set { points = value;
+                GamePoints=GamePoints+value;
+                OverallPoints=OverallPoints+value;
+            }
         }
 
-        private int endpoints;
-        public int EndPoints
+        private int gamepoints;
+        public int GamePoints
         {
-            get { return endpoints; }
-            set { endpoints = value; }
+            get { return gamepoints; }
+            set { gamepoints = value; }
         }
+        private int overallpoints;
+        public int OverallPoints
+        {
+            get { return overallpoints; }
+            set { overallpoints = value; }
+        }
+
 
         private int guess;
         public int Guess

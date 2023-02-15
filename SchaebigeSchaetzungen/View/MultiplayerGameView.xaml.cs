@@ -206,6 +206,7 @@ namespace SchaebigeSchaetzungen.View
                 pts[0] = 125;
                 pts[1]= 150;
 
+                
 
                 return pts;
 
