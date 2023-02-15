@@ -1,5 +1,6 @@
 ﻿using SchaebigeSchaetzungen.Command;
 using SchaebigeSchaetzungen.Model;
+using SchaebigeSchaetzungen.Persistence;
 using SchaebigeSchaetzungen.Store;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,8 @@ namespace SchaebigeSchaetzungen.ViewModel
            Func<SingleplayerGameViewModel> createSingleplayerGameViewModel, Func<HighscoreViewModel> createHighscoreViewModel)
         {
             this.Game = game;
-            game.PlayerOne;
+            DBPlayer.UpdateCrowns( game.PlayerOne);
+            DBPlayer.UpdateCrowns( game.PlayerTwo);
             this.HighscoreCommand = new NavigateCommand(navigationStore, game, createHighscoreViewModel);
             //TODO nächste Zeile checken ob SIngle oder multiplayer ist
             this.PlayagainCommand = new NavigateCommand(navigationStore, game, createSingleplayerGameViewModel);
