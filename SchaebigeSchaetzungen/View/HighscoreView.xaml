@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SchaebigeSchaetzungen.View"
+             xmlns:test="clr-namespace:SchaebigeSchaetzungen.Converter"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <test:IndexToRankConverter x:Key="IndexToRankConverter" />
         <Style TargetType="{x:Type DataGrid}">
             <Setter Property="Margin" Value="10" />
             <Setter Property="RowHeaderWidth" Value="0" />
@@ -73,20 +75,31 @@
              FontWeight="Bold" 
              FontSize="24" 
              Margin="0, 10, 0, 20"/>
+        
         <DataGrid Grid.Row="1" 
           Height="Auto" 
+                  VerticalAlignment="Top"
           ItemsSource="{Binding PlayerList}" 
           AutoGenerateColumns="False" 
-          HeadersVisibility="Column">
+          HeadersVisibility="Column"
+                  AlternationCount="{Binding PlayerList.Count}"
+                            MaxHeight="200">
+            <DataGridTemplateColumn Header="Rank">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}, Path=AlternationIndex, Converter={StaticResource IndexToRankConverter}}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Platzierung" />
-                          <!--Binding="{Binding Rank}" Width="*"--> 
-                        
+                <DataGridTextColumn Header="Rank" Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}, Path=AlternationIndex}" />
+
                 <DataGridTextColumn Header="Name" 
                           Binding="{Binding Name}" 
                           Width="*"/>
                 <DataGridTextColumn Header="Crowns" 
-                          Binding="{Binding Crowns}" 
+                          Binding="{Binding Crowns}"   
                           Width="*"/>
             </DataGrid.Columns>
             <DataGrid.Resources>

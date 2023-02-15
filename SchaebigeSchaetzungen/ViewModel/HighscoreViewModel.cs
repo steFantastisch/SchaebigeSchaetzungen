@@ -4,9 +4,11 @@ using SchaebigeSchaetzungen.Persistence;
 using SchaebigeSchaetzungen.Store;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace SchaebigeSchaetzungen.ViewModel
@@ -25,8 +27,11 @@ namespace SchaebigeSchaetzungen.ViewModel
         public List<Player> PlayerList
         {
             get { return playerList; }
-            set { playerList = value; OnPropertyChanged(nameof(PlayerList)); }
+            set { playerList = value; }
         }
+
+       
+
 
         public ICommand ExitCommand { get; }
 
@@ -37,7 +42,7 @@ namespace SchaebigeSchaetzungen.ViewModel
         {
             this.Game = game;
             PlayerList = DBPlayer.ReadAll();
-            PlayerList.OrderByDescending(p => p.Crowns).ToList();
+      
             this.ExitCommand = new NavigateCommand(navigationStore, game, createGameModeSelectionViewModel);
 
         }
