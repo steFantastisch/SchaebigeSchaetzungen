@@ -33,6 +33,7 @@ namespace SchaebigeSchaetzungen.ViewModel
            Func<SingleplayerGameViewModel> createSingleplayerGameViewModel, Func<HighscoreViewModel> createHighscoreViewModel)
         {
             this.Game = game;
+            game.PlayerOne;
             this.HighscoreCommand = new NavigateCommand(navigationStore, game, createHighscoreViewModel);
             //TODO nächste Zeile checken ob SIngle oder multiplayer ist
             this.PlayagainCommand = new NavigateCommand(navigationStore, game, createSingleplayerGameViewModel);

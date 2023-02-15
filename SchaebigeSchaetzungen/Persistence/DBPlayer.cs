@@ -66,6 +66,17 @@ namespace SchaebigeSchaetzungen.Persistence
             return p;
         }
 
+        public static void UpdateCrowns(Player player)
+        {
+            String sql =
+                $"Update player set Crowns ='{player.GamePoints + player.Crowns}' where PlayerID = {player.PlayerID}";
+
+            int anz = DBAccess.ExecuteNonQuery(sql);
+
+            if (anz != 1)
+                throw new Exception("Speichern fehlgeschlagen!");
+        }
+
         public static void Update(Player player)
         {
             String sql =
