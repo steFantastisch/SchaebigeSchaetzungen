@@ -37,6 +37,7 @@ namespace SchaebigeSchaetzungen.ViewModel
             DBPlayer.UpdateCrowns( game.PlayerOne);
             DBPlayer.UpdateCrowns( game.PlayerTwo);
             this.HighscoreCommand = new NavigateCommand(navigationStore, game, createHighscoreViewModel);
+
             //TODO nächste Zeile checken ob SIngle oder multiplayer ist
             this.PlayagainCommand = new NavigateCommand(navigationStore, game, createSingleplayerGameViewModel);
             this.ExitCommand = new NavigateCommand(navigationStore, game, createGameModeSelectionViewModel);

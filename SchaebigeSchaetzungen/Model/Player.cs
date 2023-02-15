@@ -46,6 +46,9 @@ namespace SchaebigeSchaetzungen.Model
 
         private int crowns;
 
+        /// <summary>
+        /// overall Points
+        /// </summary>
         public int Crowns
         {
             get { return crowns; }
@@ -68,27 +71,27 @@ namespace SchaebigeSchaetzungen.Model
             set { fishcard = value; }
         }
 
+        /// <summary>
+        /// Punkte in der derzeitigen RUNDE
+        /// </summary>
         private int points;
         public int Points
         {
             get { return points; }
             set { points = value;
                 GamePoints=GamePoints+value;
-                OverallPoints=OverallPoints+value;
+                Crowns=Crowns+value;
             }
         }
 
+        /// <summary>
+        /// Punkte im Gesamten Spiel
+        /// </summary>
         private int gamepoints;
         public int GamePoints
         {
             get { return gamepoints; }
             set { gamepoints = value; }
-        }
-        private int overallpoints;
-        public int OverallPoints
-        {
-            get { return overallpoints; }
-            set { overallpoints = value; }
         }
 
 
