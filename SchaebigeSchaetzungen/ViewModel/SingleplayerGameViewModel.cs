@@ -48,6 +48,7 @@ namespace SchaebigeSchaetzungen.ViewModel
         {
             this.Game = game;
             game.PlayerOne.Guess=0;
+            game.PlayerOne.GamePoints=0;
             //abmelden des zweiten Players    game.PlayerTwo=null;
             this.GameEndCommand = new NavigateCommand(navigationStore, game, createGameEndViewModel);
           
