@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-       
+        <test:IntToIncrementConverter x:Key="IntToIncrementConverter"/>
         <Style TargetType="{x:Type DataGrid}">
             <Setter Property="Margin" Value="10" />
             <Setter Property="RowHeaderWidth" Value="0" />
@@ -84,12 +84,13 @@
           HeadersVisibility="Column"
           AlternationCount="{Binding PlayerList.Count}"
                             MaxHeight="200">
-           
-
-            
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Rank" />
+                
+               
+                
+                <DataGridTextColumn Header="Rank" 
+                                    Binding="{Binding Rank}"/>
 
                 <DataGridTextColumn Header="Name" 
                           Binding="{Binding Name}" 
@@ -98,6 +99,7 @@
                           Binding="{Binding Crowns}"   
                           Width="*"/>
             </DataGrid.Columns>
+            
             <DataGrid.Resources>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Foreground" Value="Black"/>
