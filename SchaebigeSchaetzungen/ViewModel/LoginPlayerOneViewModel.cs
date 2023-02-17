@@ -60,6 +60,7 @@ namespace SchaebigeSchaetzungen.ViewModel
         {
 
             this.Game = game;
+            game.PlayerOne=null; //PlayerOne wird abgemeldet
             if (this.Game.PlayerOne == null)
             {
                 this.Game.PlayerOne = new Player();
@@ -70,6 +71,7 @@ namespace SchaebigeSchaetzungen.ViewModel
                 game.PlayerOne.Mail = "webde";
                 game.PlayerOne.Password = "1234";
             }
+            
 
 
             this.CreateCommand = new NavigateCommand(navigationStore, Game, createCreateViewModel);

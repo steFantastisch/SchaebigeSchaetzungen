@@ -19,7 +19,7 @@ namespace SchaebigeSchaetzungen.Model
     {
         private Player playerOne;
 
-        public Player PlayerOne
+        public Player? PlayerOne
         {
             get { return playerOne; }
             set { playerOne = value; }
