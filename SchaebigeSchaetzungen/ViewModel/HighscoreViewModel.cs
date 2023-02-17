@@ -30,15 +30,7 @@ namespace SchaebigeSchaetzungen.ViewModel
             set { playerList = value; }
         }
 
-        private int rank;
-
-        public int Rank
-        {
-            get { rank++;
-                return rank; }
-            set { rank = value; }
-        }
-
+    
 
 
         public ICommand ExitCommand { get; }
@@ -50,7 +42,6 @@ namespace SchaebigeSchaetzungen.ViewModel
         {
             this.Game = game;
             PlayerList = DBPlayer.ReadAll();
-      Rank= 0;
             this.ExitCommand = new NavigateCommand(navigationStore, game, createGameModeSelectionViewModel);
 
         }

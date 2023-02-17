@@ -96,6 +96,10 @@ namespace SchaebigeSchaetzungen.Persistence
             */
         }
 
+        /// <summary>
+        /// wird nur für highscore view gebraucht
+        /// </summary>
+        /// <returns></returns>
         public static List<Player> ReadAll()
         {
             MySqlConnection con = DBAccess.OpenDB();
@@ -112,7 +116,7 @@ namespace SchaebigeSchaetzungen.Persistence
                     GetDataFromReader(reader, p);
                     list.Add(p);
                 }
-                
+                list.Sort((p1, p2) => p2.Crowns.CompareTo(p1.Crowns));
                 return list;
             }
             catch (Exception)
