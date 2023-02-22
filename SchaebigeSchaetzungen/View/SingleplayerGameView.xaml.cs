@@ -61,8 +61,15 @@ namespace SchaebigeSchaetzungen.View
             likeCount=video.Likes;
             commentCount=video.Comments;
             language=video.Language;
-           
-            
+            if (HintCheckBox.IsChecked==true)
+            {
+                HintLikes.Content = "Likes: " + likeCount.ToString();
+                HintLikes.Visibility = Visibility.Visible;
+                HintComments.Content = "Comments: "+ commentCount.ToString();
+                HintComments.Visibility = Visibility.Visible;
+            }
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -128,13 +135,7 @@ namespace SchaebigeSchaetzungen.View
                 GuessLabel.Visibility= Visibility.Visible;
                 HintCheckBox.Visibility= Visibility.Visible;
                 NAButton.Visibility= Visibility.Visible;
-                if (HintCheckBox.IsChecked==true)
-                {
-                    HintLikes.Content = "Likes: " + likeCount.ToString();
-                    HintLikes.Visibility = Visibility.Visible;
-                    HintComments.Content = "Comments: "+ commentCount.ToString();
-                    HintComments.Visibility = Visibility.Visible;
-                }
+               
 
                 HintLabel.Content= "Hints";
                 ViewTextBox.Visibility = Visibility.Collapsed;

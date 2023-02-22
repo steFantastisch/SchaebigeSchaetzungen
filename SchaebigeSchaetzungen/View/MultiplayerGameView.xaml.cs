@@ -37,8 +37,7 @@ namespace SchaebigeSchaetzungen.View
             round=0;
             InitializeComponent();
             Init();
-            TextBox1.Text="0";
-            TextBox2.Text="0";
+
         }
 
         public async void Init()
@@ -61,6 +60,7 @@ namespace SchaebigeSchaetzungen.View
             TextBox2.Visibility= Visibility.Visible;
             P2.Visibility= Visibility.Visible;
             HintCheckBox.Visibility= Visibility.Visible;
+            NAButton.Visibility= Visibility.Visible;    
             if (HintCheckBox.IsChecked==true)
             {
                 HintLikes.Content = "Likes: " + likeCount.ToString();
@@ -78,7 +78,7 @@ namespace SchaebigeSchaetzungen.View
             ViewLabel.Visibility= Visibility.Collapsed;
             PointsLabel.Visibility= Visibility.Collapsed;
             PointsLabel2.Visibility= Visibility.Collapsed;
-        
+
 
             LanguageLabel.Visibility = Visibility.Collapsed;
             NextRound.Visibility = Visibility.Collapsed;
@@ -183,6 +183,7 @@ namespace SchaebigeSchaetzungen.View
             LanguageLabel.Visibility = Visibility.Visible;
 
 
+            NAButton.Visibility= Visibility.Collapsed;  
             P1Submit.Visibility= Visibility.Collapsed;
             TextBox1.Visibility= Visibility.Collapsed;
             P1.Visibility= Visibility.Collapsed;
@@ -198,20 +199,24 @@ namespace SchaebigeSchaetzungen.View
             {
                 NextRound.Visibility= Visibility.Visible;
             }
-
-            int[] CalculateMultiplayerPoints(int P1guess, int P2guess, int views)
-            {
-                int[] pts = new int[2];
-
-                pts[0] = 125;
-                pts[1]= 150;
-
-                
-
-                return pts;
-
-            }
         }
+
+        int[] CalculateMultiplayerPoints(int P1guess, int P2guess, int views)
+        {
+            int[] pts = new int[2];
+
+            pts[0] = 125;
+            pts[1]= 150;
+
+
+
+            return pts;
+        }
+        private void NAButton_Click(object sender, RoutedEventArgs e)
+        {
+            Init();
+        }
+
 
     }
 }
