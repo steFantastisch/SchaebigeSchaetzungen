@@ -38,11 +38,12 @@ namespace SchaebigeSchaetzungen.View
         int round;
         string[] VideoIDs;
         int guess;
+        int maxrounds;
 
 
         public SingleplayerGameView()
         {
-            
+            maxrounds=2;
             round=0;
             InitializeComponent();
             Init();
@@ -60,7 +61,7 @@ namespace SchaebigeSchaetzungen.View
             likeCount=video.Likes;
             commentCount=video.Comments;
             language=video.Language;
-            //game.PlayerOne.guess =1;
+           
             
         }
 
@@ -76,8 +77,8 @@ namespace SchaebigeSchaetzungen.View
                 }
                 BindingExpression binding3 = TextBox1.GetBindingExpression(TextBox.TextProperty);
                 binding3.UpdateSource();
-                //TODO change to 3
-                if (round > 1) // Maximum 5 Runden
+                
+                if (round ==  maxrounds) // Maximum 5 Runden
                 {
                     SubmitBtn.Content="Result";
                     SubmitBtn.Visibility= Visibility.Collapsed;
@@ -113,7 +114,7 @@ namespace SchaebigeSchaetzungen.View
                 PointsTextBox.Visibility= Visibility.Visible;
                 ViewLabel.Visibility= Visibility.Visible;
                 PointsLabel.Visibility= Visibility.Visible;
-                //HintLabel.Visibility= Visibility.Collapsed;
+                NAButton.Visibility= Visibility.Collapsed;
                 LanguageLabel.Content="Language: "+language;
                 LanguageLabel.Visibility = Visibility.Visible;
                 return;
@@ -126,6 +127,7 @@ namespace SchaebigeSchaetzungen.View
                 TextBox1.Visibility= Visibility.Visible;
                 GuessLabel.Visibility= Visibility.Visible;
                 HintCheckBox.Visibility= Visibility.Visible;
+                NAButton.Visibility= Visibility.Visible;
                 if (HintCheckBox.IsChecked==true)
                 {
                     HintLikes.Content = "Likes: " + likeCount.ToString();
@@ -165,6 +167,11 @@ namespace SchaebigeSchaetzungen.View
         {
             HintLikes.Visibility = Visibility.Collapsed;
             HintComments.Visibility = Visibility.Collapsed;
+        }
+
+        private void NAButton_Click(object sender, RoutedEventArgs e)
+        {
+            Init();
         }
     }
 
