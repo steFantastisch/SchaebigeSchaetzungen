@@ -158,10 +158,10 @@ namespace SchaebigeSchaetzungen.View
             double factor = 0.5 + 0.5 * (1 - deviation);
 
             // Berechne die Punktzahl als ganzzahlige Rundung des Faktors mal 100.
-            int points = (int)Math.Round(factor * 5000);
+            int points = (int)Math.Round(factor * 100);
 
             // Begrenze die Punktzahl auf einen Wert zwischen 0 und 100.
-            points = Math.Min(5000, Math.Max(0, points));
+            points = Math.Min(100, Math.Max(0, points));
 
             return points.ToString();
         }
