@@ -152,9 +152,18 @@ namespace SchaebigeSchaetzungen.View
         }
         public string SingleplayerPts(int Playerguess, int Views)
         {
-            int pts = 120;
+            double deviation = Math.Abs((double)(Playerguess - Views) / Views);
 
-            return pts.ToString();
+            // Berechne den Faktor, mit dem die Punktzahl multipliziert wird.
+            double factor = 0.5 + 0.5 * (1 - deviation);
+
+            // Berechne die Punktzahl als ganzzahlige Rundung des Faktors mal 100.
+            int points = (int)Math.Round(factor * 5000);
+
+            // Begrenze die Punktzahl auf einen Wert zwischen 0 und 100.
+            points = Math.Min(5000, Math.Max(0, points));
+
+            return points.ToString();
         }
 
         private void HintCheckBox_Checked(object sender, RoutedEventArgs e)

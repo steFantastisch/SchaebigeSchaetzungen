@@ -84,7 +84,6 @@ namespace SchaebigeSchaetzungen.View
             NextRound.Visibility = Visibility.Collapsed;
             TextBox1.Text="";
             TextBox2.Text="";
-
         }
 
         private void P1Submit_Click(object sender, RoutedEventArgs e)
