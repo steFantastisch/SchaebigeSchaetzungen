@@ -155,7 +155,7 @@ namespace SchaebigeSchaetzungen.View
         {
             double deviation;
             int distance =Math.Abs(Playerguess - Views);
-            deviation= distance/Views;
+            deviation= (double)distance/Views;
             //if (Views>Playerguess) //SPieler tippt weniger
             //{
             //deviation =(Views-Playerguess) / Views;
