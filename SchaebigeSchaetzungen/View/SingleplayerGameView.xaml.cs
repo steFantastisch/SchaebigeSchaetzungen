@@ -153,44 +153,20 @@ namespace SchaebigeSchaetzungen.View
         }
         public string SingleplayerPts(int Playerguess, int Views)
         {
-            double deviation;
+       
             int distance =Math.Abs(Playerguess - Views);
-            deviation= (double)distance/Views;
-            //if (Views>Playerguess) //SPieler tippt weniger
-            //{
-            //deviation =(Views-Playerguess) / Views;
 
-            //}
-            //else 
-            //{ 
-            //  deviation= (Views-Playerguess) / Views;
-            //}
-            int points = (int)Math.Round((1-deviation) * 100);
-            points = Math.Min(100, Math.Max(0, points));
-            return points.ToString();
-
-            //if (deviation<50)
-            //{
-            //    return "0";
-            //}
-            //else
-            //{
-            //    // Berechne den Faktor, mit dem die Punktzahl multipliziert wird.
-            //    double factor = (1 - deviation);
-            //    // Berechne die Punktzahl als ganzzahlige Rundung des Faktors mal 100.
-            //    int points = (int)Math.Round(factor * 100);
-            //    // Begrenze die Punktzahl auf einen Wert zwischen 0 und 100.
-            //    points = Math.Min(100, Math.Max(0, points));
-            //    return points.ToString();
-            //}
-
-
-
-
-
-
-
-
+            double percentage =( (double)distance / (double)Views);
+            if (percentage > 0.5)
+            {
+                return "0";
+            }
+            else
+            {
+                int points = (int)((1 - percentage) * 100);
+                points = Math.Min(100, Math.Max(0, points));
+                return points.ToString();
+            }
             
         }
 

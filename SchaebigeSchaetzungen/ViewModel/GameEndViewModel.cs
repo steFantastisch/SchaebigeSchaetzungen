@@ -4,6 +4,7 @@ using SchaebigeSchaetzungen.Persistence;
 using SchaebigeSchaetzungen.Store;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,29 @@ namespace SchaebigeSchaetzungen.ViewModel
         public ICommand PlayagainCommand { get; }
         public ICommand ExitCommand { get; }
 
+        private bool twoPgame;
+
+        public bool TwoPgame
+        {
+            get { return twoPgame; }
+            set
+            {
+                if (twoPgame != value)
+                {
+                    twoPgame = value;
+                    OnPropertyChanged(nameof(twoPgame));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
         public GameEndViewModel(
            NavigationStore navigationStore,
            Game game,
@@ -41,9 +65,11 @@ namespace SchaebigeSchaetzungen.ViewModel
             //TODO nächste Zeile checken ob SIngle oder multiplayer ist
             if (game.PlayerTwo==null)
                 {
+                TwoPgame= false;
                 this.PlayagainCommand = new NavigateCommand(navigationStore, game, createSingleplayerGameViewModel);
             }
             else{
+                TwoPgame= true;
                 DBPlayer.UpdateCrowns(game.PlayerTwo);
                 this.PlayagainCommand = new NavigateCommand(navigationStore, game, createMultiplayerGameViewModel);
             }
