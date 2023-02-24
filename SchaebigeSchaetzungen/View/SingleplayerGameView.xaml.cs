@@ -21,6 +21,7 @@ using System.Net;
 using Amazon.DynamoDBv2.Model.Internal.MarshallTransformations;
 using SchaebigeSchaetzungen.Command;
 using SchaebigeSchaetzungen.ViewModel;
+using System.Numerics;
 
 namespace SchaebigeSchaetzungen.View
 {
@@ -47,7 +48,7 @@ namespace SchaebigeSchaetzungen.View
             round=0;
             InitializeComponent();
             Init();
-            
+
         }
 
         public async void Init()
@@ -84,7 +85,7 @@ namespace SchaebigeSchaetzungen.View
                 }
                 BindingExpression binding3 = TextBox1.GetBindingExpression(TextBox.TextProperty);
                 binding3.UpdateSource();
-                
+
                 if (round ==  maxrounds) // Maximum 5 Runden
                 {
                     SubmitBtn.Content="Result";
@@ -135,7 +136,7 @@ namespace SchaebigeSchaetzungen.View
                 GuessLabel.Visibility= Visibility.Visible;
                 HintCheckBox.Visibility= Visibility.Visible;
                 NAButton.Visibility= Visibility.Visible;
-               
+
 
                 HintLabel.Content= "Hints";
                 ViewTextBox.Visibility = Visibility.Collapsed;
@@ -152,18 +153,45 @@ namespace SchaebigeSchaetzungen.View
         }
         public string SingleplayerPts(int Playerguess, int Views)
         {
-            double deviation = Math.Abs((double)(Playerguess - Views) / Views);
+            double deviation;
+            int distance =Math.Abs(Playerguess - Views);
+            deviation= distance/Views;
+            //if (Views>Playerguess) //SPieler tippt weniger
+            //{
+            //deviation =(Views-Playerguess) / Views;
 
-            // Berechne den Faktor, mit dem die Punktzahl multipliziert wird.
-            double factor = 0.5 + 0.5 * (1 - deviation);
-
-            // Berechne die Punktzahl als ganzzahlige Rundung des Faktors mal 100.
-            int points = (int)Math.Round(factor * 100);
-
-            // Begrenze die Punktzahl auf einen Wert zwischen 0 und 100.
+            //}
+            //else 
+            //{ 
+            //  deviation= (Views-Playerguess) / Views;
+            //}
+            int points = (int)Math.Round((1-deviation) * 100);
             points = Math.Min(100, Math.Max(0, points));
-
             return points.ToString();
+
+            //if (deviation<50)
+            //{
+            //    return "0";
+            //}
+            //else
+            //{
+            //    // Berechne den Faktor, mit dem die Punktzahl multipliziert wird.
+            //    double factor = (1 - deviation);
+            //    // Berechne die Punktzahl als ganzzahlige Rundung des Faktors mal 100.
+            //    int points = (int)Math.Round(factor * 100);
+            //    // Begrenze die Punktzahl auf einen Wert zwischen 0 und 100.
+            //    points = Math.Min(100, Math.Max(0, points));
+            //    return points.ToString();
+            //}
+
+
+
+
+
+
+
+
+            
         }
 
         private void HintCheckBox_Checked(object sender, RoutedEventArgs e)
