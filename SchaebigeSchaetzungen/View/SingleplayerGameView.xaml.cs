@@ -157,16 +157,18 @@ namespace SchaebigeSchaetzungen.View
             int distance =Math.Abs(Playerguess - Views);
 
             double percentage =( (double)distance / (double)Views);
-            if (percentage > 0.5)
-            {
-                return "0";
-            }
-            else
-            {
+
+            //vielleicht unter 50prozent abweichung keine punkte vergeben??
+            //if (percentage > 0.5)
+            //{
+            //    return "0";
+            //}
+            //else
+            //{
                 int points = (int)((1 - percentage) * 100);
                 points = Math.Min(100, Math.Max(0, points));
                 return points.ToString();
-            }
+           // }
             
         }
 
