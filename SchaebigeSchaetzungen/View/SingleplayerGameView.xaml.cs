@@ -166,7 +166,7 @@ namespace SchaebigeSchaetzungen.View
             //else
             //{
                 int points = (int)((1 - percentage) * 100);
-                points = Math.Min(100, Math.Max(0, points));
+               // points = Math.Min(100, Math.Max(0, points));
                 return points.ToString();
            // }
             

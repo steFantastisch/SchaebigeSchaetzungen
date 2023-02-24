@@ -200,14 +200,16 @@ namespace SchaebigeSchaetzungen.View
             }
         }
 
-        int[] CalculateMultiplayerPoints(int P1guess, int P2guess, int views)
+        int[] CalculateMultiplayerPoints(int P1guess, int P2guess, int Views)
         {
+            int distance1 = Math.Abs(P1guess - Views);
+            int distance2 = Math.Abs(P2guess - Views);
+            double percentage1 = ((double)distance1 / (double)Views);
+            double percentage2 = ((double)distance2 / (double)Views);
             int[] pts = new int[2];
 
-            pts[0] = 125;
-            pts[1]= 150;
-
-
+            pts[0] = (int)((1 - percentage1) * 100);
+            pts[1]= (int)((1 - percentage2) * 100);
 
             return pts;
         }
