@@ -152,10 +152,22 @@ namespace SchaebigeSchaetzungen.View
         }
         public string SingleplayerPts(int Playerguess, int Views)
         {
-       
-            int distance =Math.Abs(Playerguess - Views);
 
-            double percentage =( (double)distance / (double)Views);
+            int distance = Math.Abs(Playerguess - Views);
+            double percentage;
+            int points;
+            if (distance > Views)
+            {
+                //Beispiel 5000/15=333 macht kienen sinn deswegen umdrehen
+                percentage = ((double)Views / (double)distance); 
+                points = (int)((percentage) * 100);
+            }
+            else
+            {
+                percentage = ((double)distance / (double)Views);
+                points = (int)((percentage) * 100);
+            }
+
 
             //vielleicht unter 50prozent abweichung keine punkte vergeben??
             //if (percentage > 0.5)
@@ -164,11 +176,11 @@ namespace SchaebigeSchaetzungen.View
             //}
             //else
             //{
-                int points = (int)((1 - percentage) * 100);
-               // points = Math.Min(100, Math.Max(0, points));
-                return points.ToString();
-           // }
-            
+           
+            // points = Math.Min(100, Math.Max(0, points));
+            return points.ToString();
+            // }
+
         }
 
         private void HintCheckBox_Checked(object sender, RoutedEventArgs e)
