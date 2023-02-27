@@ -29,6 +29,10 @@ namespace SchaebigeSchaetzungen.View
             this.Background = myBrush;
         }
 
-
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO ERklärung rein
+            MessageBox.Show("SO funktioniert das Spiel", "Help", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }

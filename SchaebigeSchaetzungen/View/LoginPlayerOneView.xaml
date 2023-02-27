@@ -27,7 +27,7 @@
         <TextBox x:Name="pbPassword" Text="{Binding Game.PlayerOne.Password, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Background="Transparent"/>
         <Button x:Name="btnLogin" Command="{Binding LoginCommand}" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button x:Name="btnCreate" Command="{Binding CreateCommand}" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Content="Create player" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Name="btnHelp" Command="{Binding HelpCommand}" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Content="Help" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Name="btnHelp" Command="{Binding HelpCommand}" Grid.Column="1" Grid.Row="5" Content="Help" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,5,0,0" Click="btnHelp_Click"/>
 
     </Grid>
 </UserControl>
