@@ -59,7 +59,7 @@ namespace SchaebigeSchaetzungen.View
             TextBox2.Visibility= Visibility.Visible;
             P2.Visibility= Visibility.Visible;
             HintCheckBox.Visibility= Visibility.Visible;
-            NAButton.Visibility= Visibility.Visible;    
+            NAButton.Visibility= Visibility.Visible;
             if (HintCheckBox.IsChecked==true)
             {
                 HintLikes.Content = "Likes: " + likeCount.ToString();
@@ -179,7 +179,7 @@ namespace SchaebigeSchaetzungen.View
             LanguageLabel.Visibility = Visibility.Visible;
 
 
-            NAButton.Visibility= Visibility.Collapsed;  
+            NAButton.Visibility= Visibility.Collapsed;
             P1Submit.Visibility= Visibility.Collapsed;
             TextBox1.Visibility= Visibility.Collapsed;
             P1.Visibility= Visibility.Collapsed;
@@ -201,12 +201,30 @@ namespace SchaebigeSchaetzungen.View
         {
             int distance1 = Math.Abs(P1guess - Views);
             int distance2 = Math.Abs(P2guess - Views);
-            double percentage1 = ((double)distance1 / (double)Views);
-            double percentage2 = ((double)distance2 / (double)Views);
+            double percentage1;
+            double percentage2;
+            if (distance1 > Views)
+            {
+                percentage1 = ((double)Views / (double)distance1);
+            }
+            else
+            {
+                percentage1 = ((double)distance1 / (double)Views);
+            }
+            if (distance2 > Views)
+            {
+                percentage2 = ((double)Views / (double)distance2);
+            }
+            else
+            {
+                percentage2 = ((double)distance2 / (double)Views);
+            }
+
+
             int[] pts = new int[2];
 
-            pts[0] = (int)((1 - percentage1) * 100);
-            pts[1]= (int)((1 - percentage2) * 100);
+            pts[0] = (int)(( percentage1) * 100);
+            pts[1]= (int)((percentage2) * 100);
 
             return pts;
         }
