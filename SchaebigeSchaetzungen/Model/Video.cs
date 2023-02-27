@@ -148,18 +148,26 @@ namespace SchaebigeSchaetzungen.Model
             var q = RandomString(3);
             var url = "https://www.googleapis.com/youtube/v3/search?key=" + API_KEY + "&maxResults="+count+"&part=snippet&type=video&q=" +q;
 
-            using (WebClient wc = new WebClient())
+            HttpClient client = new HttpClient();
+
+            using (HttpResponseMessage response = client.GetAsync(url).Result)
             {
-                var json = wc.DownloadString(url);
-                dynamic jsonObject = JsonConvert.DeserializeObject(json);
-                int i = -1;
-                foreach (var line in jsonObject["items"])
+                using (HttpContent content = response.Content)
                 {
-                    i++;
-                    vidID=(string)(line["id"]["videoId"]);
+                    var json = content.ReadAsStringAsync().Result;
+                    dynamic jsonObject = JsonConvert.DeserializeObject(json);
+                    int i = -1;
+                    foreach (var line in jsonObject["items"])
+                    {
+                        i++;
+                        vidID=(string)(line["id"]["videoId"]);
+                    }
+                    return vidID;
                 }
-                return vidID;
             }
+
+
+           
         }
         /// <summary>
         /// Get Details from the Video like LIKES, VIEWS, COMMENTS, and LANGUAGE 
