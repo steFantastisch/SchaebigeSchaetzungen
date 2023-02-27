@@ -97,7 +97,6 @@ namespace SchaebigeSchaetzungen.Persistence
             return cmd.ExecuteReader();
         }
 
-        //wofür??
         public static int GetLastInsertId(MySqlConnection con)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM player ORDER BY PlayerID DESC LIMIT 1;", con);
