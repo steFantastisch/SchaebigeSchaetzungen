@@ -1,4 +1,5 @@
-﻿using SchaebigeSchaetzungen.Model;
+﻿using Google.Apis.YouTube.v3.Data;
+using SchaebigeSchaetzungen.Model;
 using SchaebigeSchaetzungen.Persistence;
 using SchaebigeSchaetzungen.Store;
 using SchaebigeSchaetzungen.ViewModel;
@@ -38,7 +39,8 @@ namespace SchaebigeSchaetzungen.Command
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Player not found!  ");
+                    MessageBox.Show("Player 2 not found in DB!", "Not found", MessageBoxButton.OK,MessageBoxImage.Error);
+                  
                 }
             }
             else
@@ -50,7 +52,7 @@ namespace SchaebigeSchaetzungen.Command
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Player not found!  ");
+                    MessageBox.Show("Player 1 not found in DB!", "Not found", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
             }

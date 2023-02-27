@@ -79,8 +79,7 @@ namespace SchaebigeSchaetzungen.View
             {
                 if (!Int32.TryParse(TextBox1.Text, out guess))
                 {
-                    //TODO
-                    //Fehlermessage wegen falscheingabe
+                    MessageBox.Show("You did not insert a number!", "Wrong input", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 BindingExpression binding3 = TextBox1.GetBindingExpression(TextBox.TextProperty);

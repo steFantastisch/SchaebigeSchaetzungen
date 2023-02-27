@@ -33,7 +33,6 @@ namespace SchaebigeSchaetzungen.View
 
         public MultiplayerGameView()
         {
-            //TODO Spielername über game bekommen
             round=0;
             InitializeComponent();
             Init();
@@ -91,8 +90,7 @@ namespace SchaebigeSchaetzungen.View
 
             if (!Int32.TryParse(TextBox1.Text, out PlayerOneguess))
             {
-                //TODO
-                //Fehlermessage wegen falscheingabe
+                MessageBox.Show("You did not insert a number!", "Wrong input", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             BindingExpression binding = TextBox1.GetBindingExpression(TextBox.TextProperty);
@@ -114,8 +112,7 @@ namespace SchaebigeSchaetzungen.View
         {
             if (!Int32.TryParse(TextBox2.Text, out PlayerTwoguess))
             {
-                //TODO
-                //Fehlermessage wegen falscheingabe
+                MessageBox.Show("You did not insert a number!", "Wrong input", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             BindingExpression binding = TextBox2.GetBindingExpression(TextBox.TextProperty);
