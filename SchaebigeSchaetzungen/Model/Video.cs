@@ -127,7 +127,7 @@ namespace SchaebigeSchaetzungen.Model
                  "<html>"
                 +"<head><meta http-equiv='X-UA-Compatible' content='IE=11' />"
                 + "<body>" + "\r\n"
-                + "<iframe src=\"" + url1 +  " \" width=\"770px\" height=\"350px\" frameborder=\"0\" allowfullscreen></iframe>"
+                + "<iframe src=\"" + url1 +  "?autoplay=1&loop=1 \" width=\"770px\" height=\"350px\" frameborder=\"0\" allowfullscreen></iframe>"
                 + "</body></html>";
             return page;
 
