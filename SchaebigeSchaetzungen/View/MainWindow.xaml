@@ -31,6 +31,9 @@
             <DataTemplate DataType="{x:Type vms:GameEndViewModel}">
                 <view:GameEndView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:GameEndMPViewModel}">
+                <view:GameEndViewMP/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type vms:HighscoreViewModel}">
                 <view:HighscoreView/>
             </DataTemplate>

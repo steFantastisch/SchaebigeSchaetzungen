@@ -67,11 +67,15 @@ namespace SchaebigeSchaetzungen
         private MultiplayerGameViewModel CreateMultiplayerGameViewModel()
         {
             //game.PlayerTwo=DBPlayer.Read(game.PlayerTwo);
-            return new MultiplayerGameViewModel(navigationStore, game, CreateGameEndViewModel);
+            return new MultiplayerGameViewModel(navigationStore, game, CreateGameEndMPViewModel);
         }
         private GameEndViewModel CreateGameEndViewModel()
         {
-            return new GameEndViewModel(navigationStore, game, CreateGameModeSelectionViewModel, CreateSingleplayerGameViewModel,CreateMultiplayerGameViewModel, CreateHighscoreViewModel);
+            return new GameEndViewModel(navigationStore, game, CreateGameModeSelectionViewModel, CreateSingleplayerGameViewModel, CreateHighscoreViewModel);
+        }
+        private GameEndMPViewModel CreateGameEndMPViewModel()
+        {
+            return new GameEndMPViewModel(navigationStore, game, CreateGameModeSelectionViewModel, CreateMultiplayerGameViewModel, CreateHighscoreViewModel);
         }
         private HighscoreViewModel CreateHighscoreViewModel()
         {

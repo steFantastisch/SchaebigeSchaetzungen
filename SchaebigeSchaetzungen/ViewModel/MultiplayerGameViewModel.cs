@@ -28,13 +28,13 @@ namespace SchaebigeSchaetzungen.ViewModel
         public MultiplayerGameViewModel(
             NavigationStore navigationStore,
             Game game,
-            Func<GameEndViewModel> createGameEndViewModel)
+            Func<GameEndMPViewModel> createGameEndMPViewModel)
         {
            
             this.Game = game;
             game.PlayerOne.GamePoints=0;
             game.PlayerTwo.GamePoints=0;
-            this.GameEndCommand = new NavigateCommand(navigationStore, game, createGameEndViewModel);
+            this.GameEndCommand = new NavigateCommand(navigationStore, game, createGameEndMPViewModel);
 
         }
     }
