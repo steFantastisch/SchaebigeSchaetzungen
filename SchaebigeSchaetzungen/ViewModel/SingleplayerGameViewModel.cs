@@ -34,10 +34,6 @@ namespace SchaebigeSchaetzungen.ViewModel
                 OnPropertyChanged(nameof(views));
             }
         }
-
-
-
-
         public ICommand GameEndCommand { get; }
  
 

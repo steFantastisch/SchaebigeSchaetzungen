@@ -21,17 +21,23 @@ namespace SchaebigeSchaetzungen.Persistence
 
 
             MySqlConnection con = DBAccess.OpenDB();
-             player.PlayerID = DBAccess.GetLastInsertId(con)+1;
-           
-             String sql = $"Insert into Player (PlayerID, Name, Mail, Password, Crowns) " +
-                $"values ('{player.PlayerID}','{player.Name}', '{player.Mail}', '{player.Password}', 0)";
+            player.PlayerID = DBAccess.GetLastInsertId(con)+1;
 
-            int ret = DBAccess.ExecuteNonQuery(sql, con);
-            if (ret != 1)
-                throw new Exception("Insert failed!");
+            String sql = $"Insert into Player (PlayerID, Name, Mail, Password, Crowns) " +
+               $"values ('{player.PlayerID}','{player.Name}', '{player.Mail}', '{player.Password}', 0)";
+
+            try
+            {
+                int ret = DBAccess.ExecuteNonQuery(sql, con);
+                if (ret != 1) throw new Exception("Insert failed!");
+            }
+            finally
+            {
+                DBAccess.CloseDB(con);
+            }
 
 
-            DBAccess.CloseDB(con);
+
         }
 
         public static Player Read(Player p)
@@ -136,7 +142,7 @@ namespace SchaebigeSchaetzungen.Persistence
             p.Password = rdr.GetString("Password");
             p.Mail = rdr.GetString("Mail");
             p.Crowns = rdr.GetInt32("Crowns");
-           // p.Avatar = new Avatar(rdr.GetInt32("Avatar"));
+            // p.Avatar = new Avatar(rdr.GetInt32("Avatar"));
             return p;
         }
     }

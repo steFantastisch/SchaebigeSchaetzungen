@@ -29,8 +29,8 @@
         <Label x:Name="HintLabel" Content="Hints" HorizontalAlignment="Right" Margin="0,0,25,10" Grid.Row="1" Grid.Column="3" />
         <CheckBox x:Name="HintCheckBox"  Margin="0,5,10,0" HorizontalAlignment="Right"  VerticalAlignment="Top" Grid.Row="1" Grid.Column="3" Unchecked="HintCheckBox_Unchecked" Checked="HintCheckBox_Checked"   />
 
-        <Label x:Name="HintLikes" Content="Likes 345256"  Margin="70,0,15,10" Grid.Row="1" Grid.Column="3" Visibility="Collapsed"/>
-        <Label x:Name="HintComments" Content="Comments 7778888" HorizontalAlignment="Right" Margin="0,0,60,10" Grid.Row="1" Grid.Column="3" Visibility="Collapsed"/>
+        <Label x:Name="HintLikes" Content=""  Margin="70,0,15,10" Grid.Row="1" Grid.Column="3" Visibility="Collapsed"/>
+        <Label x:Name="HintComments" Content="" HorizontalAlignment="Right" Margin="0,0,60,10" Grid.Row="1" Grid.Column="3" Visibility="Collapsed"/>
         <Button x:Name="NAButton" Content="Video N/A" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="3" Margin="10,5,10,10" Click="NAButton_Click" />
         <Label x:Name="LanguageLabel" Content="" HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="0" Visibility="Collapsed" />
         <TextBox  x:Name="ViewTextBox" Text="{Binding Game.CurrentViews, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Left" Margin="47,5,0,10" Width="Auto" Grid.Column="1" Grid.Row="1"  Visibility="Collapsed"/>

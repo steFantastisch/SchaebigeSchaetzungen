@@ -80,6 +80,7 @@ namespace SchaebigeSchaetzungen.Persistence
                 MySqlCommand obj = new MySqlCommand(command, DBAccess.Transaction.Connection, DBAccess.Transaction);
 
                 ret = obj.ExecuteNonQuery();
+
             }
 
             return ret;

@@ -9,12 +9,7 @@ using System.Threading.Tasks;
 namespace SchaebigeSchaetzungen.Model
 {
 
-    public enum Gamemode
-    {
-        Singleplayer,
-        Multiplayer
-    }
-
+  
     public class Game
     {
         private Player playerOne;
@@ -31,14 +26,6 @@ namespace SchaebigeSchaetzungen.Model
         {
             get { return playerTwo; }
             set { playerTwo = value; }
-        }
-
-        private Gamemode gamemode;
-
-        public Gamemode Gamemode
-        {
-            get { return gamemode; }
-            set { gamemode = value; }
         }
 
         private int currentViews;
@@ -59,17 +46,6 @@ namespace SchaebigeSchaetzungen.Model
         public Game()
         {
 
-        }
-
-        public Game(Player playerOne, Player playerTwo, Gamemode gamemode)
-        {
-            this.PlayerOne = playerOne;
-            this.PlayerTwo = playerTwo;
-            this.Gamemode = gamemode;
-
-
-            playerOne.Points = 0;
-            playerTwo.Points = 0;
         }
 
     }

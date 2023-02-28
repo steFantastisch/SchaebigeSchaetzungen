@@ -53,7 +53,7 @@ namespace SchaebigeSchaetzungen.View
 
         public async void Init()
         {
-            TextBox1.Text="";
+
             Model.Video video = new Model.Video();
             await video.GetDetailsAsync(video.VideoID);
             webBrowser1.NavigateToString(video.Dispstr);
@@ -69,7 +69,7 @@ namespace SchaebigeSchaetzungen.View
                 HintComments.Content = "Comments: "+ commentCount.ToString();
                 HintComments.Visibility = Visibility.Visible;
             }
-
+            TextBox1.Text="";
 
         }
 
@@ -159,13 +159,13 @@ namespace SchaebigeSchaetzungen.View
             if (distance > Views)
             {
                 //Beispiel 5000/15=333 macht kienen sinn deswegen umdrehen
-                percentage = ((double)Views / (double)distance); 
-                
+                percentage = ((double)Views / (double)distance);
+
             }
             else
             {
                 percentage = ((double)distance / (double)Views);
-                
+
             }
 
 
@@ -176,7 +176,7 @@ namespace SchaebigeSchaetzungen.View
             //}
             //else
             //{
-           points = (int)((percentage) * 100);
+            points = (int)((percentage) * 100);
             // points = Math.Min(100, Math.Max(0, points));
             return points.ToString();
             // }
