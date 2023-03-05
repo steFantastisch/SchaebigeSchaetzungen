@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="View\logo.ico" />
+    <None Remove="View\Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.100.9" />
     <PackageReference Include="Google.Apis" Version="1.57.0" />
     <PackageReference Include="Google.Apis.Auth" Version="1.57.0" />
@@ -20,6 +25,11 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="View\logo.ico" />
+    <Resource Include="View\Logo.png" />
   </ItemGroup>
 
   <ItemGroup>
