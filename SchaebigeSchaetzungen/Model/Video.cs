@@ -107,8 +107,6 @@ namespace SchaebigeSchaetzungen.Model
         {
             this.videoID = randomVidID();
             this.dispstr= Display(videoID);
-            //Getdetails klappt hier nicht rein wegen awaiten
-
         }
 
         private Regex YouTubeURLIDRegex = new Regex(@"[?&]v=(?<v>[^&]+)");
@@ -159,12 +157,7 @@ namespace SchaebigeSchaetzungen.Model
                         return vidID;
                     }
                 }
-
             }
-
-
-
-
         }
         /// <summary>
         /// Get Details from the Video like LIKES, VIEWS, COMMENTS, and LANGUAGE 
