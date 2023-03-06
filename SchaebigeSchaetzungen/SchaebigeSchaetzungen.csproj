@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="View\logo.ico" />
-    <None Remove="View\Logo.png" />
+    <None Remove="View\SS_Logo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,8 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="View\logo.ico" />
-    <Resource Include="View\Logo.png" />
+    <Resource Include="View\SS_Logo.png" />
   </ItemGroup>
 
   <ItemGroup>
