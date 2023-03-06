@@ -103,12 +103,14 @@ namespace SchaebigeSchaetzungen.View
                 HintComments.Visibility = Visibility.Collapsed;
 
 
+                 
 
                 ViewTextBox.Text= viewCount.ToString();
                 BindingExpression binding = ViewTextBox.GetBindingExpression(TextBox.TextProperty);
                 binding.UpdateSource();
 
                 PointsTextBox.Text=SingleplayerPts(guess, viewCount);
+                //TODO Bonuspunkte für SPrache??
                 BindingExpression binding2 = PointsTextBox.GetBindingExpression(TextBox.TextProperty);
                 binding2.UpdateSource();
 
