@@ -11,6 +11,7 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Documents;
 
 namespace SchaebigeSchaetzungen.Model
@@ -194,8 +195,7 @@ namespace SchaebigeSchaetzungen.Model
                 }
                 else
                 {
-                    //TODO Handle HTTP ERROR
-                    // Console.WriteLine("Fehler beim Abrufen der API-Antwort: " + response.StatusCode);
+                    MessageBox.Show("There was an Error :(", "HTTP ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 return;
             }

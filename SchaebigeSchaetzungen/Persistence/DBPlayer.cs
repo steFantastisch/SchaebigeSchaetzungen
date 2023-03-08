@@ -14,12 +14,6 @@ namespace SchaebigeSchaetzungen.Persistence
         public static void Insert(Player player)
         {
 
-            //String sql = $"Insert into Player (Name, Mail, Password, Avatar, Crowns) " +
-            //    $"values ('{player.Name}', '{player.Mail}', '{player.Password}' , {player.Avatar.AvatarID}, 0)";
-            //TEMP:
-
-
-
             MySqlConnection con = DBAccess.OpenDB();
             player.PlayerID = DBAccess.GetLastInsertId(con)+1;
 
@@ -35,9 +29,6 @@ namespace SchaebigeSchaetzungen.Persistence
             {
                 DBAccess.CloseDB(con);
             }
-
-
-
         }
 
         public static Player Read(Player p)
