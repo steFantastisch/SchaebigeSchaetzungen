@@ -18,6 +18,10 @@ namespace SchaebigeSchaetzungen.Model
 {
     public class Video
     {
+        public static string YTAPI = "https://www.googleapis.com/youtube/v3/";
+        public static string API_KEY = "AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
+        public static string YTLINK = "https://www.youtube.com/";
+
         private static Random random = new Random();
         private string videoID;
 
@@ -113,9 +117,9 @@ namespace SchaebigeSchaetzungen.Model
         private Regex YouTubeURLIDRegex = new Regex(@"[?&]v=(?<v>[^&]+)");
         private string Display(string url)
         {
-            Match m = YouTubeURLIDRegex.Match("https://www.youtube.com/watch?v="+url);
+            Match m = YouTubeURLIDRegex.Match(YTLINK+"watch?v="+url);
             String id = m.Groups["v"].Value;
-            string url1 = "http://www.youtube.com/embed/" + id;
+            string url1 = YTLINK+"embed/" + id;
             string page =
                  "<html>"
                 +"<head><meta http-equiv='X-UA-Compatible' content='IE=11' />"
@@ -135,11 +139,11 @@ namespace SchaebigeSchaetzungen.Model
 
         private static string randomVidID()
         {
+            
             var count = 1;
             string vidID = "";
-            var API_KEY = "AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
             var q = RandomString(3);
-            var url = "https://www.googleapis.com/youtube/v3/search?key=" + API_KEY + "&maxResults="+count+"&part=snippet&type=video&q=" +q;
+            var url = YTAPI+"search?key=" + API_KEY + "&maxResults="+count+"&part=snippet&type=video&q=" +q;
 
             using (HttpClient client = new HttpClient())
             {
@@ -167,7 +171,7 @@ namespace SchaebigeSchaetzungen.Model
         /// <returns></returns>
         public async Task GetDetailsAsync(string id)
         {
-            string apiUrl = "https://youtube.googleapis.com/youtube/v3/videos?id="+ id +"&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
+            string apiUrl =YTAPI+ "videos?id="+ id +"&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
             using (HttpClient client = new HttpClient())
             {
                 HttpResponseMessage response = await client.GetAsync(apiUrl);

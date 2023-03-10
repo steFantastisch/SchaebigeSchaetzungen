@@ -102,6 +102,20 @@ namespace SchaebigeSchaetzungen.Model
             set { guess = value; }
         }
 
+        /// <summary>
+        /// SIGN UP
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        /// <param name="mail"></param>
+        public Player(string name, string password, string mail)
+        {
+            Password=password;
+            Mail=mail;
+            Name=name;
+            // DBPlayer.Insert(this);  liebr manuell immer sorgt sonst für verwirrung
+        }
+
         public Player()
         {
            //TEMP
