@@ -23,30 +23,16 @@ namespace SchaebigeSchaetzungen.View
     /// </summary>
     public partial class CreatePlayerView : UserControl
     {
-        private Avatar _avatar = new Avatar(1);
+      
         private Player _player = new Player();
 
         public CreatePlayerView()
         {
-            //this._player = new Player();
+           
             InitializeComponent();
         }
 
-        private void btnUpload_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog()
-            {
-                //Only png?
-                Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg"
-            };
-
-            bool? response = openFileDialog.ShowDialog();
-
-            if (response == true)
-            {
-                _avatar = new Avatar(openFileDialog);
-            }
-        }
+       
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
