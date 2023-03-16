@@ -105,7 +105,7 @@ namespace SchaebigeSchaetzungen.Model
         }
 
         private Regex YouTubeURLIDRegex = new Regex(@"[?&]v=(?<v>[^&]+)");
-        private string Display(string url)
+        public string Display(string url)
         {
             Match m = YouTubeURLIDRegex.Match(YTLINK+"watch?v="+url);
             String id = m.Groups["v"].Value;
