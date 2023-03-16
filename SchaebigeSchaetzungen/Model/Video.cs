@@ -128,8 +128,7 @@ namespace SchaebigeSchaetzungen.Model
 
 
         public static string randomVidID()
-        {
-            
+        {     
             var count = 1;
             string vidID = "";
             var q = RandomString(3);

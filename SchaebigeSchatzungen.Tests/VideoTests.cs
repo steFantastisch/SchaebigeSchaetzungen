@@ -1,16 +1,19 @@
+using Moq;
+using Moq.Protected;
 using NUnit.Framework;
 using SchaebigeSchaetzungen.Model;
+using System.Net;
 
 namespace SchaebigeSchatzungen.Tests
 {
     public class VideoTests
     {
-        private Video _video { get; set; }=null!;
+        private Video _video { get; set; } = null!;
 
         [SetUp]
         public void Setup()
         {
-            _video = new Video();  
+            _video = new Video();
         }
 
 
@@ -86,5 +89,30 @@ namespace SchaebigeSchatzungen.Tests
                 Assert.Contains(c, validCharsList);
             }
         }
+
+
+        [Test]
+        public async Task GetDetailsAsync_ReturnsDetailsForValidVideoId()
+        {
+            // Arrange
+           
+            Video video = new Video();
+
+            // Act
+            await video.GetDetailsAsync(video.VideoID);
+
+            // Assert
+            Assert.NotNull(video.Views);
+            Assert.NotNull(video.Comments);
+            Assert.NotNull(video.Likes);
+
+            Assert.True(string.IsNullOrEmpty(video.Language) || video.Language is string);
+            Assert.True(video.Views >= 0);
+            Assert.True(video.Comments >= 0);
+            Assert.True(video.Likes >= 0);
+        }
+
+
     }
 }
+
