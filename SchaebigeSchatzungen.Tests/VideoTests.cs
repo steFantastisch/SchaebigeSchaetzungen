@@ -14,7 +14,7 @@ namespace SchaebigeSchatzungen.Tests
         public void Setup()
         {
             _video = new Video();
-            _video.VideoID=Video.randomVidID();
+            
         }
 
 
@@ -28,7 +28,7 @@ namespace SchaebigeSchatzungen.Tests
             string result = Video.RandomString(length);
 
             // Assert
-            Assert.AreEqual(length, result.Length);
+            Assert.That(result.Length, Is.EqualTo(length));
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace SchaebigeSchatzungen.Tests
             string result = Video.randomVidID();
 
             // Assert
-            Assert.AreEqual(expectedLength, result.Length);
+            Assert.That(result.Length, Is.EqualTo(expectedLength));
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace SchaebigeSchatzungen.Tests
             string result2 = Video.randomVidID();
 
             // Assert
-            Assert.AreNotEqual(result1, result2);
+            Assert.That(result2, Is.Not.EqualTo(result1));
         }
 
         [Test]
@@ -112,6 +112,47 @@ namespace SchaebigeSchatzungen.Tests
             Assert.True(video.Comments >= 0);
             Assert.True(video.Likes >= 0);
         }
+        [Test]
+        public void Display_ReturnsHtmlWithIframe()
+        {
+            Video video = new Video();
+            // Arrange
+            string url = "testUrl";
+
+            // Act
+            string result = _video.Display(url);
+
+            // Assert
+            Assert.IsTrue(result.Contains("<iframe"));
+        }
+
+        [Test]
+        public void Display_ReturnsHtmlWithExpectedWidthAndHeight()
+        {
+            // Arrange
+            string url = "testUrl";
+
+            // Act
+            string result = _video.Display(url);
+
+            // Assert
+            Assert.IsTrue(result.Contains("width=\"770px\""));
+            Assert.IsTrue(result.Contains("height=\"350px\""));
+        }
+
+        [Test]
+        public void Display_ReturnsHtmlWithExpectedAutoplayAndLoopAttributes()
+        {
+            // Arrange
+            string url = "testUrl";
+
+            // Act
+            string result = _video.Display(url);
+
+            // Assert
+            Assert.IsTrue(result.Contains("?autoplay=1&loop=1"));
+        }
+
     }
 }
 
