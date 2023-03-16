@@ -119,7 +119,7 @@ namespace SchaebigeSchaetzungen.Model
             return page;
 
         }
-        private static string RandomString(int length)
+        public static string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)
@@ -127,7 +127,7 @@ namespace SchaebigeSchaetzungen.Model
         }
 
 
-        private static string randomVidID()
+        public static string randomVidID()
         {
             
             var count = 1;
