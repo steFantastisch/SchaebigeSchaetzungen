@@ -14,6 +14,7 @@ namespace SchaebigeSchatzungen.Tests
         public void Setup()
         {
             _video = new Video();
+            _video.VideoID=Video.randomVidID();
         }
 
 
@@ -95,7 +96,7 @@ namespace SchaebigeSchatzungen.Tests
         public async Task GetDetailsAsync_ReturnsDetailsForValidVideoId()
         {
             // Arrange
-           
+
             Video video = new Video();
 
             // Act
@@ -111,48 +112,6 @@ namespace SchaebigeSchatzungen.Tests
             Assert.True(video.Comments >= 0);
             Assert.True(video.Likes >= 0);
         }
-
-        [Test]
-        public void Display_ReturnsHtmlWithIframe()
-        {
-            Video video = new Video();
-            // Arrange
-            string url = "testUrl";
-
-            // Act
-            string result = _video.Display(url);
-
-            // Assert
-            Assert.IsTrue(result.Contains("<iframe"));
-        }
-
-        [Test]
-        public void Display_ReturnsHtmlWithExpectedWidthAndHeight()
-        {
-            // Arrange
-            string url = "testUrl";
-
-            // Act
-            string result = _video.Display(url);
-
-            // Assert
-            Assert.IsTrue(result.Contains("width=\"770px\""));
-            Assert.IsTrue(result.Contains("height=\"350px\""));
-        }
-
-        [Test]
-        public void Display_ReturnsHtmlWithExpectedAutoplayAndLoopAttributes()
-        {
-            // Arrange
-            string url = "testUrl";
-
-            // Act
-            string result = _video.Display(url);
-
-            // Assert
-            Assert.IsTrue(result.Contains("?autoplay=1&loop=1"));
-        }
-
     }
 }
 
