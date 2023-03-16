@@ -55,22 +55,6 @@ namespace SchaebigeSchaetzungen.Model
             set { crowns = value; }
         }
 
-
-        private Avatar image;
-
-        public Avatar Avatar
-        {
-            get { return image; }
-            set { image = value; }
-        }
-
-        private bool fishcard;
-        public bool Fishcard
-        {
-            get { return fishcard; }
-            set { fishcard = value; }
-        }
-
         /// <summary>
         /// Punkte in der derzeitigen RUNDE
         /// </summary>

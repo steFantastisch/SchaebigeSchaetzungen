@@ -34,14 +34,7 @@ namespace SchaebigeSchaetzungen.Model
             get { return currentViews; }
             set { currentViews = value; }
         }
-        private List<Video> playlist;
-
-        public List<Video> Playlist
-        {
-            get { return playlist; }
-            set { playlist = value; }
-        }
-
+     
 
         public Game()
         {

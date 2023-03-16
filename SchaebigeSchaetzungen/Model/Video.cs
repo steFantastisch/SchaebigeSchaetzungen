@@ -92,16 +92,6 @@ namespace SchaebigeSchaetzungen.Model
             set { german = value; }
         }
 
-        private bool timecode;
-
-        public bool Timecode
-        {
-            get { return timecode; }
-            set { timecode = value; }
-        }
-
-
-
 
         /// <summary>
         /// Constructor for Multiplayer
