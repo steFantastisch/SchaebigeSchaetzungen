@@ -117,8 +117,8 @@ namespace SchaebigeSchaetzungen.Model
                 + "<iframe src=\"" + url1 +  "?autoplay=1&loop=1 \" width=\"770px\" height=\"350px\" frameborder=\"0\" allowfullscreen></iframe>"
                 + "</body></html>";
             return page;
-
         }
+
         public static string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
