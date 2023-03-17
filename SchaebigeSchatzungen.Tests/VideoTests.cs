@@ -143,11 +143,11 @@ namespace SchaebigeSchatzungen.Tests
             await video.GetDetailsAsync(videoId,httpClient);
 
             // Assert
-            Assert.AreEqual(1000, video.Views);
-            Assert.AreEqual(500, video.Likes);
-            Assert.AreEqual(200, video.Comments);
-            Assert.AreEqual("de", video.Language);
-            Assert.IsTrue(video.German);
+            Assert.That(video.Views, Is.EqualTo(1000));
+            Assert.That(video.Likes, Is.EqualTo(500));
+            Assert.That(video.Comments, Is.EqualTo(200));
+            Assert.That(video.Language, Is.EqualTo("de"));
+            Assert.That(video.German, Is.True);
 
             httpClientMock.Protected().Verify(
                 "SendAsync",
