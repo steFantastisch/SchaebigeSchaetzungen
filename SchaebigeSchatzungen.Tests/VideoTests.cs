@@ -91,6 +91,71 @@ namespace SchaebigeSchatzungen.Tests
             }
         }
 
+        [Test]
+        public async Task GetDetailsAsync_ReturnsCorrectDetails()
+        {
+            // Arrange
+            var videoId = "testVideoId";
+            var sampleResponse = @"{
+    'items': [
+        {
+            'snippet': {
+                'publishedAt': '2021-01-01T00:00:00Z',
+                'title': 'Test Video',
+                'description': 'This is a test video.',
+                'defaultAudioLanguage': 'de'
+            },
+            'statistics': {
+                'viewCount': 1000,
+                'likeCount': 500,
+                'commentCount': 200
+            },
+            'contentDetails': {
+                'duration': 'PT1M30S'
+            }
+        }
+    ],
+    'pageInfo': {
+        'totalResults': 1,
+        'resultsPerPage': 1
+    }
+}";
+
+            var httpClientMock = new Mock<HttpClientHandler>();
+            httpClientMock.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>()
+                )
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    StatusCode = HttpStatusCode.OK,
+                    Content = new StringContent(sampleResponse),
+                })
+                .Verifiable();
+
+            var httpClient = new HttpClient(httpClientMock.Object);
+
+            var video = new Video();
+
+            // Act
+            await video.GetDetailsAsync(videoId);
+
+            // Assert
+            Assert.AreEqual(1000, video.Views);
+            Assert.AreEqual(500, video.Likes);
+            Assert.AreEqual(200, video.Comments);
+            Assert.AreEqual("de", video.Language);
+            Assert.IsTrue(video.German);
+
+            httpClientMock.Protected().Verify(
+                "SendAsync",
+                Times.Exactly(1),
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>()
+            );
+        }
 
         [Test]
         public async Task GetDetailsAsync_ReturnsDetailsForValidVideoId() //TODO MOCKS REIN
