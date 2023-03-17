@@ -14,7 +14,7 @@ namespace SchaebigeSchatzungen.Tests
         public void Setup()
         {
             _video = new Video();
-            
+
         }
 
 
@@ -97,27 +97,27 @@ namespace SchaebigeSchatzungen.Tests
             // Arrange
             var videoId = "testVideoId";
             var sampleResponse = @"{
-    'items': [
+    ""items"": [
         {
-            'snippet': {
-                'publishedAt': '2021-01-01T00:00:00Z',
-                'title': 'Test Video',
-                'description': 'This is a test video.',
-                'defaultAudioLanguage': 'de'
+            ""snippet"": {
+                ""publishedAt"": ""2021-01-01T00:00:00Z"",
+                ""title"": ""Test Video"",
+                ""description"": ""This is a test video."",
+                ""defaultAudioLanguage"": ""de""
             },
-            'statistics': {
-                'viewCount': 1000,
-                'likeCount': 500,
-                'commentCount': 200
+            ""statistics"": {
+                ""viewCount"": 1000,
+                ""likeCount"": 500,
+                ""commentCount"": 200
             },
-            'contentDetails': {
-                'duration': 'PT1M30S'
+            ""contentDetails"": {
+                ""duration"": ""PT1M30S""
             }
         }
     ],
-    'pageInfo': {
-        'totalResults': 1,
-        'resultsPerPage': 1
+    ""pageInfo"": {
+        ""totalResults"": 1,
+        ""resultsPerPage"": 1
     }
 }";
 
@@ -140,7 +140,7 @@ namespace SchaebigeSchatzungen.Tests
             var video = new Video();
 
             // Act
-            await video.GetDetailsAsync(videoId);
+            await video.GetDetailsAsync(videoId,httpClient);
 
             // Assert
             Assert.AreEqual(1000, video.Views);
@@ -185,12 +185,12 @@ namespace SchaebigeSchatzungen.Tests
 
             // Assert
             Assert.IsTrue(result.Contains("width=\"770px\""));
-            Assert.IsTrue(result.Contains("height=\"350px\"")); 
+            Assert.IsTrue(result.Contains("height=\"350px\""));
             Assert.IsTrue(result.Contains("?autoplay=1&loop=1"));
             Assert.IsTrue(result.Contains("<iframe"));
         }
 
-       
+
 
     }
 }

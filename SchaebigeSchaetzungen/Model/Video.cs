@@ -158,13 +158,14 @@ namespace SchaebigeSchaetzungen.Model
         /// </summary>
         /// <param name="id"> Video ID</param>
         /// <returns></returns>
-        public async Task GetDetailsAsync(string id)
+        public async Task GetDetailsAsync(string id, HttpClient? httpClient = null)
         {
-            string apiUrl =YTAPI+ "videos?id="+ id +"&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
-            using (HttpClient client = new HttpClient())
+            string apiUrl = YTAPI + "videos?id=" + id + "&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
+            using (HttpClient client = httpClient ?? new HttpClient())
             {
                 HttpResponseMessage response = await client.GetAsync(apiUrl);
 
+      
                 if (response.IsSuccessStatusCode)
                 {
                     //JSON-Dokument aus GET auslesen
