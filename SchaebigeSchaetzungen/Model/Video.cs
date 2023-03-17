@@ -19,7 +19,7 @@ namespace SchaebigeSchaetzungen.Model
     public class Video
     {
         public static string YTAPI = "https://www.googleapis.com/youtube/v3/";
-        public static string API_KEY = "AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
+        public static string API_KEY = "AIzaSyD-37p9Fvz0NpIj-xVTLd0xlOSBMw2sjB8";
         public static string YTLINK = "https://www.youtube.com/";
 
         private static Random random = new Random();

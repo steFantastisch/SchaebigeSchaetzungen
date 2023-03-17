@@ -93,29 +93,27 @@ namespace SchaebigeSchatzungen.Tests
 
 
         [Test]
-        public async Task GetDetailsAsync_ReturnsDetailsForValidVideoId()
+        public async Task GetDetailsAsync_ReturnsDetailsForValidVideoId() //TODO MOCKS REIN
         {
             // Arrange
 
-            Video video = new Video();
-
             // Act
-            await video.GetDetailsAsync(video.VideoID);
+            await _video.GetDetailsAsync(_video.VideoID);
 
             // Assert
-            Assert.NotNull(video.Views);
-            Assert.NotNull(video.Comments);
-            Assert.NotNull(video.Likes);
+            Assert.NotNull(_video.Views);
+            Assert.NotNull(_video.Comments);
+            Assert.NotNull(_video.Likes);
 
-            Assert.True(string.IsNullOrEmpty(video.Language) || video.Language is string);
-            Assert.True(video.Views >= 0);
-            Assert.True(video.Comments >= 0);
-            Assert.True(video.Likes >= 0);
+            Assert.True(string.IsNullOrEmpty(_video.Language) || _video.Language is string);
+            Assert.True(_video.Views >= 0);
+            Assert.True(_video.Comments >= 0);
+            Assert.True(_video.Likes >= 0);
         }
         [Test]
         public void Display_ReturnsHtmlWithIframe()
         {
-            Video video = new Video();
+            
             // Arrange
             string url = "testUrl";
 
