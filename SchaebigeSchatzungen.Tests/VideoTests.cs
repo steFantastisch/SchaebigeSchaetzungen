@@ -110,46 +110,22 @@ namespace SchaebigeSchatzungen.Tests
             Assert.True(_video.Comments >= 0);
             Assert.True(_video.Likes >= 0);
         }
-        [Test]
-        public void Display_ReturnsHtmlWithIframe()
-        {
-            
-            // Arrange
-            string url = "testUrl";
-
-            // Act
-            string result = _video.Display(url);
-
-            // Assert
-            Assert.IsTrue(result.Contains("<iframe"));
-        }
 
         [Test]
-        public void Display_ReturnsHtmlWithExpectedWidthAndHeight()
+        public void Display_ReturnsHtmlWithExpectedParams()
         {
-            // Arrange
-            string url = "testUrl";
 
             // Act
-            string result = _video.Display(url);
+            string result = _video.Dispstr;
 
             // Assert
             Assert.IsTrue(result.Contains("width=\"770px\""));
-            Assert.IsTrue(result.Contains("height=\"350px\""));
-        }
-
-        [Test]
-        public void Display_ReturnsHtmlWithExpectedAutoplayAndLoopAttributes()
-        {
-            // Arrange
-            string url = "testUrl";
-
-            // Act
-            string result = _video.Display(url);
-
-            // Assert
+            Assert.IsTrue(result.Contains("height=\"350px\"")); 
             Assert.IsTrue(result.Contains("?autoplay=1&loop=1"));
+            Assert.IsTrue(result.Contains("<iframe"));
         }
+
+       
 
     }
 }
