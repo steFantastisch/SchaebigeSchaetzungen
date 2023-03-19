@@ -20,8 +20,8 @@ namespace SchaebigeSchatzungen.Tests
             int[] result = Game.CalculateMultiplayerPoints(player1Guess, player2Guess, actualViews);
 
             // Assert
-            Assert.AreEqual(67, result[0]);
-            Assert.AreEqual(75, result[1]);
+            Assert.That(result[0], Is.EqualTo(67));
+            Assert.That(result[1], Is.EqualTo(75));
         }
 
         [Test]
@@ -36,8 +36,8 @@ namespace SchaebigeSchatzungen.Tests
             int[] result = Game.CalculateMultiplayerPoints(player1Guess, player2Guess, actualViews);
 
             // Assert
-            Assert.AreEqual(100, result[0]);
-            Assert.AreEqual(100, result[1]);
+            Assert.That(result[0], Is.EqualTo(100));
+            Assert.That(result[1], Is.EqualTo(100));
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace SchaebigeSchatzungen.Tests
             string result = Game.SingleplayerPts(playerGuess, actualViews);
 
             // Assert
-            Assert.AreEqual("67", result);
+            Assert.That(result, Is.EqualTo("67"));
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace SchaebigeSchatzungen.Tests
             string result = Game.SingleplayerPts(playerGuess, actualViews);
 
             // Assert
-            Assert.AreEqual("100", result);
+            Assert.That(result, Is.EqualTo("100"));
         }
     }
 
