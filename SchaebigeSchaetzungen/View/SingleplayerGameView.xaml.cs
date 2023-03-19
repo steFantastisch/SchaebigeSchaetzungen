@@ -155,34 +155,24 @@ namespace SchaebigeSchaetzungen.View
         public string SingleplayerPts(int Playerguess, int Views)
         {
 
-            int distance = Math.Abs(Playerguess - Views);
-            double percentage;
-            int points;
-            if (distance > Views)
-            {
-                //Beispiel 5000/15=333 macht kienen sinn deswegen umdrehen
-                percentage = ((double)Views / (double)distance);
+            double percentageDifference;
+            int maxScore = 100; // Maximal erreichbare Punktzahl
 
+            if (Views > Playerguess)
+            {
+                percentageDifference = (double)(Views - Playerguess) / Views;
             }
             else
             {
-                percentage = ((double)distance / (double)Views);
-
+                percentageDifference = (double)(Playerguess - Views) / Playerguess;
             }
 
+            int score = maxScore - (int)(percentageDifference * maxScore);
 
-            //vielleicht unter 50prozent abweichung keine punkte vergeben??
-            //if (percentage > 0.5)
-            //{
-            //    return "0";
-            //}
-            //else
-            //{
-            points = (int)((percentage) * 100);
-            // points = Math.Min(100, Math.Max(0, points));
-            return points.ToString();
-            // }
+            // Optionale Begrenzung der Punktzahl auf einen minimalen Wert 
+            score = Math.Max(score, 0);
 
+            return score.ToString();
         }
 
         private void HintCheckBox_Checked(object sender, RoutedEventArgs e)

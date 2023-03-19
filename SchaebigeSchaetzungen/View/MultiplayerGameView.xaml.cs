@@ -199,32 +199,33 @@ namespace SchaebigeSchaetzungen.View
 
         int[] CalculateMultiplayerPoints(int P1guess, int P2guess, int Views)
         {
-            int distance1 = Math.Abs(P1guess - Views);
-            int distance2 = Math.Abs(P2guess - Views);
-            double percentage1;
-            double percentage2;
-            if (distance1 > Views)
-            {
-                percentage1 = ((double)Views / (double)distance1);
-            }
-            else
-            {
-                percentage1 = ((double)distance1 / (double)Views);
-            }
-            if (distance2 > Views)
-            {
-                percentage2 = ((double)Views / (double)distance2);
-            }
-            else
-            {
-                percentage2 = ((double)distance2 / (double)Views);
-            }
 
+            double percentageDifference;
+            int maxScore = 100; // Maximal erreichbare Punktzahl
+
+            if (Views > P1guess)
+            {
+                percentageDifference = (double)(Views - P1guess) / Views;
+            }
+            else
+            {
+                percentageDifference = (double)(P1guess - Views) / P1guess;
+            }
 
             int[] pts = new int[2];
 
-            pts[0] = (int)(( percentage1) * 100);
-            pts[1]= (int)((percentage2) * 100);
+            pts[0] =maxScore - (int)(percentageDifference * maxScore);
+
+            if (Views > P2guess)
+            {
+                percentageDifference = (double)(Views - P2guess) / Views;
+            }
+            else
+            {
+                percentageDifference = (double)(P2guess - Views) / P2guess;
+            }
+
+            pts[1]= pts[0] =maxScore - (int)(percentageDifference * maxScore);
 
             return pts;
         }
