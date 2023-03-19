@@ -22,6 +22,7 @@ using Amazon.DynamoDBv2.Model.Internal.MarshallTransformations;
 using SchaebigeSchaetzungen.Command;
 using SchaebigeSchaetzungen.ViewModel;
 using System.Numerics;
+using SchaebigeSchaetzungen.Model;
 
 namespace SchaebigeSchaetzungen.View
 {
@@ -109,7 +110,7 @@ namespace SchaebigeSchaetzungen.View
                 BindingExpression binding = ViewTextBox.GetBindingExpression(TextBox.TextProperty);
                 binding.UpdateSource();
 
-                PointsTextBox.Text=SingleplayerPts(guess, viewCount);
+                PointsTextBox.Text=Game.SingleplayerPts(guess, viewCount);
                 //TODO Bonuspunkte für SPrache??
                 BindingExpression binding2 = PointsTextBox.GetBindingExpression(TextBox.TextProperty);
                 binding2.UpdateSource();
@@ -151,28 +152,6 @@ namespace SchaebigeSchaetzungen.View
 
             }
 
-        }
-        public string SingleplayerPts(int Playerguess, int Views)
-        {
-
-            double percentageDifference;
-            int maxScore = 100; // Maximal erreichbare Punktzahl
-
-            if (Views > Playerguess)
-            {
-                percentageDifference = (double)(Views - Playerguess) / Views;
-            }
-            else
-            {
-                percentageDifference = (double)(Playerguess - Views) / Playerguess;
-            }
-
-            int score = maxScore - (int)(percentageDifference * maxScore);
-
-            // Optionale Begrenzung der Punktzahl auf einen minimalen Wert 
-            score = Math.Max(score, 0);
-
-            return score.ToString();
         }
 
         private void HintCheckBox_Checked(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchaebigeSchaetzungen.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -155,7 +156,7 @@ namespace SchaebigeSchaetzungen.View
             BindingExpression binding = ViewTextBox.GetBindingExpression(TextBox.TextProperty);
             binding.UpdateSource();
 
-            int[] pts = CalculateMultiplayerPoints(PlayerOneguess, PlayerTwoguess, viewCount);
+            int[] pts = Game.CalculateMultiplayerPoints(PlayerOneguess, PlayerTwoguess, viewCount);
             PointsTextBox.Text=pts[0].ToString();
             BindingExpression binding2 = PointsTextBox.GetBindingExpression(TextBox.TextProperty);
             binding2.UpdateSource();
@@ -197,38 +198,7 @@ namespace SchaebigeSchaetzungen.View
             }
         }
 
-        int[] CalculateMultiplayerPoints(int P1guess, int P2guess, int Views)
-        {
-
-            double percentageDifference;
-            int maxScore = 100; // Maximal erreichbare Punktzahl
-
-            if (Views > P1guess)
-            {
-                percentageDifference = (double)(Views - P1guess) / Views;
-            }
-            else
-            {
-                percentageDifference = (double)(P1guess - Views) / P1guess;
-            }
-
-            int[] pts = new int[2];
-
-            pts[0] =maxScore - (int)(percentageDifference * maxScore);
-
-            if (Views > P2guess)
-            {
-                percentageDifference = (double)(Views - P2guess) / Views;
-            }
-            else
-            {
-                percentageDifference = (double)(P2guess - Views) / P2guess;
-            }
-
-            pts[1]= pts[0] =maxScore - (int)(percentageDifference * maxScore);
-
-            return pts;
-        }
+        
         private void NAButton_Click(object sender, RoutedEventArgs e)
         {
             Init();
