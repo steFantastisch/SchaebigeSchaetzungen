@@ -14,7 +14,6 @@ namespace SchaebigeSchatzungen.Tests
         public void Setup()
         {
             _video = new Video();
-
         }
 
 
@@ -158,7 +157,7 @@ namespace SchaebigeSchatzungen.Tests
         }
 
         [Test]
-        public async Task GetDetailsAsync_ReturnsDetailsForValidVideoId() //TODO MOCKS REIN
+        public async Task GetDetailsAsync_ReturnsDetailsForValidVideoId() 
         {
             // Arrange
 

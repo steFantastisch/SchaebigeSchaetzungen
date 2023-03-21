@@ -13,6 +13,10 @@
 
   <ItemGroup>
     <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.100.9" />
+    <PackageReference Include="coverlet.collector" Version="3.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Google.Apis" Version="1.57.0" />
     <PackageReference Include="Google.Apis.Auth" Version="1.57.0" />
     <PackageReference Include="Google.Apis.YouTube.v3" Version="1.57.0.2827" />
