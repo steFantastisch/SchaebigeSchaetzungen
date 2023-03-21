@@ -96,14 +96,12 @@ namespace SchaebigeSchatzungen.Tests
             // Arrange
             var videoId = "testVideoId";
             var sampleResponse = @"{
-    ""items"": [
-        {
+            ""items"": [{
             ""snippet"": {
                 ""publishedAt"": ""2021-01-01T00:00:00Z"",
                 ""title"": ""Test Video"",
                 ""description"": ""This is a test video."",
-                ""defaultAudioLanguage"": ""de""
-            },
+                ""defaultAudioLanguage"": ""de""},
             ""statistics"": {
                 ""viewCount"": 1000,
                 ""likeCount"": 500,
@@ -111,14 +109,9 @@ namespace SchaebigeSchatzungen.Tests
             },
             ""contentDetails"": {
                 ""duration"": ""PT1M30S""
-            }
-        }
-    ],
-    ""pageInfo"": {
-        ""totalResults"": 1,
-        ""resultsPerPage"": 1
-    }
-}";
+            }}], ""pageInfo"": {
+                ""totalResults"": 1,
+                ""resultsPerPage"": 1}}";
 
             var httpClientMock = new Mock<HttpClientHandler>();
             httpClientMock.Protected()
@@ -135,11 +128,9 @@ namespace SchaebigeSchatzungen.Tests
                 .Verifiable();
 
             var httpClient = new HttpClient(httpClientMock.Object);
-
             var video = new Video();
-
             // Act
-            await video.GetDetailsAsync(videoId,httpClient);
+            await video.GetDetailsAsync(videoId, httpClient);
 
             // Assert
             Assert.That(video.Views, Is.EqualTo(1000));
@@ -157,7 +148,7 @@ namespace SchaebigeSchatzungen.Tests
         }
 
         [Test]
-        public async Task GetDetailsAsync_ReturnsDetailsForValidVideoId() 
+        public async Task GetDetailsAsync_ReturnsDetailsForValidVideoId()
         {
             // Arrange
 

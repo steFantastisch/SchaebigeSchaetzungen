@@ -55,7 +55,7 @@ namespace SchaebigeSchaetzungen.View
         public async void Init()
         {
 
-            Model.Video video = new Model.Video();
+         Video video = new Video();
             await video.GetDetailsAsync(video.VideoID);
             webBrowser1.NavigateToString(video.Dispstr);
 
@@ -105,6 +105,7 @@ namespace SchaebigeSchaetzungen.View
 
 
                  
+
 
                 ViewTextBox.Text= viewCount.ToString();
                 BindingExpression binding = ViewTextBox.GetBindingExpression(TextBox.TextProperty);
