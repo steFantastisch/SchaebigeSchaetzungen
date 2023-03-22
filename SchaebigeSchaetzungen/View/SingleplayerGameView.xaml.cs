@@ -55,10 +55,10 @@ namespace SchaebigeSchaetzungen.View
         public async void Init()
         {
 
-         Video video = new Video();
+            Video video = new Video();
             await video.GetDetailsAsync(video.VideoID);
             webBrowser1.NavigateToString(video.Dispstr);
-
+           
             viewCount=video.Views;
             likeCount=video.Likes;
             commentCount=video.Comments;
@@ -104,7 +104,7 @@ namespace SchaebigeSchaetzungen.View
                 HintComments.Visibility = Visibility.Collapsed;
 
 
-                 
+
 
 
                 ViewTextBox.Text= viewCount.ToString();

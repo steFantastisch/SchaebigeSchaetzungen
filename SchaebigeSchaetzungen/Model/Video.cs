@@ -160,7 +160,7 @@ namespace SchaebigeSchaetzungen.Model
         /// <returns></returns>
         public async Task GetDetailsAsync(string id, HttpClient? httpClient = null)
         {
-            string apiUrl = YTAPI + "videos?id=" + id + "&part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyBJhxwz9nrTvCC0tZCJc-QmIZxpv7f6L0M";
+            string apiUrl = YTAPI + "videos?id=" + id + "&part=snippet%2CcontentDetails%2Cstatistics&key="+ API_KEY;
             using (HttpClient client = httpClient ?? new HttpClient())
             {
                 HttpResponseMessage response = await client.GetAsync(apiUrl);
