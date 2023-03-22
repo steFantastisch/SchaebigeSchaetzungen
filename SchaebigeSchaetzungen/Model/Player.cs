@@ -62,7 +62,9 @@ namespace SchaebigeSchaetzungen.Model
         public int Points
         {
             get { return points; }
-            set { points = value;
+            set
+            {
+                points = value;
                 GamePoints=GamePoints+value;
                 Crowns=Crowns+value;
             }
@@ -102,7 +104,7 @@ namespace SchaebigeSchaetzungen.Model
 
         public Player()
         {
-           //TEMP
+            //TEMP
         }
 
     }
