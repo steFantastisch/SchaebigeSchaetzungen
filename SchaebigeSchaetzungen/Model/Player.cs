@@ -1,13 +1,4 @@
-﻿using SchaebigeSchaetzungen.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
-using System.Windows.Xps;
-
-namespace SchaebigeSchaetzungen.Model
+﻿namespace SchaebigeSchaetzungen.Model
 {
 
     public class Player

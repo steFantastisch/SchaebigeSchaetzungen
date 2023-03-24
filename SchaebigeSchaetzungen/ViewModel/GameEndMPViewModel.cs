@@ -3,11 +3,6 @@ using SchaebigeSchaetzungen.Model;
 using SchaebigeSchaetzungen.Persistence;
 using SchaebigeSchaetzungen.Store;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace SchaebigeSchaetzungen.ViewModel
