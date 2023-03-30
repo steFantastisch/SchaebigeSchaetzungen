@@ -9,7 +9,7 @@ namespace SchaebigeSchaetzungen
     public partial class MainWindow : Window
     {
         public Game Game { get; set; }
-        public IPointsCalculator PointsCalculator => Game.PointsCalculator;
+        public IPointsCalculator pointsCalculator => Game.PointsCalculator;
         public MainWindow()
         {
 

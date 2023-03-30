@@ -21,7 +21,7 @@ namespace SchaebigeSchaetzungen.View
         string[] VideoIDs;
         int guess;
         int maxrounds;
-       
+        public IPointsCalculator pointsCalculator { get; set; }
 
 
         public SingleplayerGameView()
@@ -91,8 +91,8 @@ namespace SchaebigeSchaetzungen.View
                 ViewTextBox.Text= viewCount.ToString();
                 BindingExpression binding = ViewTextBox.GetBindingExpression(TextBox.TextProperty);
                 binding.UpdateSource();
-                PointsCalculator.SingleplayerPts(guess, viewCount);
-                PointsTextBox.Text=Game.SingleplayerPts(guess, viewCount);
+                PointsTextBox.Text = pointsCalculator.SingleplayerPts(guess, viewCount);
+                //PointsTextBox.Text=Game.SingleplayerPts(guess, viewCount);
                 //TODO Bonuspunkte für SPrache??
                 BindingExpression binding2 = PointsTextBox.GetBindingExpression(TextBox.TextProperty);
                 binding2.UpdateSource();
