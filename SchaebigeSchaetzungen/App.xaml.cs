@@ -33,7 +33,7 @@ namespace SchaebigeSchaetzungen
 
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel(navigationStore),
+                DataContext = new MainViewModel(navigationStore)
                 Game = game
             };
             MainWindow.Show();
