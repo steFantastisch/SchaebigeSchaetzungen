@@ -28,8 +28,8 @@
 
         <TextBox x:Name="tbName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="20,0,100,0"/>
         <TextBox x:Name="tbMail" Text="{Binding Mail, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="20,0,100,0"/>
-        <PasswordBox x:Name="pbPassword" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="20,0,100,0"/>
-        <Button x:Name="btnCreate" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Finish" Margin="20,10,100,0" Click="btnCreate_Click"/>
+        <TextBox x:Name="pbPassword" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="20,0,100,0"/>
+        <Button x:Name="btnCreate" Command="{Binding CreateCommand}" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Finish" Margin="20,10,100,0" />
         <Button x:Name="btnCancel" Command="{Binding CancelCommand}" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Cancel" Margin="20,10,100,0"/>
 
     </Grid>
