@@ -71,6 +71,7 @@ namespace SchaebigeSchaetzungen.View
                     SubmitBtn.Content="Result";
                     SubmitBtn.Visibility= Visibility.Collapsed;
                     ResultBtn.Visibility= Visibility.Visible;
+                    webBrowser1.NavigateToString("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Spiel vorbei</title>\r\n  <style>\r\n    * {\r\n      margin: 0;\r\n      padding: 0;\r\n      box-sizing: border-box;\r\n    }\r\n\r\n    html, body {\r\n      height: 100%;\r\n      font-family: Arial, sans-serif;\r\n    }\r\n\r\n    body {\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n    }\r\n\r\n    .container {\r\n      text-align: center;\r\n    }\r\n  </style>\r\n</head>\r\n<body>\r\n  <div class=\"container\">\r\n    <h1>Spiel vorbei</h1>\r\n    <p>Vielen Dank fürs Spielen!</p>\r\n  </div>\r\n</body>\r\n</html>\r\n");
                 }
                 else
                 {
