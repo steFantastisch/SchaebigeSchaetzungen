@@ -33,7 +33,7 @@ namespace SchaebigeSchaetzungen.ViewModel
            Func<SingleplayerGameViewModel> createSingleplayerGameViewModel, Func<HighscoreViewModel> createHighscoreViewModel)
         {
             this.Game = game;
-            DBPlayer.UpdateCrowns(game.PlayerOne);
+            game.DBPlayer.UpdateCrowns(game.PlayerOne);
 
             this.HighscoreCommand = new NavigateCommand(navigationStore, game, createHighscoreViewModel);
             this.PlayagainCommand = new NavigateCommand(navigationStore, game, createSingleplayerGameViewModel);

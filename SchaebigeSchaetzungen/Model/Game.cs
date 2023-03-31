@@ -1,11 +1,15 @@
-﻿using System;
+﻿using SchaebigeSchaetzungen.Persistence;
+using System;
 
 namespace SchaebigeSchaetzungen.Model
 {
 
-  
+
     public class Game
     {
+
+        public DBAccess dBAccess;
+        public DBPlayer DBPlayer;
         private Player playerOne;
 
         public Player? PlayerOne
@@ -88,6 +92,8 @@ namespace SchaebigeSchaetzungen.Model
 
         public Game()
         {
+            dBAccess = new DBAccess();
+            DBPlayer=new DBPlayer(dBAccess);
 
         }
 

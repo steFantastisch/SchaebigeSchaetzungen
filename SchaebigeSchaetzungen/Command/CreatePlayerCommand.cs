@@ -36,7 +36,7 @@ namespace SchaebigeSchaetzungen.Command
             }
             try
             {
-                DBPlayer.Insert(player);
+                game.DBPlayer.Insert(player);
                 navigationStore.CurrentViewModel = createViewModel();
                 MessageBox.Show("Player created and saved in DB", "Success", MessageBoxButton.OK, MessageBoxImage.Hand);
             }

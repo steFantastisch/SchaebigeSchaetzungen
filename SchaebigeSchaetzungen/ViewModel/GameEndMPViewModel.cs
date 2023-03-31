@@ -31,8 +31,8 @@ namespace SchaebigeSchaetzungen.ViewModel
           Func<MultiplayerGameViewModel> createMultiplayerGameViewModel, Func<HighscoreViewModel> createHighscoreViewModel)
         {
             this.Game = game;
-            DBPlayer.UpdateCrowns(game.PlayerOne);
-            DBPlayer.UpdateCrowns(game.PlayerTwo);
+            game.DBPlayer.UpdateCrowns(game.PlayerOne);
+            game.DBPlayer.UpdateCrowns(game.PlayerTwo);
 
             this.HighscoreCommand = new NavigateCommand(navigationStore, game, createHighscoreViewModel);
             this.PlayagainCommand = new NavigateCommand(navigationStore, game, createMultiplayerGameViewModel);

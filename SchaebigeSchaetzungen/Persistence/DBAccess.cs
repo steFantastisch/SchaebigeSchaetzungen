@@ -3,42 +3,42 @@ using System;
 
 namespace SchaebigeSchaetzungen.Persistence
 {
-    public static class DBAccess
+    public class DBAccess: IDBAccess
     {
-        public static MySqlTransaction Transaction { get; private set; } = null;
+        public  MySqlTransaction Transaction { get; private set; } = null;
         //const string CONSTRING = "Server=sql7.freemysqlhosting.net;Database=sql7530568;Uid=sql7530568;Pwd=GGddhfmusS";
         const string CONSTRING = "Server=127.0.0.1;Database=schaebigeschaetzungen;Uid=root;Pwd=";
 
-        public static MySqlConnection OpenDB()
+        public MySqlConnection OpenDB()
         {
             MySqlConnection con = new MySqlConnection(CONSTRING);
             con.Open();
             return con;
         }
 
-        public static void CloseDB(MySqlConnection con)
+        public  void CloseDB(MySqlConnection con)
         {
             con.Close();
         }
 
-        public static void BeginTransaktion()
+        public  void BeginTransaktion()
         {
             MySqlConnection con = OpenDB();
-            DBAccess.Transaction = con.BeginTransaction();
+            this.Transaction = con.BeginTransaction();
         }
 
-        public static void Commit()
+        public  void Commit()
         {
-            DBAccess.Transaction.Commit();
-            DBAccess.Transaction.Connection.Close();
-            DBAccess.Transaction = null; // important for the case distinction in ExecuteNonQuery
+            this.Transaction.Commit();
+            this.Transaction.Connection.Close();
+            this.Transaction = null; // important for the case distinction in ExecuteNonQuery
         }
 
-        public static void Rollback()
+        public void Rollback()
         {
-            DBAccess.Transaction.Rollback();
-            DBAccess.Transaction.Connection.Close();
-            DBAccess.Transaction = null; // // important for the case distinction in ExecuteNonQuery
+            this.Transaction.Rollback();
+            this.Transaction.Connection.Close();
+            this.Transaction = null; // // important for the case distinction in ExecuteNonQuery
         }
 
 
@@ -47,7 +47,7 @@ namespace SchaebigeSchaetzungen.Persistence
         /// </summary>
         /// <param name="sql">SQL-Command</param>
         /// <returns>Amount of effected datasets</returns>
-        public static int ExecuteNonQueryWithoutTransaction(string sql)
+        public int ExecuteNonQueryWithoutTransaction(string sql)
         {
             MySqlConnection con = OpenDB();
             MySqlCommand cmd = new MySqlCommand(sql, con);
@@ -58,10 +58,10 @@ namespace SchaebigeSchaetzungen.Persistence
             return anz;
         }
 
-        public static int ExecuteNonQuery(String command)
+        public int ExecuteNonQuery(String command)
         {
             int ret;
-            if (DBAccess.Transaction == null)
+            if (this.Transaction == null)
             {
                 MySqlConnection con = OpenDB();
                 MySqlCommand obj = new MySqlCommand(command, con);
@@ -73,7 +73,7 @@ namespace SchaebigeSchaetzungen.Persistence
             else
             {
                 //there is a transaction
-                MySqlCommand obj = new MySqlCommand(command, DBAccess.Transaction.Connection, DBAccess.Transaction);
+                MySqlCommand obj = new MySqlCommand(command, this.Transaction.Connection, this.Transaction);
 
                 ret = obj.ExecuteNonQuery();
 
@@ -82,19 +82,19 @@ namespace SchaebigeSchaetzungen.Persistence
             return ret;
         }
 
-        public static int ExecuteNonQuery(String command, MySqlConnection con)
+        public int ExecuteNonQuery(String command, MySqlConnection con)
         {
             MySqlCommand obj = new MySqlCommand(command, con);
             return obj.ExecuteNonQuery();
         }
 
-        public static MySqlDataReader ExecuteReader(string sql, MySqlConnection con)
+        public MySqlDataReader ExecuteReader(string sql, MySqlConnection con)
         {
             MySqlCommand cmd = new MySqlCommand(sql, con);
             return cmd.ExecuteReader();
         }
 
-        public static int GetLastInsertId(MySqlConnection con)
+        public int GetLastInsertId(MySqlConnection con)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM player ORDER BY PlayerID DESC LIMIT 1;", con);
             return Convert.ToInt32(cmd.ExecuteScalar());

@@ -7,33 +7,40 @@ namespace SchaebigeSchaetzungen.Persistence
 {
     public class DBPlayer
     {
-        public static void Insert(Player player)
+        private readonly IDBAccess _dbAccess;
+
+        public DBPlayer(IDBAccess dbAccess)
+        {
+            _dbAccess = dbAccess;
+        }
+
+        public void Insert(Player player)
         {
 
-            MySqlConnection con = DBAccess.OpenDB();
-            player.PlayerID = DBAccess.GetLastInsertId(con)+1;
+            MySqlConnection con = _dbAccess.OpenDB();
+            player.PlayerID = _dbAccess.GetLastInsertId(con)+1;
 
             String sql = $"Insert into Player (PlayerID, Name, Mail, Password, Crowns) " +
                $"values ('{player.PlayerID}','{player.Name}', '{player.Mail}', '{player.Password}', 0)";
 
             try
             {
-                int ret = DBAccess.ExecuteNonQuery(sql, con);
+                int ret = _dbAccess.ExecuteNonQuery(sql, con);
                 if (ret != 1) throw new Exception("Insert failed!");
             }
             finally
             {
-                DBAccess.CloseDB(con);
+                _dbAccess.CloseDB(con);
             }
         }
 
-        public static Player Read(Player p)
+        public Player Read(Player p)
         {
-            MySqlConnection con = DBAccess.OpenDB();
+            MySqlConnection con = _dbAccess.OpenDB();
 
             //string sql = $"SELECT * FROM Player WHERE PlayerID = '{p.PlayerID}'";
             string sql = $"SELECT * FROM Player WHERE Mail = '{p.Mail}' AND Password = '{p.Password}'";
-            MySqlDataReader rd = DBAccess.ExecuteReader(sql, con);
+            MySqlDataReader rd = _dbAccess.ExecuteReader(sql, con);
 
             try
             {
@@ -55,34 +62,34 @@ namespace SchaebigeSchaetzungen.Persistence
             finally
             {
                 rd.Close();
-                DBAccess.CloseDB(con);
+                _dbAccess.CloseDB(con);
             }
             return p;
         }
 
-        public static void UpdateCrowns(Player player)
+        public void UpdateCrowns(Player player)
         {
             String sql =
                 $"Update player set Crowns ='{player.GamePoints + player.Crowns}' where PlayerID = {player.PlayerID}";
 
-            int anz = DBAccess.ExecuteNonQuery(sql);
+            int anz = _dbAccess.ExecuteNonQuery(sql);
 
             if (anz != 1)
                 throw new Exception("Speichern fehlgeschlagen!");
         }
 
-        public static void Update(Player player)
+        public void Update(Player player)
         {
             String sql =
                 $"Update player set Name ='{player.Name}', password ='{player.Password}', Mail='{player.Mail}' where PlayerID = {player.PlayerID}";
 
-            int anz = DBAccess.ExecuteNonQuery(sql);
+            int anz = _dbAccess.ExecuteNonQuery(sql);
 
             if (anz != 1)
                 throw new Exception("Speichern fehlgeschlagen!");
         }
 
-        public static void Delete(Player player)
+        public void Delete(Player player)
         {
             /*
              * Probably not to implement
@@ -93,15 +100,15 @@ namespace SchaebigeSchaetzungen.Persistence
         /// wird nur für highscore view gebraucht
         /// </summary>
         /// <returns></returns>
-        public static List<Player> ReadAll()
+        public  List<Player> ReadAll()
         {
-            MySqlConnection con = DBAccess.OpenDB();
+            MySqlConnection con = _dbAccess.OpenDB();
             try
             {
 
                 string sql = "SELECT * FROM Player";
                 List<Player> list = new List<Player>();
-                MySqlDataReader reader = DBAccess.ExecuteReader(sql, con);
+                MySqlDataReader reader = _dbAccess.ExecuteReader(sql, con);
 
                 while (reader.Read())
                 {
@@ -118,11 +125,11 @@ namespace SchaebigeSchaetzungen.Persistence
             }
             finally
             {
-                DBAccess.CloseDB(con);
+                _dbAccess.CloseDB(con);
             }
         }
 
-        private static Player GetDataFromReader(MySqlDataReader rdr, Player p)
+        private  Player GetDataFromReader(MySqlDataReader rdr, Player p)
         {
             p.PlayerID = rdr.GetInt32("PlayerID");
             p.Name = rdr.GetString("Name");
