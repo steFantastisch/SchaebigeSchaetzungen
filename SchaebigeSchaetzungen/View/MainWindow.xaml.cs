@@ -1,5 +1,4 @@
-﻿using SchaebigeSchaetzungen.Model;
-using System.Windows;
+﻿using System.Windows;
 
 namespace SchaebigeSchaetzungen
 {
@@ -8,8 +7,6 @@ namespace SchaebigeSchaetzungen
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Game Game { get; set; }
-        public IPointsCalculator PointsCalculator => Game.PointsCalculator;
         public MainWindow()
         {
 

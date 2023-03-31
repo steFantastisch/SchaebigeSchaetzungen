@@ -23,8 +23,7 @@ namespace SchaebigeSchaetzungen
         public App()
         {
             navigationStore = new NavigationStore();
-            IPointsCalculator pointsCalculator = new PointsCalculator();
-            game = new Game(pointsCalculator);
+            game = new Game();       
         }
 
         protected override void OnStartup(StartupEventArgs e)
@@ -34,7 +33,6 @@ namespace SchaebigeSchaetzungen
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(navigationStore)
-                Game = game
             };
             MainWindow.Show();
             base.OnStartup(e);

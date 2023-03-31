@@ -19,7 +19,6 @@ namespace SchaebigeSchaetzungen.View
         string[] VideoIDs;
         int PlayerOneguess;
         int PlayerTwoguess;
-        public IPointsCalculator pointsCalculator { get; set; }
 
         public MultiplayerGameView()
         {
@@ -145,7 +144,7 @@ namespace SchaebigeSchaetzungen.View
             BindingExpression binding = ViewTextBox.GetBindingExpression(TextBox.TextProperty);
             binding.UpdateSource();
 
-            int[] pts = pointsCalculator.CalculateMultiplayerPoints(PlayerOneguess, PlayerTwoguess, viewCount);
+            int[] pts = Game.CalculateMultiplayerPoints(PlayerOneguess, PlayerTwoguess, viewCount);
             PointsTextBox.Text=pts[0].ToString();
             BindingExpression binding2 = PointsTextBox.GetBindingExpression(TextBox.TextProperty);
             binding2.UpdateSource();
