@@ -6,8 +6,8 @@ namespace SchaebigeSchaetzungen.Persistence
     public class DBAccess: IDBAccess
     {
         public  MySqlTransaction Transaction { get; private set; } = null;
-        //const string CONSTRING = "Server=sql7.freemysqlhosting.net;Database=sql7530568;Uid=sql7530568;Pwd=GGddhfmusS";
-        const string CONSTRING = "Server=127.0.0.1;Database=schaebigeschaetzungen;Uid=root;Pwd=";
+        const string CONSTRING = "Server=sql7.freemysqlhosting.net;Database=sql7610327;Uid=sql7610327;Pwd=T37v65MwB6";
+        //const string CONSTRING = "Server=127.0.0.1;Database=schaebigeschaetzungen;Uid=root;Pwd=";
 
         public MySqlConnection OpenDB()
         {

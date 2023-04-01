@@ -106,7 +106,7 @@ namespace SchaebigeSchaetzungen.Persistence
             try
             {
 
-                string sql = "SELECT * FROM Player";
+                string sql = "SELECT * FROM player";
                 List<Player> list = new List<Player>();
                 MySqlDataReader reader = _dbAccess.ExecuteReader(sql, con);
 
