@@ -20,7 +20,7 @@ namespace SchaebigeSchaetzungen.Persistence
             MySqlConnection con = _dbAccess.OpenDB();
             player.PlayerID = _dbAccess.GetLastInsertId(con)+1;
 
-            String sql = $"Insert into Player (PlayerID, Name, Mail, Password, Crowns) " +
+            String sql = $"Insert into player (PlayerID, Name, Mail, Password, Crowns) " +
                $"values ('{player.PlayerID}','{player.Name}', '{player.Mail}', '{player.Password}', 0)";
 
             try
@@ -39,7 +39,7 @@ namespace SchaebigeSchaetzungen.Persistence
             MySqlConnection con = _dbAccess.OpenDB();
 
             //string sql = $"SELECT * FROM Player WHERE PlayerID = '{p.PlayerID}'";
-            string sql = $"SELECT * FROM Player WHERE Mail = '{p.Mail}' AND Password = '{p.Password}'";
+            string sql = $"SELECT * FROM player WHERE Mail = '{p.Mail}' AND Password = '{p.Password}'";
             MySqlDataReader rd = _dbAccess.ExecuteReader(sql, con);
 
             try

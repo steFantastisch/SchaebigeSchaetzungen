@@ -84,10 +84,7 @@
                             MaxHeight="200">
 
             <DataGrid.Columns>
-                
-               
-                
-                <DataGridTextColumn Header="Rank"/>
+ 
 
                 <DataGridTextColumn Header="Name" 
                           Binding="{Binding Name}" 
