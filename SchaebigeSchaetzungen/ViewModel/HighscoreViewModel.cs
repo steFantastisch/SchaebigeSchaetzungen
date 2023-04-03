@@ -36,7 +36,7 @@ namespace SchaebigeSchaetzungen.ViewModel
           Func<GameModeSelectionViewModel> createGameModeSelectionViewModel)
         {
             this.Game = game;
-            PlayerList = game.DBPlayer.ReadAll();
+            PlayerList = game.dBPlayer.ReadAll();
             this.ExitCommand = new NavigateCommand(navigationStore, game, createGameModeSelectionViewModel);
 
         }

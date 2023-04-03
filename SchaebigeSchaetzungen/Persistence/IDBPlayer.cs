@@ -1,12 +1,15 @@
-﻿using System;
+﻿using SchaebigeSchaetzungen.Model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchaebigeSchaetzungen.Persistence
 {
-    internal interface IDBPlayer
+    public interface IDBPlayer
     {
+        void Insert(Player player);
+        Player Read(Player p);
+        void Update(Player player);
+        void UpdateCrowns(Player player);
+        void Delete(Player player);
+        List<Player> ReadAll();
     }
 }

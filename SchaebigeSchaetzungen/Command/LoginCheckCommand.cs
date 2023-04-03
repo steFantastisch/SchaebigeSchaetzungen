@@ -30,7 +30,7 @@ namespace SchaebigeSchaetzungen.Command
             {
                 try
                 {
-                    game.PlayerTwo=game.DBPlayer.Read(player);
+                    game.PlayerTwo=game.dBPlayer.Read(player);
                     navigationStore.CurrentViewModel = createViewModel();
                 }
                 catch (Exception)
@@ -43,7 +43,7 @@ namespace SchaebigeSchaetzungen.Command
             {
                 try
                 {
-                    game.PlayerOne=game.DBPlayer.Read(player);
+                    game.PlayerOne=game.dBPlayer.Read(player);
                     navigationStore.CurrentViewModel = createViewModel();
                 }
                 catch (Exception)

@@ -19,11 +19,15 @@ namespace SchaebigeSchaetzungen
     {
         private readonly NavigationStore navigationStore;
         private readonly Game game;
+        private IDBAccess _dBAccess;
+        private IDBPlayer _dBPlayer;
 
         public App()
         {
             navigationStore = new NavigationStore();
-            game = new Game();       
+            _dBAccess= new DBAccess();
+            _dBPlayer=new DBPlayer(_dBAccess);
+            game = new Game(_dBPlayer);                
         }
 
         protected override void OnStartup(StartupEventArgs e)

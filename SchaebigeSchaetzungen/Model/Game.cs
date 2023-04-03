@@ -8,8 +8,8 @@ namespace SchaebigeSchaetzungen.Model
     public class Game
     {
 
-        public DBAccess dBAccess;
-        public DBPlayer DBPlayer;
+
+        public IDBPlayer dBPlayer;
         private Player playerOne;
 
         public Player? PlayerOne
@@ -90,11 +90,9 @@ namespace SchaebigeSchaetzungen.Model
             return score.ToString();
         }
 
-        public Game()
+        public Game(IDBPlayer _dbPlayer)
         {
-            dBAccess = new DBAccess();
-            DBPlayer=new DBPlayer(dBAccess);
-
+            dBPlayer=_dbPlayer;
         }
 
     }
