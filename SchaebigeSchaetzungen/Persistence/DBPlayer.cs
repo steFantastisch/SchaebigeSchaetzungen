@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SchaebigeSchaetzungen.Persistence
 {
-    public class DBPlayer
+    public class DBPlayer :IDBPlayer
     {
         private readonly IDBAccess _dbAccess;
 
@@ -102,6 +102,7 @@ namespace SchaebigeSchaetzungen.Persistence
         /// <returns></returns>
         public  List<Player> ReadAll()
         {
+            
             MySqlConnection con = _dbAccess.OpenDB();
             try
             {
@@ -136,7 +137,7 @@ namespace SchaebigeSchaetzungen.Persistence
             p.Password = rdr.GetString("Password");
             p.Mail = rdr.GetString("Mail");
             p.Crowns = rdr.GetInt32("Crowns");
-            // p.Avatar = new Avatar(rdr.GetInt32("Avatar"));
+          
             return p;
         }
     }
