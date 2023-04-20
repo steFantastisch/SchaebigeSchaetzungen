@@ -31,12 +31,15 @@ namespace SchaebigeSchaetzungen.Command
                 try
                 {
                     game.PlayerTwo=game.dBPlayer.Read(player);
-                    navigationStore.CurrentViewModel = createViewModel();
+                    if (game.PlayerTwo.Name!=null)
+                    {
+                        navigationStore.CurrentViewModel = createViewModel();
+                    }
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Player 2 not found in DB!", "Not found", MessageBoxButton.OK,MessageBoxImage.Error);
-                  
+                    MessageBox.Show("Player 2 not found in DB!", "Not found", MessageBoxButton.OK, MessageBoxImage.Error);
+
                 }
             }
             else
@@ -46,9 +49,9 @@ namespace SchaebigeSchaetzungen.Command
                     game.PlayerOne=game.dBPlayer.Read(player);
                     if (game.PlayerOne.Name!=null)
                     {
-navigationStore.CurrentViewModel = createViewModel();
+                        navigationStore.CurrentViewModel = createViewModel();
                     }
-                    
+
                 }
                 catch (Exception)
                 {
