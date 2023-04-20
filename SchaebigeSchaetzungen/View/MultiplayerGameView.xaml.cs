@@ -19,21 +19,28 @@ namespace SchaebigeSchaetzungen.View
         string[] VideoIDs;
         int PlayerOneguess;
         int PlayerTwoguess;
+        private bool isDisposed;
 
         public MultiplayerGameView()
         {
             round=0;
             InitializeComponent();
             Init();
+            isDisposed = false;
+            this.Unloaded += MultiplayerGameView_Unloaded;
 
         }
 
         public async void Init()
         {
-
-           Video video = new Video();
+            if (isDisposed || webBrowser1 == null) return;
+            Video video = new Video();
             await video.GetDetailsAsync(video.VideoID);
-            webBrowser1.NavigateToString(video.Dispstr);
+
+            if (webBrowser1 != null)
+            {
+                webBrowser1.NavigateToString(video.Dispstr);
+            }
 
             viewCount=video.Views;
             likeCount=video.Likes;
@@ -72,6 +79,18 @@ namespace SchaebigeSchaetzungen.View
             NextRound.Visibility = Visibility.Collapsed;
             TextBox1.Text="";
             TextBox2.Text="";
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            //webBrowser1.Dispose();
+            //isDisposed = true;
+        }
+
+        private void MultiplayerGameView_Unloaded(object sender, RoutedEventArgs e)
+        {
+            isDisposed = true;
+            webBrowser1 = null;
         }
 
         private void P1Submit_Click(object sender, RoutedEventArgs e)

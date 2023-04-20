@@ -21,6 +21,7 @@ namespace SchaebigeSchaetzungen.View
         string[] VideoIDs;
         int guess;
         int maxrounds;
+        private bool isDisposed;
 
 
         public SingleplayerGameView()
@@ -29,30 +30,38 @@ namespace SchaebigeSchaetzungen.View
             round=0;
             InitializeComponent();
             Init();
+            isDisposed = false;
+            this.Unloaded += SingleplayerGameView_Unloaded;
 
         }
 
         public async void Init()
         {
+            if (isDisposed || webBrowser1 == null) return;
 
-            Video video = new Video();
+            Model.Video video = new Model.Video();
             await video.GetDetailsAsync(video.VideoID);
-            webBrowser1.NavigateToString(video.Dispstr);
-           
-            viewCount=video.Views;
-            likeCount=video.Likes;
-            commentCount=video.Comments;
-            language=video.Language;
-            if (HintCheckBox.IsChecked==true)
+
+            if (webBrowser1 != null)
+            {
+                webBrowser1.NavigateToString(video.Dispstr);
+            }
+
+            viewCount = video.Views;
+            likeCount = video.Likes;
+            commentCount = video.Comments;
+            language = video.Language;
+
+            if (HintCheckBox.IsChecked == true)
             {
                 HintLikes.Content = "Likes: " + likeCount.ToString();
                 HintLikes.Visibility = Visibility.Visible;
-                HintComments.Content = "Comments: "+ commentCount.ToString();
+                HintComments.Content = "Comments: " + commentCount.ToString();
                 HintComments.Visibility = Visibility.Visible;
             }
-            TextBox1.Text="";
-
+            TextBox1.Text = "";
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -72,6 +81,7 @@ namespace SchaebigeSchaetzungen.View
                     SubmitBtn.Visibility= Visibility.Collapsed;
                     ResultBtn.Visibility= Visibility.Visible;
                     webBrowser1.NavigateToString("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Spiel vorbei</title>\r\n  <style>\r\n    * {\r\n      margin: 0;\r\n      padding: 0;\r\n      box-sizing: border-box;\r\n    }\r\n\r\n    html, body {\r\n      height: 100%;\r\n      font-family: Arial, sans-serif;\r\n    }\r\n\r\n    body {\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n    }\r\n\r\n    .container {\r\n      text-align: center;\r\n    }\r\n  </style>\r\n</head>\r\n<body>\r\n  <div class=\"container\">\r\n    <h1>Spiel vorbei</h1>\r\n    <p>Vielen Dank fürs Spielen!</p>\r\n  </div>\r\n</body>\r\n</html>\r\n");
+                   // webBrowser1.Dispose();             
                 }
                 else
                 {
@@ -93,7 +103,7 @@ namespace SchaebigeSchaetzungen.View
                 binding.UpdateSource();
 
                 PointsTextBox.Text=Game.SingleplayerPts(guess, viewCount);
-                //TODO Bonuspunkte für SPrache??
+            
                 BindingExpression binding2 = PointsTextBox.GetBindingExpression(TextBox.TextProperty);
                 binding2.UpdateSource();
 
@@ -147,6 +157,17 @@ namespace SchaebigeSchaetzungen.View
         {
             HintLikes.Visibility = Visibility.Collapsed;
             HintComments.Visibility = Visibility.Collapsed;
+        }
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            //webBrowser1.Dispose();
+            //isDisposed = true;
+        }
+
+        private void SingleplayerGameView_Unloaded(object sender, RoutedEventArgs e)
+        {
+            isDisposed = true;
+            webBrowser1 = null;
         }
 
         private void NAButton_Click(object sender, RoutedEventArgs e)
