@@ -2,6 +2,7 @@
 using SchaebigeSchaetzungen.Model;
 using System;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace SchaebigeSchaetzungen.Persistence
 {
@@ -51,7 +52,8 @@ namespace SchaebigeSchaetzungen.Persistence
                 }
                 else
                 {
-                    throw new Exception("Kein Spieler gefunden.");
+                    //throw new Exception("Kein Spieler gefunden.");
+                    MessageBox.Show("Kein Spieler gefunden", "NO PLAYER", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
             }

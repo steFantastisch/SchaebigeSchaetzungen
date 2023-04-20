@@ -44,7 +44,11 @@ namespace SchaebigeSchaetzungen.Command
                 try
                 {
                     game.PlayerOne=game.dBPlayer.Read(player);
-                    navigationStore.CurrentViewModel = createViewModel();
+                    if (game.PlayerOne.Name!=null)
+                    {
+navigationStore.CurrentViewModel = createViewModel();
+                    }
+                    
                 }
                 catch (Exception)
                 {
